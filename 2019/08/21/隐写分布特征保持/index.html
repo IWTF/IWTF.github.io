@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="隐写学,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
+<meta name="description" content="该章讲解了分布特征保持问题，并介绍了分布保持的一些方法">
+<meta name="keywords" content="隐写学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="img测试">
-<meta property="og:url" content="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/index.html">
+<meta property="og:title" content="隐写分布特征保持">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/21/隐写分布特征保持/index.html">
 <meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="该章讲解了分布特征保持问题，并介绍了分布保持的一些方法">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/bold.PNG">
-<meta property="og:image" content="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/bold.PNG">
-<meta property="og:updated_time" content="2019-08-21T06:53:18.425Z">
+<meta property="og:updated_time" content="2019-08-21T10:14:52.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="img测试">
-<meta name="twitter:image" content="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/bold.PNG">
+<meta name="twitter:title" content="隐写分布特征保持">
+<meta name="twitter:description" content="该章讲解了分布特征保持问题，并介绍了分布保持的一些方法">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/">
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/21/隐写分布特征保持/">
 
 
 
 
 
-  <title>img测试 | IWTF</title>
+  <title>隐写分布特征保持 | IWTF</title>
   
 
 
@@ -242,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/21/隐写分布特征保持/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -259,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">img测试</h1>
+          <h1 class="post-title" itemprop="name headline">隐写分布特征保持</h1>
         
 
         <div class="post-meta">
@@ -272,7 +273,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-21T14:40:01+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-21T18:13:25+08:00">
                 2019-08-21
               </time>
             
@@ -310,7 +311,102 @@
       
 
       
-        <p><img src="//github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/bold.PNG"><br><img src="//github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/bold.PNG" alt="fadf"></p>
+        <p>该章讲解了分布特征保持问题，并介绍了分布保持的一些方法</p>
+<a id="more"></a>
+
+<h4 id="3-1-分布保持问题"><a href="#3-1-分布保持问题" class="headerlink" title="3.1 分布保持问题"></a>3.1 分布保持问题</h4><p>本节主要通过实例来引出分布保持问题并描述其难度</p>
+<h5 id="3-1-1-LSBR分布问题与K平方分析"><a href="#3-1-1-LSBR分布问题与K平方分析" class="headerlink" title="3.1.1 LSBR分布问题与K平方分析"></a>3.1.1 <code>LSBR</code>分布问题与K平方分析</h5><ul>
+<li><p><strong><code>JPEG</code>系数特点</strong></p>
+<ul>
+<li>对称性。以0为中心达到最大值，两侧分布近似对称</li>
+<li>单侧单调性。以0为中心达到最大值，两侧单调下降</li>
+<li>梯度下降性。小值样点多，大致样点少，分布曲线两侧下降梯度珠江减小</li>
+</ul>
+<p><strong>了解<code>JPEG</code>特点，是为了对其隐写进行约束，隐写后特征满足这些特点</strong></p>
+</li>
+<li><p><strong><code>LSBR</code>嵌入得特点</strong></p>
+<ul>
+<li>奇数值样点只减不增，偶数值样点相反</li>
+<li>相邻值样点数不断接近</li>
+</ul>
+<p>了解<code>LSBR</code>特点是为了：为隐写分析提供依据</p>
+</li>
+<li><p><strong>隐写分析方法</strong></p>
+<ul>
+<li>判断隐写的直接依据<ul>
+<li>检漏率（隐秘图像的统计特征，出错概率）</li>
+<li>虚警率（载体图像的统计特征，出错概率）</li>
+</ul>
+</li>
+<li>常用简单依据<ul>
+<li>𝑝 = {𝑓(𝑡)𝑑𝑡 = 1 − {𝑓(𝑡)𝑑𝑡</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>结论</strong></p>
+<ul>
+<li>该<strong>隐写分析方法</strong>对连续的<code>LSBR</code>隐写非常有效，甚至可以估计嵌入长度</li>
+<li>但对不连续的<code>LSBR</code>性能下降很快，但对一些幂集嵌入取余仍然有效</li>
+</ul>
+</li>
+<li><p>基础概念</p>
+<ul>
+<li>h(x)，直方图中x处对应的值</li>
+<li>t： 相对偏离程度</li>
+<li>f(t): t满足的K平方分布</li>
+<li>g*(x): 隐密图像的统计特征</li>
+<li>g(x):   载体图像的统计特征</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-1-2-分布保持及其困难性"><a href="#3-1-2-分布保持及其困难性" class="headerlink" title="3.1.2 分布保持及其困难性"></a>3.1.2 分布保持及其困难性</h5><p>该节介绍了分布保持的概念及证明了其困难性</p>
+<ul>
+<li><p><strong>分布保持</strong></p>
+<p>分布保持就是是所关心的载体数据或特征的分布与隐写后的分布相同，及距离为0</p>
+</li>
+<li><p><strong>证明略，看书理解</strong></p>
+</li>
+</ul>
+<h4 id="3-2-基于调整修改方式的方法"><a href="#3-2-基于调整修改方式的方法" class="headerlink" title="3.2 基于调整修改方式的方法"></a>3.2 基于调整修改方式的方法</h4><p>早在第2章，我们就已经接触过该方法——随机加减1，这就是典型的通过调整修改方法保持一节统计特征的例子。该节将会介绍该方法下的几个典型例子（<code>F3隐写,F4隐写</code>)</p>
+<h5 id="3-2-1-F3隐写"><a href="#3-2-1-F3隐写" class="headerlink" title="3.2.1 F3隐写"></a>3.2.1 <code>F3</code>隐写</h5><p>该隐写，书上介绍逻辑清晰，层次分明，这里不做记录</p>
+<h5 id="3-2-2-F4隐写"><a href="#3-2-2-F4隐写" class="headerlink" title="3.2.2 F4隐写"></a>3.2.2 <code>F4</code>隐写</h5><p><strong>核心</strong>： 对不同正负号的<code>JPEG</code>系数采用了不同的嵌入与消息表示方法</p>
+<h4 id="3-3-基于预留区的方法"><a href="#3-3-基于预留区的方法" class="headerlink" title="3.3 基于预留区的方法"></a>3.3 基于预留区的方法</h4><p>通过预留不用承载消息的区域，并进行相应的补偿处理，可以将含密载体的分布特征调整到预期的情况，从而降低相应的隐写分析</p>
+<h5 id="3-3-1-预留补偿区的分布恢复"><a href="#3-3-1-预留补偿区的分布恢复" class="headerlink" title="3.3.1 预留补偿区的分布恢复"></a>3.3.1 预留补偿区的分布恢复</h5><p>由于载体分别v有特征一般具有全局性，所有可以预留一个不承载消息的补偿区用于修正变化的分布特征</p>
+<ul>
+<li><p><code>Solanki</code>得方法</p>
+<ul>
+<li><p><strong>引入概念</strong></p>
+<ul>
+<li><code>PMF</code>： 离散分布概率</li>
+<li><code>Px(v)</code>: 载体的<code>PMF</code></li>
+<li><code>Py(v)</code>: 含密载体的<code>PMF</code></li>
+<li><code>Ps(v)</code>: 消息承载区的<code>PMF</code></li>
+<li><code>Pc(v)</code>: 预留补偿区的<code>PMF</code></li>
+</ul>
+</li>
+<li><p>隐写目的： 使隐写后分布特征不变（即<code>Px(v) = Py(v)</code>)</p>
+<p>希望得到的效果： <code>Py(v) = aPs(v)+(1-a)Pc(v) = Px(v)</code></p>
+<p>因此移项可得到<code>Pc(v)</code>表达式，通过次式，确定a，得到<code>Pc(v)</code></p>
+</li>
+</ul>
+</li>
+<li><p>更有影响力的<code>OutGuess隐写</code></p>
+<p>一个完整的隐写体制，处理包含隐写方法，还包含有关密钥与密码等的使用方案，所有这里先从其加密与嵌入位置确定上的安全方案开始</p>
+<ul>
+<li><p>密码与密码方案</p>
+<p>采用<code>流密码RC4</code>加密带隐藏的消息</p>
+</li>
+<li><p>嵌入位置的伪随机确定</p>
+<p>自适应处理思想，基于任选的32个种子在嵌入前临时产生32个嵌入位置</p>
+</li>
+<li><p>位置选择的优化</p>
+<p>总体的修改由种子，载体，消息共同决定，当后两者确定时，仅取决于种子</p>
+<p>OutGuess</p>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -325,6 +421,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/隐写学/" rel="tag"># 隐写学</a>
+          
+        </div>
       
 
       
@@ -393,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -463,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-分布保持问题"><span class="nav-number">1.</span> <span class="nav-text">3.1 分布保持问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1-LSBR分布问题与K平方分析"><span class="nav-number">1.1.</span> <span class="nav-text">3.1.1 LSBR分布问题与K平方分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2-分布保持及其困难性"><span class="nav-number">1.2.</span> <span class="nav-text">3.1.2 分布保持及其困难性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-基于调整修改方式的方法"><span class="nav-number">2.</span> <span class="nav-text">3.2 基于调整修改方式的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-1-F3隐写"><span class="nav-number">2.1.</span> <span class="nav-text">3.2.1 F3隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-F4隐写"><span class="nav-number">2.2.</span> <span class="nav-text">3.2.2 F4隐写</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-基于预留区的方法"><span class="nav-number">3.</span> <span class="nav-text">3.3 基于预留区的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-1-预留补偿区的分布恢复"><span class="nav-number">3.1.</span> <span class="nav-text">3.3.1 预留补偿区的分布恢复</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

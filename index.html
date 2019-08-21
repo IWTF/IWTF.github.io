@@ -81,7 +81,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="IWTF">
-<meta property="og:url" content="https://github.com/IWTF/IWTF.github.io/tree/master/index.html">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/index.html">
 <meta property="og:site_name" content="IWTF">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
@@ -115,7 +115,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/IWTF/IWTF.github.io/tree/master/">
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/">
 
 
 
@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/21/隐写分布特征保持/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/21/img测试/" itemprop="url">img测试</a></h1>
+                <a class="post-title-link" href="/2019/08/21/隐写分布特征保持/" itemprop="url">隐写分布特征保持</a></h1>
         
 
         <div class="post-meta">
@@ -271,7 +271,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-21T14:40:01+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-21T18:13:25+08:00">
                 2019-08-21
               </time>
             
@@ -310,10 +310,14 @@
 
       
         
-          
-            <p><img src="//github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/bold.PNG"><br><img src="//github.com/IWTF/IWTF.github.io/tree/master/2019/08/21/img测试/bold.PNG" alt="fadf"></p>
-
-          
+          <p>该章讲解了分布特征保持问题，并介绍了分布保持的一些方法</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/21/隐写分布特征保持/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -360,7 +364,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/19/基本嵌入方法/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/19/基本嵌入方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -431,65 +435,14 @@
 
       
         
-          
-            <a id="more"></a>
-
-<h2 id="基本嵌入方法"><a href="#基本嵌入方法" class="headerlink" title="基本嵌入方法"></a>基本嵌入方法</h2><h4 id="LSBR-LSB-替换"><a href="#LSBR-LSB-替换" class="headerlink" title="LSBR(LSB 替换)"></a><code>LSBR</code>(<code>LSB 替换</code>)</h4><h4 id="LSBW-LSB-匹配-或-加减1"><a href="#LSBW-LSB-匹配-或-加减1" class="headerlink" title="LSBW(LSB 匹配 或 加减1)"></a><code>LSBW</code>(<code>LSB 匹配 或 加减1</code>)</h4><h4 id="调色板图像嵌入"><a href="#调色板图像嵌入" class="headerlink" title="调色板图像嵌入"></a>调色板图像嵌入</h4><h4 id="量化调制"><a href="#量化调制" class="headerlink" title="量化调制"></a>量化调制</h4><ul>
-<li><p><strong>基础概念</strong></p>
-<ul>
-<li><p><strong>格</strong>：格是由N维欧氏空间中数值点组成的加群，由有规律分布于整个空间的离散点组成</p>
-</li>
-<li><p><strong>信号量化</strong>：量化就是通过四舍五入的方法将采样后的<code>N维实数信号值</code>转换成一种<code>离散样点</code>的过程。</p>
-</li>
-<li><p><strong>离散数学</strong></p>
-<ul>
-<li><p>子格：设<code>(L，∨，∧)</code>是一格，T是L的非空子集，如果T关于两种运算都是封闭的，则称<code>(T，∨，∧)</code>是<code>(L，∨，∧)</code>的子格。显然，子格本身是一个格</p>
-</li>
-<li><p>陪集：在数学中，如果G是一个群，H是G的一个子群，g是G的一个元素，那么<code>gH = {gh：对于所有h∈H}</code>表示H的左陪集.</p>
-</li>
-<li><p>划分：</p>
-<p>在离散数学中，划分(partition)是指非空集合A的非空子集的一个集合p满足以下两个条件：</p>
-<ol>
-<li><p>A的每个元素属于p中的某个集合；</p>
-</li>
-<li><p>如果A1和A2是p中的不同元素，那么A1∩A2=Φ。划分又叫<a href="https://baike.baidu.com/item/商集" target="_blank" rel="noopener">商集</a>。p中的集合称为划分中的块或单元。</p>
-</li>
-</ol>
-</li>
-<li><p>幂集： 就是原集合中所有的子集（包括全集和空集）构成的集族。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>量化调制</strong></p>
-<p>通过控制信号量化值得方法嵌入消息比特。嵌入信息得原理是：利用不同陪集中得就近格点代替原载体格点表示嵌入了不同得消息符号</p>
-<ul>
-<li><p>最基本的嵌入方法：量化索引调制方法（QIM）</p>
-<p><code>y = Qm(x)</code></p>
-<p>该公式的含义是：基于格点x嵌入消息符号m，则用Am中最接近x的格点代替x。</p>
-<blockquote>
-<p>当前采用<code>QIM</code>方法的隐写比较少，但其具有很强的理论意义</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>优点</strong></p>
-<ul>
-<li><p>具有很强的一般性，具有一定的鲁棒性</p>
-</li>
-<li><p>揭示了信息隐藏的一般原理：</p>
-<p>任何载体数据如果都存在近似的描述并且这种描述的差别不易检测，则存在构造嵌入算法的可能。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li>在隐写中，如果一个载体样点的值（而不是诸如<code>LSB</code>等位平面上的值）在隐写后有p中可能，则称隐写为p元编码的。（<code>LSBP</code>和<code>LSBM</code>分别是基于二元编码和三元编码的隐写，QIM的情况要看其采用了几个量化子格）。</li>
-</ul>
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://baijiahao.baidu.com/s?id=1614627981206121506&wfr=spider&for=pc" target="_blank" rel="noopener">详解音频信号量化</a></p>
-
-          
+          <h2 id="基本嵌入方法"><a href="#基本嵌入方法" class="headerlink" title="基本嵌入方法"></a>基本嵌入方法</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/19/基本嵌入方法/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -536,7 +489,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/18/图像编码/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/18/图像编码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -665,7 +618,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/08/04/2019-8文章整理/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/04/2019-8文章整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -738,30 +691,38 @@
         
           
             <details>
-    <summary>**VUE项目**</summary>
-[Vue(ES6)中的data属性为什么不能是一个对象？](https://juejin.im/post/5b4c0a715188251acc22fdd7)
-[你所不知的 CSS ::before 和 ::after 伪元素用法](http://blog.dimpurr.com/css-before-after/)
+    <summary>VUE项目</summary>
 
-<p><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">跨域资源共享 CORS 详解</a><br><a href="https://www.cnblogs.com/xinchenhui/p/9604364.html" target="_blank" rel="noopener">iView 的分页结合表格用法</a><br><a href="https://www.jb51.net/article/140581.htm" target="_blank" rel="noopener">vue之父子组件间通信实例讲解(props、$ref、$emit)</a><br><a href="https://www.cnblogs.com/whybxy/p/7645578.html" target="_blank" rel="noopener">ES6 Promise 用法讲解</a><br><a href="https://blog.csdn.net/zhouzuoluo/article/details/80675662" target="_blank" rel="noopener">Vue Mock的使用</a><br><a href="https://github.com/nuysoft/Mock/wiki/">Mock.js 0.1 文档</a></p>
+<p><a href="https://juejin.im/post/5b4c0a715188251acc22fdd7" target="_blank" rel="noopener">Vue(ES6)中的data属性为什么不能是一个对象？</a></p>
+<p><a href="http://blog.dimpurr.com/css-before-after/" target="_blank" rel="noopener">你所不知的 CSS ::before 和 ::after 伪元素用法</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">跨域资源共享 CORS 详解</a></p>
+<p><a href="https://www.cnblogs.com/xinchenhui/p/9604364.html" target="_blank" rel="noopener">iView 的分页结合表格用法</a></p>
+<p><a href="https://www.jb51.net/article/140581.htm" target="_blank" rel="noopener">vue之父子组件间通信实例讲解(props、$ref、$emit)</a></p>
+<p><a href="https://www.cnblogs.com/whybxy/p/7645578.html" target="_blank" rel="noopener">ES6 Promise 用法讲解</a></p>
+<p><a href="https://blog.csdn.net/zhouzuoluo/article/details/80675662" target="_blank" rel="noopener">Vue Mock的使用</a></p>
+<p><a href="https://github.com/nuysoft/Mock/wiki/" target="_blank" rel="noopener">Mock.js 0.1 文档</a></p>
 </details>
 
 <details>
-    <summary>**Web端即时通讯技术**</summary>
-[用go实现聊天室(WebSocket方式)](https://www.jianshu.com/p/ca2d97886c39)
-[轮询、长轮询、长连接、websocket](https://www.cnblogs.com/huchong/p/8595644.html)
-[WebSocket请求过程分析及实现Web聊天室](https://www.cnblogs.com/huchong/p/8530067.html)
-[WebSocket介绍和Socket的区别](https://blog.csdn.net/wwd0501/article/details/54582912)
+    <summary>Web端即时通讯技术</summary>
+
+<p><a href="https://www.jianshu.com/p/ca2d97886c39" target="_blank" rel="noopener">用go实现聊天室(WebSocket方式)</a></p>
+<p><a href="https://www.cnblogs.com/huchong/p/8595644.html" target="_blank" rel="noopener">轮询、长轮询、长连接、websocket</a></p>
+<p><a href="https://www.cnblogs.com/huchong/p/8530067.html" target="_blank" rel="noopener">WebSocket请求过程分析及实现Web聊天室</a></p>
+<p><a href="https://blog.csdn.net/wwd0501/article/details/54582912" target="_blank" rel="noopener">WebSocket介绍和Socket的区别</a></p>
 </details>
 
 <details>
-    <template>**杂项**</template>
-[Uint8Array](https://cloud.tencent.com/developer/section/1191787)
+    <template>杂项</template>
+
+<p><a href="https://cloud.tencent.com/developer/section/1191787" target="_blank" rel="noopener">Uint8Array</a></p>
 </details>
 
 <details>
-    <summary>**工具**</summary>
-[VSCode - Beautify插件配置 *.vue](https://www.jianshu.com/p/29b1096a0df9)
-</details>
+    <summary>工具<summary>
+
+<p><a href="https://www.jianshu.com/p/29b1096a0df9" target="_blank" rel="noopener">VSCode - Beautify插件配置 *.vue</a></p>
+</summary></summary></details>
 
 <p>高级表单中列表展示可以使用借鉴</p>
 <p>处理外键添加，删除</p>
@@ -815,7 +776,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/07/28/知识积累/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/07/28/知识积累/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -940,7 +901,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/07/25/随手记/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/07/25/随手记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -1065,7 +1026,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/07/24/JdbcTemplete基本使用/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/07/24/JdbcTemplete基本使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -1213,7 +1174,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/07/21/2019-7文章整理/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/07/21/2019-7文章整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -1377,7 +1338,7 @@ FastJson对于JSON格式字符串、JSON对象及JavaBean之间的相互转换
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/07/16/MySql事务/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/07/16/MySql事务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -1502,7 +1463,7 @@ FastJson对于JSON格式字符串、JSON对象及JavaBean之间的相互转换
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/07/16/MySql约束和分页/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/07/16/MySql约束和分页/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
