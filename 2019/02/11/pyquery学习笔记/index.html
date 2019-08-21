@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="学习笔记,python,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言该文章为学习崔庆才大大教程时，做的一些笔记。  好记性不如烂笔头">
+<meta name="keywords" content="学习笔记,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pyquery学习笔记">
+<meta property="og:url" content="https://github.com/IWTF/IWTF.github.io/2019/02/11/pyquery学习笔记/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="前言该文章为学习崔庆才大大教程时，做的一些笔记。  好记性不如烂笔头">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-02T06:11:25.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pyquery学习笔记">
+<meta name="twitter:description" content="前言该文章为学习崔庆才大大教程时，做的一些笔记。  好记性不如烂笔头">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/IWTF/IWTF.github.io/2019/02/11/pyquery学习笔记/">
+
+
+
+
+
+  <title>pyquery学习笔记 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/2019/02/11/pyquery学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">pyquery学习笔记</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T10:58:07+08:00">
+                2019-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>该文章为学习崔庆才大大教程时，做的一些笔记。</p>
+<blockquote>
+<p>好记性不如烂笔头</p>
+</blockquote>
+<a id="more"></a>
+
+<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>PyQuery库也是一个非常强大又灵活的网页解析库，前端基础较好的人，使用更加方便，上手快，且功能更强大。</p>
+<p>官方文档： <a href="http://pyquery.readthedocs.io/" target="_blank" rel="noopener">http://pyquery.readthedocs.io/</a></p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><ul>
+<li><h6 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h6><ul>
+<li>字符串初始化</li>
+<li>URL初始化</li>
+<li>文件初始化 (对于本机文件）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 演示数据</span><br><span class="line">    html = &apos;&apos;&apos;</span><br><span class="line">        &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">            &lt;ul class=&apos;list&apos;&gt;</span><br><span class="line">                 &lt;li class=&quot;item-0&quot;&gt;first item&lt;/li&gt;</span><br><span class="line">                 &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                 &lt;li class=&quot;item-0 active&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;&lt;span class=&quot;bold&quot;&gt;third item&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                 &lt;li class=&quot;item-1 active&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                 &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">             &lt;/ul&gt;</span><br><span class="line">         &lt;/div&gt;</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pyquery import PyQuery as pq</span><br><span class="line">doc = pq(html)  # 字符串初始化</span><br><span class="line">doc = pq(&apos;http://www.baidu.com&apos;)  # URL初始化</span><br><span class="line">doc = pq(&apos;文件路径&apos;)  # 文件初始化</span><br><span class="line"></span><br><span class="line">print(doc(&apos;li&apos;))  </span><br><span class="line"># 类似BeautifulSoup的tag选择器</span><br><span class="line"># 与BeautifulSoup的区别，pyquery的该语句会匹配所有满足条件的内容</span><br><span class="line"></span><br><span class="line"># 以演示数据为例：</span><br><span class="line">[&lt;li.item-0&gt;, &lt;li.item-1&gt;, &lt;li.item-0.active&gt;, &lt;li.item-1.active&gt;, &lt;li.item-0&gt;]</span><br><span class="line"># 该列表是由&lt;class &apos;pyquery.pyquery.PyQuery&apos;&gt;类型构成的</span><br><span class="line"># doc也是&lt;class &apos;pyquery.pyquery.PyQuery&apos;&gt;类型，即pyquery可以层层调用</span><br></pre></td></tr></table></figure></code></pre><ul>
+<li><h6 id="基本的css选择器（id，class）"><a href="#基本的css选择器（id，class）" class="headerlink" title="基本的css选择器（id，class）"></a>基本的css选择器（id，class）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(doc(&apos; #container&apos;))   #加‘ # ’id选择</span><br><span class="line">print(doc(&apos;.item-0&apos;))   #加‘ . ’class选择</span><br><span class="line">print(doc(&apos;#container .list li&apos;))  # 选择id为continer下，类名为list的标签内的li</span><br><span class="line">print(doc(&apos;#continer .item-0&apos;))  # 选择id为container的标签下的，类名为item-0的内容</span><br><span class="line">print(doc(&apos;#continer .item-0.active&apos;)) # 选择id为container的标签下的，类名为item-0&amp;acitve的内容</span><br><span class="line"># 中间带有空格表示层级，不带空格表示并列</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><h5 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h5><ul>
+<li>子元素</li>
+<li>父元素</li>
+<li>兄弟元素<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from pyquery import PyQuery as pq</span><br><span class="line">doc = pq(html)</span><br><span class="line">items = doc(&apos;.list&apos;)</span><br><span class="line">print(type(items))</span><br><span class="line">print(items)</span><br><span class="line"></span><br><span class="line"># 子元素的查找</span><br><span class="line">  # find方法</span><br><span class="line">  lis = items.find(&apos;li&apos;)  # tag</span><br><span class="line">  print(type(lis))</span><br><span class="line">  print(lis)</span><br><span class="line"></span><br><span class="line">  # children方法</span><br><span class="line">  lis = items.children(&apos;.active&apos;)   # css选择器</span><br><span class="line">  print(lis)</span><br><span class="line">  # 两种方法，都可以使用css选择器和tag</span><br><span class="line">  # 区别： find找下面所有满足条件的下级元素</span><br><span class="line">        # children找直接子元素里满足条件的内容</span><br><span class="line"># 父元素查找</span><br><span class="line">  # parent方法（得到上一级父元素)</span><br><span class="line">  container = items.parent()</span><br><span class="line">  print(type(container))</span><br><span class="line">  print(container)</span><br><span class="line"></span><br><span class="line">  # parents方法(得到所有祖先元素)</span><br><span class="line">  parents = items.parents()</span><br><span class="line">  print(type(parents ))</span><br><span class="line">  print(container)</span><br><span class="line">  # 类型均为&lt;class &apos;pyquery.pyquery.PyQuery&apos;&gt;</span><br><span class="line">  # 也可以使用css和tag进行筛选</span><br><span class="line"></span><br><span class="line"># 兄弟查找</span><br><span class="line">   # siblings方法</span><br><span class="line">   doc = pq(html)</span><br><span class="line">   li = doc(&apos;.list .item-0.active&apos;)   # css选择</span><br><span class="line">   print(li.siblings())  # 类型&lt;class &apos;pyquery.pyquery.PyQuery&apos;&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h5><p>当我们通过pyquery进行筛选时，我们可以获得一条结果，也可能获得多条，当结果不唯一时，我们会用到遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 当然，我们可以使用最基础的for方法</span><br><span class="line">doc = pq(html)</span><br><span class="line">b = doc(&apos;li&apos;) # 类型&lt;class &apos;pyquery.pyquery.PyQuery&apos;&gt;</span><br><span class="line">for a in b:</span><br><span class="line">    print(a)   # 类型&lt;class &apos;lxml.etree._Element&apos;&gt;</span><br><span class="line">    </span><br><span class="line"># 我们可以借助pyquery提供的items方法</span><br><span class="line">lis = doc(&apos;li&apos;).items()   # 类型&lt;generator object PyQuery.items at 0x03568A50&gt;</span><br><span class="line">print(type(lis))</span><br><span class="line">for li in lis:</span><br><span class="line">    print(li) # 类型&lt;class &apos;pyquery.pyquery.PyQuery&apos;&gt;</span><br><span class="line">   </span><br><span class="line"> ### 注意区分各个值的类型，根据需要进行选择</span><br><span class="line"> # 使用itens()函数后，每个子项为py类型，可以使用查找函数</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><h5 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h5><ul>
+<li><strong>获取属性</strong></li>
+<li><strong>获取文本</strong></li>
+<li><strong>获取HTML</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from pyquery import PyQuery as pq</span><br><span class="line">doc = pq(html)</span><br><span class="line">a = doc(&apos;.item-0.active a&apos;)</span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"># 获取属性（2种方法）</span><br><span class="line">print(a.attr(&apos;href&apos;))</span><br><span class="line">print(a.attr.href)</span><br><span class="line"></span><br><span class="line"> # 获取文本</span><br><span class="line"> print(a.text())</span><br><span class="line"></span><br><span class="line"> # 获取HTML</span><br><span class="line"> &gt;&gt;&gt;print(li)</span><br><span class="line"> &lt;li class=&quot;item-0 active&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;&lt;span class=&quot;bold&quot;&gt;third item&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; </span><br><span class="line"> &gt;&gt;&gt;print(li.html())     # 获取其包裹的HTML</span><br><span class="line"> &lt;a href=&quot;link3.html&quot;&gt;&lt;span class=&quot;bold&quot;&gt;third item&lt;/span&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h5><p>  对dom进行修改，增删</p>
+<ul>
+<li><p><strong>addClass、removeClass</strong></p>
+</li>
+<li><p><strong>attr、css</strong></p>
+</li>
+<li><p><strong>remove</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from pyquery import PyQuery as pq</span><br><span class="line">doc = pq(html)</span><br><span class="line">li = doc(&apos;.item-0.active&apos;)</span><br><span class="line">print(li)</span><br><span class="line"># 原始结果</span><br><span class="line">&lt;li class=&quot;item-0&quot;&gt;first item&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-0 active&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;&lt;span class=&quot;bold&quot;&gt;third item&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-1 active&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>removeClass</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">li.removeClass(&apos;active&apos;)  # 移除active类的属性</span><br><span class="line">print(li)</span><br><span class="line"># 结果</span><br><span class="line">&lt;li class=&quot;item-0&quot;&gt;first item&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;&lt;span class=&quot;bold&quot;&gt;third item&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>addClass</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">li.addClass(&apos;active&apos;)</span><br><span class="line">print(li)</span><br><span class="line">&lt;li class=&quot;item-0&quot;&gt;first item&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-0 active&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;&lt;span class=&quot;bold&quot;&gt;third item&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-1 active&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>attr、css</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">li.attr(&apos;name&apos;, &apos;link&apos;)</span><br><span class="line"># 若li无name属性，则添加name=&quot;link&quot;;若具有name属性，则修改其值为link</span><br><span class="line">li.css(&apos;font-size&apos;, &apos;14px&apos;)</span><br><span class="line"># 添加样式，同attr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>remove</p>
+<p>可以用于筛选，排除，进而获取最后内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">html = &apos;&apos;&apos;</span><br><span class="line"> &lt;div class=&quot;wrap&quot;&gt;</span><br><span class="line">     Hello, World</span><br><span class="line">     &lt;p&gt;This is a paragraph.&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"> &apos;&apos;&apos;</span><br><span class="line"> from pyquery import PyQuery as pq</span><br><span class="line"> doc = pq(html)</span><br><span class="line"> wrap = doc(&apos;.wrap&apos;)</span><br><span class="line"> print(wrap.text())</span><br><span class="line"> wrap.find(&apos;p&apos;).remove()</span><br><span class="line"> print(wrap.text())</span><br><span class="line"> </span><br><span class="line"> # 结果为：</span><br><span class="line"> Hello, World This is a paragraph.</span><br><span class="line"> Hello, World</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h5><p>  和前端css选择器完全一致，均可以使用</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 举例 （伪类选择器）</span><br><span class="line">from pyquery import PyQuery as pq</span><br><span class="line">doc = pq(html)</span><br><span class="line">li = doc(&apos;li:first-child&apos;)</span><br><span class="line">print(li)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/10/python文件读写/" rel="next" title="python文件读写">
+                <i class="fa fa-chevron-left"></i> python文件读写
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/11/css竖直居中/" rel="prev" title="css竖直居中">
+                css竖直居中 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#初始化"><span class="nav-number">3.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#基本的css选择器（id，class）"><span class="nav-number">3.2.</span> <span class="nav-text">基本的css选择器（id，class）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找元素"><span class="nav-number">4.</span> <span class="nav-text">查找元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#遍历"><span class="nav-number">5.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取信息"><span class="nav-number">6.</span> <span class="nav-text">获取信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DOM操作"><span class="nav-number">7.</span> <span class="nav-text">DOM操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进阶"><span class="nav-number">8.</span> <span class="nav-text">进阶</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

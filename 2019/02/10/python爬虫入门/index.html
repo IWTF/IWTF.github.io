@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="python爬虫基础练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫入门">
+<meta property="og:url" content="https://github.com/IWTF/IWTF.github.io/2019/02/10/python爬虫入门/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="python爬虫基础练习">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://localhost:4000/2019/02/10/python爬虫入门/form.PNG">
+<meta property="og:updated_time" content="2019-07-10T22:30:04.830Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python爬虫入门">
+<meta name="twitter:description" content="python爬虫基础练习">
+<meta name="twitter:image" content="https://localhost:4000/2019/02/10/python爬虫入门/form.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/IWTF/IWTF.github.io/2019/02/10/python爬虫入门/">
+
+
+
+
+
+  <title>python爬虫入门 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/2019/02/10/python爬虫入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python爬虫入门</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-10T17:13:55+08:00">
+                2019-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="python爬虫基础练习"><a href="#python爬虫基础练习" class="headerlink" title="python爬虫基础练习"></a>python爬虫基础练习</h4><a id="more"></a>
+
+
+<h5 id="基础准备"><a href="#基础准备" class="headerlink" title="基础准备"></a>基础准备</h5><ul>
+<li><p><strong>requests</strong></p>
+<p>  比起python内置的urllib库，操作更方便的HTTP库————requests是大多数入门爬虫的选择</p>
+<p>  使用示例：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 安装</span><br><span class="line">pip install requests</span><br><span class="line"></span><br><span class="line">-------------------------------</span><br><span class="line"># 最基本使用（其他方法移步官网学习）</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;；</span><br><span class="line">    target = &apos;网址&apos;</span><br><span class="line">    req = requests.get(url = target)</span><br><span class="line">    html = req.text</span><br><span class="line">    print(html)</span><br></pre></td></tr></table></figure></code></pre><p>从上面打印的结果，我们可以看到已经得到了页面的html信息，但是，起里面包含了大量我们不需要的信息。所以，接下来我们要提取我们感兴趣的内容（筛选信息），我们可以通过正则表达式，当然，也可以使用库————BeautifulSoup（灵活，方便，高效，支持多种解析器）。</p>
+</li>
+</ul>
+<p>  <strong>补充：</strong></p>
+<pre><code>通过学习，又了解到一个强大的解析库————pyQuery，其优点是：对前端基础较好的人，使用更加方便，上手快，且功能更强大。</code></pre><blockquote>
+<p>如果想了解，可以参考我下一篇笔记</p>
+</blockquote>
+<ul>
+<li><p><strong>BeautifulSoup</strong></p>
+<p><img src="//localhost:4000/2019/02/10/python爬虫入门/form.PNG" alt="解析库"></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>基础数据</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class=&quot;title&quot; name=&quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&apos;s story&lt;/b&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;&lt;!-- Elsie --&gt;&lt;/a&gt;,</span><br><span class="line">&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and</span><br><span class="line">&lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>基本用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 以后代码均已该两代码块为基础</span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html, &apos;lxml&apos;)</span><br><span class="line"># 进行格式化，对代码进行补全，进行容错处理</span><br><span class="line">print(soup.prettify())</span><br><span class="line"># 获取title标签的内容</span><br><span class="line">print(soup.title.string)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>节点选择器（tag）</p>
+<ul>
+<li><p>使用<br>直接调用名称即可<br>得到的时Tag对象类型</p>
+</li>
+<li><p>选择元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;print(soup.head)  #获取html的head标签</span><br><span class="line">&lt;head&gt;&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;print(soup.p)  #获取html的p标签</span><br><span class="line">&lt;p class=&quot;title&quot; name=&quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&apos;s story&lt;/b&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>上述例子可以看出，标签选择器只能匹配到第一个符合条件的并返回</p>
+</blockquote>
+<ul>
+<li>获取名称</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;print(soup.head.name)</span><br><span class="line">&apos;head&apos;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>获取属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 两种方式</span><br><span class="line"># 匹配第一个</span><br><span class="line">&gt;&gt;&gt;print(soup.p.attrs(&apos;name&apos;))</span><br><span class="line">&gt;&gt;&gt;print(soup.p[&apos;name&apos;])</span><br><span class="line">dromouse</span><br><span class="line">dromouse</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;print(soup.head.string)</span><br><span class="line">&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;print(soup.head.title)</span><br><span class="line">&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>方法选择器find_all(name,attrs,recursive,text,**kwargs)<br>当我们进行爬虫时，上述方法并不太适用，使用更多的是方法选择器</p>
+<ul>
+<li>参数name表示可以查找所有名字为name的标签(tag)，也可以是过滤器，正则表达式，列表或者是True</li>
+<li>attrs表示传入的属性，可以通过attrs参数以字典的形式指定如常用属性id,attrs={‘id’:’123’}，由于class属性是python中的关键字，所有在查询时需要在class后面加上下划线即class_=’element’，返回的结果是tag类型的列表</li>
+<li>text参数用来匹配节点的文本，传入的形式可以是字符串也可以是正则表达式对象</li>
+<li>recursive表示，如果只想搜索直接子节点可以将参数设为false：recursive=Flase</li>
+<li>limit参数，可以用来限制返回结果的数量，与SQL中的limit关键字类似<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 示例</span><br><span class="line">eq = requests.get(url = self.target)</span><br><span class="line">    html = req.text</span><br><span class="line">    div_bf = BeautifulSoup(html)</span><br><span class="line">    div = div_bf.find_all(&apos;div&apos;, class_ = &apos;listmain&apos;)</span><br><span class="line">    a_bf = BeautifulSoup(str(div[0]))</span><br><span class="line">    a = a_bf.find_all(&apos;a&apos;)</span><br><span class="line">    self.nums = len(a[15:])                                #剔除不必要的章节，并统计章节数</span><br><span class="line">    for each in a[15:]:</span><br><span class="line">        self.names.append(each.string)</span><br><span class="line">        self.urls.append(self.server + each.get(&apos;href&apos;))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://www.cnblogs.com/zhangxinqi/p/9218395.html" target="_blank" rel="noopener">BeautifulSoup入门</a><br><a href="https://beautifulsoup.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">BeautifulSoup官方中文文档</a></p>
+<p>遇到的问题：</p>
+<ul>
+<li>使用BeautifulSoup(markup)出现Warning<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">UserWarning: No parser was explicitly specified, so I&apos;m using the best available HTML parser for this system (&quot;lxml&quot;). This usually isn&apos;t a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.</span><br><span class="line"></span><br><span class="line">The code that caused this warning is on line 4 of the file C:/Users/excalibur/PycharmProjects/learn/getMyIP.py. To get rid of this warning, change code that looks like this:</span><br><span class="line"></span><br><span class="line"> BeautifulSoup([your markup])</span><br><span class="line"></span><br><span class="line">to this:</span><br><span class="line"></span><br><span class="line"> BeautifulSoup([your markup], &quot;lxml&quot;)</span><br><span class="line"></span><br><span class="line">  markup_type=markup_type))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>将BeautifulSoup(markup)替换为BeautifulSoup(markup, ‘lxml’)即可</p>
+<ul>
+<li><p>参数markup可以传入一段字符串或一个文件句柄.<br>  在<a href="https://blog.csdn.net/c406495762/article/details/78123502" target="_blank" rel="noopener">静态网站爬去练习</a>中，传入类型为字符串，<strong>注意</strong>，BeautifulSoup<br>  获取的为对象，需要先转为字符串才可以继续作为markup参数。</p>
+<p>  通过BeautifulSoup多次筛选，可以得到任一标签下的任一子标签</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 例如</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import requests</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">     target = &apos;http://www.biqukan.com/1_1094/&apos;</span><br><span class="line">     req = requests.get(url = target)</span><br><span class="line">     html = req.text</span><br><span class="line">     div_bf = BeautifulSoup(html)</span><br><span class="line">     div = div_bf.find_all(&apos;div&apos;, class_ = &apos;listmain&apos;)</span><br><span class="line">     print(div[0])</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="基础之文件下载"><a href="#基础之文件下载" class="headerlink" title="基础之文件下载"></a>基础之文件下载</h3><ul>
+<li><h4 id="小文件下载"><a href="#小文件下载" class="headerlink" title="小文件下载"></a>小文件下载</h4><p>小文件下载可以直接存入文件</p>
+</li>
+<li><h4 id="大文件下载"><a href="#大文件下载" class="headerlink" title="大文件下载"></a>大文件下载</h4><p>对于图片等大文件，那么下载下来的文件先放在内存中，内存还是比较有压力的。所以为了防止内存不够用的现象出现，我们要想办法把下载的文件分块写到磁盘中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from contextlib import closing</span><br><span class="line"></span><br><span class="line">url = &apos;https://www.cayani.cn/usr/uploads/2018/10/2355989267.jpg&apos;</span><br><span class="line">filename = &apos;tour&apos;</span><br><span class="line"></span><br><span class="line">with closing(requests.get(url=url, stream=True, verify=False)) as r:</span><br><span class="line">  with open(&apos;%s.jpg&apos;% filename, &apos;ab&apos;) as f:</span><br><span class="line">    for chunk in r.iter_content(chunk_size = 1024):</span><br><span class="line">      if chunk:</span><br><span class="line">        f.write(chunk)</span><br><span class="line">        f.flush()</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<blockquote>
+<p><strong>注释</strong></p>
+<ol>
+<li>closing()是用来把一个对象变为具有上下文的对象，进而用于with语句</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>flush()清晰将缓存区的内容放到磁盘中</li>
+</ol>
+</blockquote>
+<ul>
+<li><h4 id="批量文件的下载"><a href="#批量文件的下载" class="headerlink" title="批量文件的下载"></a>批量文件的下载</h4><p>批量文件的下载其实就是大量小/大文件的下载，分清主次先后，这个问题就大化小了。</p>
+<ul>
+<li>第一步： 读取网页内容</li>
+<li>第二步： 获取链接信息，并过滤出我们需要的链接</li>
+<li>第三步： 对想要得到的文件进行下载<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"> import requests, sys</span><br><span class="line">from pyquery import PyQuery as pq</span><br><span class="line">from contextlib import closing</span><br><span class="line"></span><br><span class="line">target = &apos;http://www-personal.umich.edu/~csev/books/py4inf/media/&apos;</span><br><span class="line"></span><br><span class="line">end = &apos;.mp4&apos;</span><br><span class="line"></span><br><span class="line">def get_links(url):</span><br><span class="line">  html = requests.get(url).text</span><br><span class="line">  doc = pq(html)</span><br><span class="line">  # 获取链接</span><br><span class="line">  links = doc(&apos;body &gt; pre &gt; a&apos;).items()</span><br><span class="line">  target_links = [url + str(link.attr(&apos;href&apos;)) for link in links if str(link.attr(&apos;href&apos;)).endswith(end)]</span><br><span class="line">  # 获取链接对应的名字</span><br><span class="line">  return target_links</span><br><span class="line"></span><br><span class="line">def download_mp4(download_url):</span><br><span class="line">  file_name = download_url.split(&apos;/&apos;)[-1]</span><br><span class="line">  print(&apos;Downloading file: %s&apos;% file_name)</span><br><span class="line"></span><br><span class="line">  with closing(requests.get(download_url, stream = True)) as r:</span><br><span class="line">    content_size = int(r.headers[&apos;content-length&apos;])</span><br><span class="line">    chunk_process = 0</span><br><span class="line">    with open(file_name, &apos;ab&apos;) as f:</span><br><span class="line">      for chunk in r.iter_content(chunk_size = 10):</span><br><span class="line">        if chunk: </span><br><span class="line">          # 显示下载进度</span><br><span class="line">          sys.stdout.write(&quot;  已下载:%.3f%%&quot; %  float(chunk_process/content_size) + &apos;\r&apos;)</span><br><span class="line">          sys.stdout.flush()</span><br><span class="line">          f.write(chunk)</span><br><span class="line">          chunk_process += 10</span><br><span class="line">          f.flush()</span><br><span class="line"></span><br><span class="line">  print(&apos;Download is done!&apos;)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">  target_links = get_links(target)</span><br><span class="line">  target_links = target_links[:2]</span><br><span class="line">  print(target_links)</span><br><span class="line">  for download_url in target_links:</span><br><span class="line">      download_mp4(download_url)</span><br><span class="line">  print(&apos;All mp4 is downloaded!&apos;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>感谢：<br><a href="https://blog.csdn.net/sinat_36246371/article/details/62426444" target="_blank" rel="noopener">利用Python下载文件</a><br><a href="https://blog.csdn.net/c406495762/article/details/78123502" target="_blank" rel="noopener">Python3网络爬虫快速入门实战解析</a></p>
+<h3 id="python下载文件进度条实现"><a href="#python下载文件进度条实现" class="headerlink" title="python下载文件进度条实现"></a>python下载文件进度条实现</h3><h3 id="python断点续传"><a href="#python断点续传" class="headerlink" title="python断点续传"></a>python断点续传</h3><h3 id="多线程下载"><a href="#多线程下载" class="headerlink" title="多线程下载"></a>多线程下载</h3><p><a href="https://blog.csdn.net/qq_35203425/article/details/80987880" target="_blank" rel="noopener">推荐文章</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/10/Image/" rel="next" title="寒假实践">
+                <i class="fa fa-chevron-left"></i> 寒假实践
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/10/python文件读写/" rel="prev" title="python文件读写">
+                python文件读写 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python爬虫基础练习"><span class="nav-number">1.</span> <span class="nav-text">python爬虫基础练习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础准备"><span class="nav-number">1.1.</span> <span class="nav-text">基础准备</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#基础之文件下载"><span class="nav-number"></span> <span class="nav-text">基础之文件下载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小文件下载"><span class="nav-number">1.</span> <span class="nav-text">小文件下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大文件下载"><span class="nav-number">2.</span> <span class="nav-text">大文件下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#批量文件的下载"><span class="nav-number">3.</span> <span class="nav-text">批量文件的下载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python下载文件进度条实现"><span class="nav-number"></span> <span class="nav-text">python下载文件进度条实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python断点续传"><span class="nav-number"></span> <span class="nav-text">python断点续传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程下载"><span class="nav-number"></span> <span class="nav-text">多线程下载</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="小程序,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言在使用小程序canvas生成分享海报过程中，学到了一些可以优化的方案，在这里记录一下，方便以后使用">
+<meta name="keywords" content="小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序canvas——海报">
+<meta property="og:url" content="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="前言在使用小程序canvas生成分享海报过程中，学到了一些可以优化的方案，在这里记录一下，方便以后使用">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/bold.PNG">
+<meta property="og:updated_time" content="2019-08-21T07:03:22.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小程序canvas——海报">
+<meta name="twitter:description" content="前言在使用小程序canvas生成分享海报过程中，学到了一些可以优化的方案，在这里记录一下，方便以后使用">
+<meta name="twitter:image" content="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/bold.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/">
+
+
+
+
+
+  <title>小程序canvas——海报 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">小程序canvas——海报</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-04T16:33:48+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在使用小程序canvas生成分享海报过程中，学到了一些可以优化的方案，在这里记录一下，方便以后使用</p>
+<a id="more"></a>
+
+<p>[TOC]</p>
+<h3 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h3><p>  <strong>思路：</strong> </p>
+<p>  获取设备宽高，以iPhone6为参照，进行各机型上的长度转换</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 屏幕适配函数封装</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRpx2px</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; windowWidth &#125; = wx.getSystemInfoSync()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">rpx</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> windowWidth / <span class="number">750</span> * rpx</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rpx2px = createRpx2px()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 基本使用</span></span><br><span class="line">draw () &#123;</span><br><span class="line">    <span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>, <span class="keyword">this</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 绘制title</span></span><br><span class="line">    ctx.setTextAlign(<span class="string">'center'</span>)</span><br><span class="line">    ctx.fillText(</span><br><span class="line">      <span class="string">'适配'</span>,</span><br><span class="line">      rpx2px(<span class="number">200</span> * <span class="number">2</span>),</span><br><span class="line">      rpx2px(<span class="number">100</span> * <span class="number">2</span>)</span><br><span class="line">      <span class="comment">// 在各机型下，位置基本相同</span></span><br><span class="line">    )</span><br><span class="line">    ctx.stroke()</span><br><span class="line"></span><br><span class="line">    ctx.draw()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当然，如果不想在调用rpx2px()时传入的参数再乘2，可以在createRpx2px()中修改</p>
+</blockquote>
+<h3 id="字体加粗实现"><a href="#字体加粗实现" class="headerlink" title="字体加粗实现"></a>字体加粗实现</h3><p>  <strong>思路：</strong></p>
+<p>  这里我们可以通过将绘制文本进行偏移，几次绘制的文字部分重叠，达到字体加粗的目的</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>, <span class="keyword">this</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bold = rpx2px(<span class="number">4</span> * <span class="number">2</span>)</span><br><span class="line">ctx.setTextAlign(<span class="string">'center'</span>)</span><br><span class="line">ctx.setFontSize(<span class="number">170</span>)</span><br><span class="line">ctx.setFillStyle(<span class="string">'#ffffff'</span>)</span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span>, beginY + YThree)</span><br><span class="line"><span class="comment">// 文字偏移，使其加粗</span></span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span> + bold, beginY + YThree + bold)</span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span> - bold, beginY + YThree - bold)</span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span> - bold, beginY + YThree + bold)</span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span> + bold, beginY + YThree - bold)</span><br></pre></td></tr></table></figure>
+
+<p>  <img src="//github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/bold.PNG" alt="效果图"></p>
+<h3 id="文本的换行"><a href="#文本的换行" class="headerlink" title="文本的换行"></a>文本的换行</h3><p>  <strong>思路：</strong></p>
+<p>  确定好行宽，字体大小，以及最大行数后，通过循环和字符串的截取，一次绘制一行即可</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>, <span class="keyword">this</span>)</span><br><span class="line"><span class="keyword">var</span> maxLine = <span class="number">2</span></span><br><span class="line"><span class="keyword">var</span> fontSize = <span class="number">30</span></span><br><span class="line"><span class="keyword">var</span> beginX = <span class="number">40</span></span><br><span class="line"><span class="keyword">var</span> beginY = <span class="number">100</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'小程序海报生成，文本换行解决。解解解解解解解解解解解解解解解解解解解决啦'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> td = <span class="built_in">Math</span>.ceil(textWidth / fontSize)</span><br><span class="line"><span class="keyword">var</span> tr = <span class="built_in">Math</span>.ceil(str.length / td)</span><br><span class="line"></span><br><span class="line">ctx.setTextAlign(<span class="string">'center'</span>)</span><br><span class="line">ctx.setFontSize(fontSize)</span><br><span class="line">ctx.setFillStyle(<span class="string">'#ffffff'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;tr; i++) &#123;</span><br><span class="line">  text = str.substring(i*td, (i+<span class="number">1</span>)*td)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (i &lt; maxLine) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == maxLine - <span class="number">1</span>) &#123;</span><br><span class="line">      text = str.substring(i*td, (i+<span class="number">1</span>)*td - <span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.fillText(text, beginX, beginY + i*space)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ctx.stroke()</span><br><span class="line">ctx.draw()</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>参数说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>str</td>
+<td>待绘制总文本</td>
+</tr>
+<tr>
+<td>maxLine</td>
+<td>绘制文本的最大行数</td>
+</tr>
+<tr>
+<td>fontSize</td>
+<td>绘制文本的字号</td>
+</tr>
+<tr>
+<td>beginX</td>
+<td>绘制文本的左上角的横位置</td>
+</tr>
+<tr>
+<td>beginY</td>
+<td>绘制文本的左上角的纵位置</td>
+</tr>
+<tr>
+<td>td</td>
+<td>每行显示的字符个数</td>
+</tr>
+<tr>
+<td>tr</td>
+<td>待绘制的文本将要绘制的行数</td>
+</tr>
+<tr>
+<td>text</td>
+<td>每行将要绘制的文本</td>
+</tr>
+</tbody></table>
+<h3 id="将生成海报保存至手机"><a href="#将生成海报保存至手机" class="headerlink" title="将生成海报保存至手机"></a>将生成海报保存至手机</h3><p>  在保存到手机前，先加一个封装好的，把当前画布指定区域的内容导出生成指定大小的图片。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 海报保存临时路径</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canvasToTempFilePath</span>(<span class="params">option, context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.canvasToTempFilePath(&#123;</span><br><span class="line">      ...option,</span><br><span class="line">      success: resolve,</span><br><span class="line">      fail: reject,</span><br><span class="line">    &#125;, context)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简单使用</span></span><br><span class="line">draw () &#123;</span><br><span class="line">    <span class="comment">// 进行了绘制操作后</span></span><br><span class="line"></span><br><span class="line">  ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      canvasToTempFilePath(&#123;</span><br><span class="line">        canvasId: <span class="string">'share'</span>,</span><br><span class="line">      &#125;, <span class="keyword">this</span>).then(<span class="function">(<span class="params">&#123; tempFilePath &#125;</span>) =&gt;</span> <span class="built_in">console</span>.log(tempFilePath))</span><br><span class="line">    &#125;, <span class="number">100</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>将图片保存到本地</strong></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保存海报到本地</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveImageToPhotosAlbum</span>(<span class="params">option</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.saveImageToPhotosAlbum(&#123;</span><br><span class="line">      ...option,</span><br><span class="line">      success: resolve,</span><br><span class="line">      fail: reject,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用函数，传入临时路径即可</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="canvas’伪’层级绘制"><a href="#canvas’伪’层级绘制" class="headerlink" title="canvas’伪’层级绘制"></a>canvas’伪’层级绘制</h3><p>  问题解释：</p>
+<p>  在使用画布时，想设置一个遮罩层，把一些文字显示在遮罩层上而不被遮挡。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ctx.save()</span><br><span class="line"><span class="comment">// 其他绘制内容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 遮罩绘制</span></span><br><span class="line"><span class="keyword">const</span> bottomHeight = rpx2px(<span class="number">150</span> * <span class="number">2</span>)</span><br><span class="line">ctx.setFillStyle(<span class="string">'#000000'</span>)</span><br><span class="line">ctx.rect(<span class="number">0</span>, canvasH - bottomHeight, canvasW, bottomHeight)</span><br><span class="line">ctx.setGlobalAlpha(<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">ctx.restore()</span><br><span class="line"><span class="comment">// 遮罩层上方内容绘制</span></span><br><span class="line">ctx.setTextAlign(<span class="string">'center'</span>)</span><br><span class="line">ctx.setFontSize(<span class="number">100</span>)</span><br><span class="line">ctx.setFillStyle(<span class="string">'#ffffff'</span>)</span><br><span class="line">ctx.fillText(<span class="string">'扫码使用'</span>, canvasW / <span class="number">2</span>, canvasH - rpx2px(<span class="number">40</span> * <span class="number">2</span>))</span><br><span class="line">ctx.stroke()</span><br><span class="line"></span><br><span class="line">ctx.draw()</span><br></pre></td></tr></table></figure>
+
+<h3 id="网络图片的绘制"><a href="#网络图片的绘制" class="headerlink" title="网络图片的绘制"></a>网络图片的绘制</h3><p><strong>思路：</strong></p>
+<p>先通过wx.downloadFile()将网络图片下载到本地，在回调函数中进行绘制</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>, <span class="keyword">this</span>)</span><br><span class="line"></span><br><span class="line">wx.downloadFile(&#123;</span><br><span class="line">      url: <span class="string">'https://iwtf.github.io/posts/uncategorized/2019-02-10-Image/Cache_5e515784c66542c4.jpg'</span>,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        <span class="keyword">if</span> (res.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">          ctx.drawImage(res.tempFilePath, <span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">150</span>)</span><br><span class="line">          ctx.draw(<span class="literal">false</span>, () =&gt; &#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">              canvasToTempFilePath(&#123;</span><br><span class="line">                canvasId: <span class="string">'firstCanvas'</span>,</span><br><span class="line">              &#125;, <span class="keyword">this</span>).then(<span class="function">(<span class="params">&#123; tempFilePath &#125;</span>) =&gt;</span> that.setData(&#123; <span class="attr">imageFile</span>: tempFilePath &#125;))</span><br><span class="line">            &#125;, <span class="number">100</span>)</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/小程序/" rel="tag"># 小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/27/Hadoop基础知识/" rel="next" title="Hadoop基础知识">
+                <i class="fa fa-chevron-left"></i> Hadoop基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/噫吁嚱/" rel="prev" title="噫吁嚱">
+                噫吁嚱 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#屏幕适配"><span class="nav-number">2.</span> <span class="nav-text">屏幕适配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体加粗实现"><span class="nav-number">3.</span> <span class="nav-text">字体加粗实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本的换行"><span class="nav-number">4.</span> <span class="nav-text">文本的换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将生成海报保存至手机"><span class="nav-number">5.</span> <span class="nav-text">将生成海报保存至手机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas’伪’层级绘制"><span class="nav-number">6.</span> <span class="nav-text">canvas’伪’层级绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络图片的绘制"><span class="nav-number">7.</span> <span class="nav-text">网络图片的绘制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

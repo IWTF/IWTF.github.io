@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="西瓜书,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言记录自己的学习思路，搬用了较多原文。 且为了偷懒，原文处多用省略号。">
+<meta name="keywords" content="西瓜书">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树">
+<meta property="og:url" content="https://github.com/IWTF/IWTF.github.io/2017/08/05/决策树/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="前言记录自己的学习思路，搬用了较多原文。 且为了偷懒，原文处多用省略号。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-08T08:50:09.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="决策树">
+<meta name="twitter:description" content="前言记录自己的学习思路，搬用了较多原文。 且为了偷懒，原文处多用省略号。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/IWTF/IWTF.github.io/2017/08/05/决策树/">
+
+
+
+
+
+  <title>决策树 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/2017/08/05/决策树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">决策树</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-05T20:10:13+08:00">
+                2017-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录自己的学习思路，搬用了较多原文。 且为了偷懒，原文处多用省略号。</p>
+<a id="more"></a>
+
+<h2 id="第四章、决策树"><a href="#第四章、决策树" class="headerlink" title="第四章、决策树"></a>第四章、决策树</h2><h4 id="4-1、基本流程"><a href="#4-1、基本流程" class="headerlink" title="4.1、基本流程"></a>4.1、基本流程</h4><p>在介绍基本流程前，我们先来了解一下决策树的概念，以及决策树学习的目的。</p>
+<ul>
+<li><p>由左侧注释可知： 决策树既可以指学习方法，也可以指学得的树。要根据叙述的上下文环境而定。现在我介绍的是学习方法。 决策树是一类<strong>基于树结构来进行决策</strong>的机器学习方法。</p>
+<ul>
+<li>对于树结构，大家一定都不陌生，这里我简单介绍一下决策树的组成。决策树由一个<strong>根节点</strong>、若干<strong>内部节点</strong>和若干<strong>叶节点</strong>；根节点包含样本全集；其他节点对应一个测试属性，其包含的样本集合会被该属性划分到子节点中；叶节点对应了不同的预测结果。 我们的目的是从包含样本全集的根节点找到它到每个叶节点的路径对应一个<strong>判定预测序列</strong>。 </li>
+</ul>
+</li>
+<li><p>决策树学习的<strong>目的</strong>：是为了产生一棵泛化能力强的树，其流程遵守简单直观的“分而治之”的策略。</p>
+</li>
+<li><p>对于<strong>决策过程</strong>，书上给出了一个形象的例子——西瓜问题。对于该问题，明确要做的决策是：“这是好瓜吗？”  看图4.1，决策过程中，我们会基于它的每个属性进行一系列的子决策，每个子决策的结果或是导出最终结论，或是到出进一步的判定问题。当所有判定结束后， 每个子节点就对应了决策的结论。</p>
+</li>
+<li><p>有了对过程的大概认识，下面我来介绍一下决策树学习的基本算法.</p>
+<p>如图4.2，显然，决策树的生成是一个递归过程，<strong>递归停止的条件</strong>有三个：1.2.3，对于三种情况，其<strong>类别判定规则</strong>如书上介绍。</p>
+</li>
+</ul>
+<hr>
+<br>
+
+<p>刚刚在介绍决策过程时，不知道大家有没有一个疑惑？ 为什么先根据色泽进行划分，之后再根据根蒂，我是否可以改变一下顺序？其实，划分的顺序，对应图4.2算法中的第8行——从A中选择最优划分属性。这是我们决策树学习的关键。</p>
+<p>如何选择最优划分属性呢？ 让我们开始4.2节的学习。</p>
+<h4 id="4-2、-划分选择"><a href="#4-2、-划分选择" class="headerlink" title="4.2、 划分选择"></a>4.2、 划分选择</h4><p>一般而言，随着划分过程的不断进行，我们希望决策树的分…..越来越高。</p>
+<p>4.2节，介绍了三种划分属性选择的指标。分别是信息增益，增益率和基尼指数。</p>
+<ul>
+<li>我们先来了解一下<strong>信息增益</strong>，在了解信息增益前，先看一下<strong>信息熵</strong>，书上的定义：（公式）。我们已经学过了信息论与编码，这个概念大家都不陌生。熵，代表了物体的不确定性。所有，熵越小，不确定性越小，D的纯度就越高。</li>
+<li>信息增益是针<strong>对某个属性而言</strong>的，假定离散属性a有V个…..,看信息增益公式，前面是D的信息熵，后面是按属性a进行划分后各部分信息熵的加权求和。<ul>
+<li>一般而言，信息增益越大….属性。</li>
+<li>下面来介绍一下书上的这个举例。<ul>
+<li>见附录</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>下面我们来介绍<strong>增益率</strong><ul>
+<li>第一段中，书上介绍了不以编号作为候选属性的原因。（大概介绍一下）</li>
+<li>上面这个例子，其实就反应了信息增益的一个不足——信息增益准则对可取值数目较多的属性有所偏好。 为减少…定义为：</li>
+<li>分子部分为属性a的信息增益，分母为属性a的固有值（是一个关于属性a的熵）<ul>
+<li>之所以会用信息增益  除以   固有值，是因为属性a的取值数目越多，固有值得取值一般越大。（类似于相对值，会更加准确一点）</li>
+</ul>
+</li>
+<li>需要注意的是：增益率准则对可取值数目较少的属性有所偏好。因此C4.5 <strong>算法选择特征的方法是先从候选特征中选出信息增益高于平均水平的特征，再从这些特征中选择增益率最高的</strong>。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>最后，介绍一下<strong>基尼指数</strong>，公式如下，直观来说，Gini（D）反映了从数据集….纯度越高。</li>
+<li>采用和式（4.2）相同得形式，（假装有公式）。于是，…即：。</li>
+</ul>
+<h4 id="4-3、-剪枝处理"><a href="#4-3、-剪枝处理" class="headerlink" title="4.3、 剪枝处理"></a>4.3、 剪枝处理</h4><ul>
+<li><p><strong>剪枝的概念</strong>： 字面意思理解就好，它是决策树学习算法对付“过拟合”的主要手段。</p>
+</li>
+<li><p><strong>分类</strong></p>
+<ul>
+<li><p>预剪枝</p>
+<p>在决策树生成过程中，对每个节点在<strong>划分前进行估计</strong>，<strong>若当前节点的划分不能带来决策树泛化性能的提升，则停止划分并将当前节点标为叶节点</strong>。</p>
+</li>
+<li><p>后剪枝</p>
+<p>先从训练集生成一棵<strong>完整的决策树</strong>，然后<strong>自底向上</strong>的对<strong>非叶节点</strong>进行考察，<strong>若将该节点对应子树替换为叶节点能带来决策树泛化性能的提升，则将该子树替换为叶节点。</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>课本举例</strong></p>
+<p>(结合例子对两方法优劣进行说明)  </p>
+</li>
+<li><p><strong>两方法优缺点</strong></p>
+<ul>
+<li><strong>预剪枝</strong><ul>
+<li>优点： <ol>
+<li>降低了过拟合风险</li>
+<li>显著减少了决策树训练时间开销和测试时间开销</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>有些分支划分暂时不能带来泛化性能提高，但在其基础上进行的后续划分可导致性能的显著提高。</li>
+<li>这种基于“贪心”本质禁止分支展开，给预剪枝决策树带来欠拟合的风险。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>后剪枝</strong><ul>
+<li>优点：<ol>
+<li>比预剪枝保留了跟多分支，欠拟合风险更小，泛化性能往往由于预剪枝决策树。</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>训练时间开销要大的多</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-4、连续与缺失值"><a href="#4-4、连续与缺失值" class="headerlink" title="4.4、连续与缺失值"></a>4.4、连续与缺失值</h4><ul>
+<li><p><strong>连续值处理</strong></p>
+<p>到目前为止，我们仅讨论了基于离散属性来生成决策树。现实任务中常会遇到连续属性，有必要讨论如何在决策树学习中使用连续属性。</p>
+<p>由于连续属性取值不再有限，所有不能直接根据连续属性的可取值进行划分，这时，我们要用到连续属性离散化技术，最简单的时采用“<strong>二分法</strong>”对其处理，这正是C4.5决策树算法中采用的机制。</p>
+<p>balabal，写不动了（就照着书读）。</p>
+<p><strong>强调：</strong>85页画线（即连续属性还可以作为后代节点的划分属性）</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>缺失值处理</strong></p>
+<p>现实任务中，会遇到不完整的样本，即样本的的某些属性值缺失。 如果简单放弃不完整样本，显然是对数据信息的极大浪费</p>
+<ul>
+<li><p>对于利用缺失数据，我们将面临两个问题：</p>
+<ul>
+<li><p>如何在属性值缺失的情况下进行划分属性选择</p>
+<p><code>信息增益 = 无缺失样本比例 X 无缺失样本的信息增益</code></p>
+</li>
+<li><p>在给定划分属性，若样本在该属性上的值缺失，如何对样本进行划分</p>
+<p>对于样本x，若在属性a上取值未知，那么则将x同时划入所有子节点，且样本权重在对应子节点中调整为<code>r·w</code>（看书就行）。<strong>其实就是让统一样本以不同概率划入到不同的子节点中</strong>。   </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>多变量决策树</strong></p>
+<p>我们把每个属性是为空间坐标中的一个坐标轴，南无d个属性所描述的样本对应了d维空间的一个数据点。对样本分类就以为着在这个坐标空间寻找不同样本之间的分类边界</p>
+<p><strong>决策树的分类边界有一个明显的特点</strong>：轴平行，即他的分类边界由若干个与坐标轴平行的分段组成。</p>
+<p>显然，分类边界…开销会很大。</p>
+<ul>
+<li><p>多变量决策树概念就是实现“斜划分”甚至更加复杂的划分</p>
+</li>
+<li><p>与传统单变量决策树的<strong>区别</strong>：</p>
+<p>不是维每个非叶子节点寻找一个最优的划分属性，而是视图建立一个合适的线性分类器（对属性的线性组合）</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/西瓜书/" rel="tag"># 西瓜书</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/05/线性模型/" rel="next" title="线性模型">
+                <i class="fa fa-chevron-left"></i> 线性模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/02/python学习笔记/" rel="prev" title="python学习笔记">
+                python学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章、决策树"><span class="nav-number">2.</span> <span class="nav-text">第四章、决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1、基本流程"><span class="nav-number">2.0.1.</span> <span class="nav-text">4.1、基本流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2、-划分选择"><span class="nav-number">2.0.2.</span> <span class="nav-text">4.2、 划分选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3、-剪枝处理"><span class="nav-number">2.0.3.</span> <span class="nav-text">4.3、 剪枝处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4、连续与缺失值"><span class="nav-number">2.0.4.</span> <span class="nav-text">4.4、连续与缺失值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
