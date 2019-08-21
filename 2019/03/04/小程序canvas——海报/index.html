@@ -83,16 +83,16 @@
 <meta name="keywords" content="小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序canvas——海报">
-<meta property="og:url" content="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/index.html">
+<meta property="og:url" content="https://github.com/IWTF/IWTF.github.io/tree/master/2019/03/04/小程序canvas——海报/index.html">
 <meta property="og:site_name" content="IWTF">
 <meta property="og:description" content="前言在使用小程序canvas生成分享海报过程中，学到了一些可以优化的方案，在这里记录一下，方便以后使用">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/bold.PNG">
+<meta property="og:image" content="https://github.com/IWTF/IWTF.github.io/tree/master/2019/03/04/小程序canvas——海报/bold.PNG">
 <meta property="og:updated_time" content="2019-08-21T07:03:22.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序canvas——海报">
 <meta name="twitter:description" content="前言在使用小程序canvas生成分享海报过程中，学到了一些可以优化的方案，在这里记录一下，方便以后使用">
-<meta name="twitter:image" content="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/bold.PNG">
+<meta name="twitter:image" content="https://github.com/IWTF/IWTF.github.io/tree/master/2019/03/04/小程序canvas——海报/bold.PNG">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/">
+  <link rel="canonical" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/03/04/小程序canvas——海报/">
 
 
 
@@ -245,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/IWTF/IWTF.github.io/tree/master/2019/03/04/小程序canvas——海报/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -328,7 +328,7 @@
 <p>  这里我们可以通过将绘制文本进行偏移，几次绘制的文字部分重叠，达到字体加粗的目的</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>, <span class="keyword">this</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bold = rpx2px(<span class="number">4</span> * <span class="number">2</span>)</span><br><span class="line">ctx.setTextAlign(<span class="string">'center'</span>)</span><br><span class="line">ctx.setFontSize(<span class="number">170</span>)</span><br><span class="line">ctx.setFillStyle(<span class="string">'#ffffff'</span>)</span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span>, beginY + YThree)</span><br><span class="line"><span class="comment">// 文字偏移，使其加粗</span></span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span> + bold, beginY + YThree + bold)</span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span> - bold, beginY + YThree - bold)</span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span> - bold, beginY + YThree + bold)</span><br><span class="line">ctx.fillText(<span class="string">'25'</span>, canvasW / <span class="number">2</span> + bold, beginY + YThree - bold)</span><br></pre></td></tr></table></figure>
 
-<p>  <img src="//github.com/IWTF/IWTF.github.io/2019/03/04/小程序canvas——海报/bold.PNG" alt="效果图"></p>
+<p>  <img src="//github.com/IWTF/IWTF.github.io/tree/master/2019/03/04/小程序canvas——海报/bold.PNG" alt="效果图"></p>
 <h3 id="文本的换行"><a href="#文本的换行" class="headerlink" title="文本的换行"></a>文本的换行</h3><p>  <strong>思路：</strong></p>
 <p>  确定好行宽，字体大小，以及最大行数后，通过循环和字符串的截取，一次绘制一行即可</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>, <span class="keyword">this</span>)</span><br><span class="line"><span class="keyword">var</span> maxLine = <span class="number">2</span></span><br><span class="line"><span class="keyword">var</span> fontSize = <span class="number">30</span></span><br><span class="line"><span class="keyword">var</span> beginX = <span class="number">40</span></span><br><span class="line"><span class="keyword">var</span> beginY = <span class="number">100</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'小程序海报生成，文本换行解决。解解解解解解解解解解解解解解解解解解解决啦'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> td = <span class="built_in">Math</span>.ceil(textWidth / fontSize)</span><br><span class="line"><span class="keyword">var</span> tr = <span class="built_in">Math</span>.ceil(str.length / td)</span><br><span class="line"></span><br><span class="line">ctx.setTextAlign(<span class="string">'center'</span>)</span><br><span class="line">ctx.setFontSize(fontSize)</span><br><span class="line">ctx.setFillStyle(<span class="string">'#ffffff'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;tr; i++) &#123;</span><br><span class="line">  text = str.substring(i*td, (i+<span class="number">1</span>)*td)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (i &lt; maxLine) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == maxLine - <span class="number">1</span>) &#123;</span><br><span class="line">      text = str.substring(i*td, (i+<span class="number">1</span>)*td - <span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.fillText(text, beginX, beginY + i*space)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ctx.stroke()</span><br><span class="line">ctx.draw()</span><br></pre></td></tr></table></figure>
