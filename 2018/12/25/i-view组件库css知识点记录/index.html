@@ -87,12 +87,10 @@
 <meta property="og:site_name" content="IWTF">
 <meta property="og:description" content="前言在学习小程序自定义组件的过程中，对一些自己薄弱的知识的一个记录。方便回顾。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2018/12/25/i-view组件库css知识点记录/2018-12-25-i-view%E7%BB%84%E4%BB%B6%E5%BA%93css%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%95/QQ%E5%9B%BE%E7%89%8720190313185616.png">
-<meta property="og:updated_time" content="2019-08-24T05:49:40.432Z">
+<meta property="og:updated_time" content="2019-08-25T01:31:47.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="i-view组件库css知识点记录">
 <meta name="twitter:description" content="前言在学习小程序自定义组件的过程中，对一些自己薄弱的知识的一个记录。方便回顾。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2018/12/25/i-view组件库css知识点记录/2018-12-25-i-view%E7%BB%84%E4%BB%B6%E5%BA%93css%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%95/QQ%E5%9B%BE%E7%89%8720190313185616.png">
 
 
 
@@ -331,8 +329,6 @@
 <p><strong>css</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    padding: 4px 15px;</span><br><span class="line">    overflow: hidden</span><br><span class="line">&#125;</span><br><span class="line">.container::after &#123;</span><br><span class="line">    content: &apos;&apos;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    /* 设置长度 */</span><br><span class="line">    width: 200%;</span><br><span class="line">    height: 200%;</span><br><span class="line">    transform: scale(.5);</span><br><span class="line">    transform-origin: 0 0;  /* 设置x轴，y轴的位置 */</span><br><span class="line">    pointer-events: none;   /* 作用是让元素实体 “虚化”,即不能成为鼠标事件的 */</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    border: 0 solid #ff0000;</span><br><span class="line">    border-bottom-width: 1px;</span><br><span class="line">    /* 控制分割线左边距,右边设为0还没弄明白什么意思😥 */</span><br><span class="line">    left: 15px;</span><br><span class="line">    right: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>效果图： </p>
-<p><img src="2018-12-25-i-view%E7%BB%84%E4%BB%B6%E5%BA%93css%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%95/QQ%E5%9B%BE%E7%89%8720190313185616.png" alt="效果图"></p>
 <h3 id="transform高阶————matrix-矩阵变换"><a href="#transform高阶————matrix-矩阵变换" class="headerlink" title="transform高阶————matrix() 矩阵变换"></a>transform高阶————matrix() 矩阵变换</h3><h3 id="button样式优化"><a href="#button样式优化" class="headerlink" title="button样式优化"></a>button样式优化</h3><ul>
 <li><p>添加内阴影来优化</p>
 </li>
