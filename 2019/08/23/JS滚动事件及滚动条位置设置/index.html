@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="IWTF">
 <meta property="og:description" content="前言放假闲着没事，想做一个微信聊天的H5页面，发现自己在很多方面都… 呃，进入正题，这里记录一下滚动事件的使用。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-24T07:47:29.928Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190823213950964.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwOTM0Njc5,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190823214131829.png">
+<meta property="og:updated_time" content="2019-08-28T05:21:32.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS滚动事件及滚动条位置设置">
 <meta name="twitter:description" content="前言放假闲着没事，想做一个微信聊天的H5页面，发现自己在很多方面都… 呃，进入正题，这里记录一下滚动事件的使用。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190823213950964.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwOTM0Njc5,size_16,color_FFFFFF,t_70">
 
 
 
@@ -325,10 +328,31 @@
 </li>
 <li><p><strong>scrollHeight</strong></p>
 <p> clientHeight（height+padding，不包含边框），可以理解为元素可视区域高度</p>
+<p> <strong>效果图</strong>，<strong>控制台输出结果</strong>如下：</p>
+<div style="display: flex;flex-direction: row;">
+ <div style="flex: 1;">
+     <img src="https://img-blog.csdnimg.cn/20190823213950964.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwOTM0Njc5,size_16,color_FFFFFF,t_70">
+ </div>
+ <div style="flex: 1;">
+     <img style="display: inline-block;" src="https://img-blog.csdnimg.cn/20190823214131829.png">
+ </div>
+</div>
+
 </li>
 </ol>
-<p>如下图布局： 控制台打印结果如下：</p>
-<p><a href="https://www.cnblogs.com/momo798/p/9177767.html" target="_blank" rel="noopener">js防抖和节流</a></p>
+<h4 id="下面简单实现一下一个小Demo（微信聊天）"><a href="#下面简单实现一下一个小Demo（微信聊天）" class="headerlink" title="下面简单实现一下一个小Demo（微信聊天）"></a>下面简单实现一下一个小Demo（微信聊天）</h4><ul>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var ele = document.getElementById(&quot;chatContainer&quot;);</span><br><span class="line">//判断元素是否出现了滚动条</span><br><span class="line">if(ele.scrollHeight &gt; ele.clientHeight) &#123;</span><br><span class="line">    // 设置一个延迟，更自然一些</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">        //设置滚动条到最底部</span><br><span class="line">        ele.scrollTop = ele.scrollHeight;</span><br><span class="line">        ele.style.opacity = 1;</span><br><span class="line">    &#125;,500);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// PS：当然，大家也可以加一些css样式（如：渐变之类的），进行美化</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>实现思路</strong></p>
+<ol>
+<li>每次增加对话框时，判断chatContainer的‘真实高度’有没有超出‘实际高度’</li>
+<li>若超出就把滚动条滚动到最底部</li>
+</ol>
+</li>
+</ul>
+<h4 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h4><p>谈到滚动事件的监听，我们就不得不聊一聊<code>防抖的节流</code>，以减少事件调用频率，减轻浏览器负担</p>
+<p>这里有一篇很好的博文推荐给大家  <a href="https://www.cnblogs.com/momo798/p/9177767.html" style="color: red;" target="_blank" rel="noopener">js防抖和节流</a></p>
 
       
     </div>
@@ -448,7 +472,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -461,7 +485,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -510,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下面简单实现一下一个小Demo（微信聊天）"><span class="nav-number">2.</span> <span class="nav-text">下面简单实现一下一个小Demo（微信聊天）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶"><span class="nav-number">3.</span> <span class="nav-text">进阶</span></a></li></ol></div>
             
 
           </div>
