@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,爬虫,">
+  <meta name="keywords" content="开发日志,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="学习selenium，刚开始就遇到了问题。 下面是记录的一些解决方法">
-<meta name="keywords" content="python,爬虫">
+<meta name="description" content="DvaJS的使用技巧 接到需求之后推荐的做法不是立刻编码，而是先以上帝模式做整体设计。   先设计 model 再设计 component 最后连接 model 和 component   各步骤基本操作   新建Model，可理解为一个数据仓库  namespace 表示在全局 state 上的 key（要求唯一，可理解为数据仓库的名字）  state 是初始值，在这里是空数组（仓库里存到数据）">
+<meta name="keywords" content="开发日志">
 <meta property="og:type" content="article">
-<meta property="og:title" content="chromedriver配置">
-<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/02/12/chromedriver配置/index.html">
+<meta property="og:title" content="dva入门指北">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/30/dva入门指北/index.html">
 <meta property="og:site_name" content="IWTF">
-<meta property="og:description" content="学习selenium，刚开始就遇到了问题。 下面是记录的一些解决方法">
+<meta property="og:description" content="DvaJS的使用技巧 接到需求之后推荐的做法不是立刻编码，而是先以上帝模式做整体设计。   先设计 model 再设计 component 最后连接 model 和 component   各步骤基本操作   新建Model，可理解为一个数据仓库  namespace 表示在全局 state 上的 key（要求唯一，可理解为数据仓库的名字）  state 是初始值，在这里是空数组（仓库里存到数据）">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-24T05:47:58.036Z">
+<meta property="og:updated_time" content="2019-08-31T03:40:46.219Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chromedriver配置">
-<meta name="twitter:description" content="学习selenium，刚开始就遇到了问题。 下面是记录的一些解决方法">
+<meta name="twitter:title" content="dva入门指北">
+<meta name="twitter:description" content="DvaJS的使用技巧 接到需求之后推荐的做法不是立刻编码，而是先以上帝模式做整体设计。   先设计 model 再设计 component 最后连接 model 和 component   各步骤基本操作   新建Model，可理解为一个数据仓库  namespace 表示在全局 state 上的 key（要求唯一，可理解为数据仓库的名字）  state 是初始值，在这里是空数组（仓库里存到数据）">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/02/12/chromedriver配置/">
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/30/dva入门指北/">
 
 
 
 
 
-  <title>chromedriver配置 | IWTF</title>
+  <title>dva入门指北 | IWTF</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/02/12/chromedriver配置/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/30/dva入门指北/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">chromedriver配置</h1>
+          <h1 class="post-title" itemprop="name headline">dva入门指北</h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T14:10:09+08:00">
-                2019-02-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-30T13:40:00+08:00">
+                2019-08-30
               </time>
             
 
@@ -311,29 +311,64 @@
       
 
       
-        <p>学习selenium，刚开始就遇到了问题。</p>
-<p>下面是记录的一些解决方法</p>
-<a id="more"></a>
-
+        <h4 id="DvaJS的使用技巧"><a href="#DvaJS的使用技巧" class="headerlink" title="DvaJS的使用技巧"></a>DvaJS的使用技巧</h4><ul>
+<li>接到需求之后推荐的做法不是立刻编码，而是先<strong>以上帝模式做整体设计</strong>。</li>
+</ul>
 <ol>
-<li>先到  <a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a> 选择下载相应的版本</li>
+<li>先设计 model</li>
+<li>再设计 component</li>
+<li>最后连接 model 和 component</li>
 </ol>
-<blockquote>
-<p>浏览器版本查看方法：<br>打开chrome 输入 “chrome://version/”来查看chrome版本</p>
-</blockquote>
+<ul>
+<li><strong>各步骤基本操作</strong></li>
+</ul>
+<ol>
+<li><p>新建Model，可理解为一个数据仓库</p>
+<ul>
+<li><p><code>namespace</code> 表示在全局 state 上的 key（要求唯一，可理解为数据仓库的名字）</p>
+</li>
+<li><p><code>state</code> 是初始值，在这里是空数组（仓库里存到数据）</p>
+<ul>
+<li>reducer 是一个函数，接受 state 和 action，返回老的或新的 state 。即：<code>(state, action) =&gt; state</code></li>
+</ul>
+</li>
+<li><p><code>reducers</code> 接收 action，同步更新 state</p>
+</li>
+<li><p><code>Effect</code>也是 Action 处理器，处理异步动作</p>
+<ul>
+<li><p>effect 函数内部的处理函数，比较常用的是 <code>call</code> 和 <code>put</code></p>
+<ul>
+<li><p>call：执行异步函数，支持 promise </p>
+</li>
+<li><p>put：触发 Action，类似于 dispatch</p>
+</li>
+<li><p>select： 用于从 state 里获取数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.todos);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>Action</code> 是用来描述 UI 层事件的一个<strong>对象</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">type</span>: <span class="string">'click-submit-button'</span>, <span class="attr">payload</span>: <span class="keyword">this</span>.form.data &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>subscriptions</code> 是订阅，用于订阅一个数据源，然后根据需要 <code>dispatch</code> 相应的 <code>action</code></p>
+</li>
+</ul>
+</li>
+</ol>
 <ol start="2">
-<li><p>解决报错方法</p>
-<ol>
-<li><p>在文件中添加路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 事例</span><br><span class="line">from selenium import webdriver</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome(r&quot;E:\Tools\Python\seleniumDriver\chromedriver.exe&quot;river = webdriver.Chrome(r&quot;E:\Tools\Python\seleniumDriver\chromedriver.exe&quot;)</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(&apos;https://www.baidu.com&apos;)</span><br><span class="line">print(browser.page_source)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<li><p>在想使用的View里connect想要使用的Model</p>
+<ul>
+<li><p><code>connect</code>是一个函数，绑定 State 到 View。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 官方示例（有点过时）</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'dva'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// todos是要使用的model的namespace</span></span><br><span class="line"><span class="comment">// 前面的todos会变为该View的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">todos</span>: state.todos &#125;;</span><br><span class="line">&#125;</span><br><span class="line"> connect(mapStateToProps)(App);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>根本解决方法<br> 将下载的chromedriver.exe直接放到python安装根目录</p>
+<li><p>被 <code>connect</code> 的 <code>Component</code> 会自动在 <code>props</code> 中拥有 <code>dispatch</code> 方法。</p>
+<p><code>dispatch</code>用来调用<code>effect</code>，而<code>effect</code>用来更改<code>state</code></p>
+</li>
+</ul>
 </li>
 </ol>
-</li>
-</ol>
-<p>感谢各位大佬提供的方法，参考blog</p>
-<p><a href="https://www.cnblogs.com/youmingkuang/p/7872857.html" target="_blank" rel="noopener">幽冥狂_七</a><br><a href="https://blog.csdn.net/ywj_486/article/details/80942191" target="_blank" rel="noopener">2018 遇到selenium.common.exceptions.WebDriverException问题</a></p>
 
       
     </div>
@@ -351,9 +386,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+            <a href="/tags/开发日志/" rel="tag"># 开发日志</a>
           
         </div>
       
@@ -366,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/11/css温故知新——弹性盒子/" rel="next" title="css温故知新——弹性盒子">
-                <i class="fa fa-chevron-left"></i> css温故知新——弹性盒子
+              <a href="/2019/08/28/解决GitHub访问缓慢问题/" rel="next" title="解决GitHub访问缓慢问题">
+                <i class="fa fa-chevron-left"></i> 解决GitHub访问缓慢问题
               </a>
             
           </div>
@@ -375,10 +408,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/22/三人行/" rel="prev" title="三人行">
-                三人行 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -428,8 +457,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -498,6 +536,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#DvaJS的使用技巧"><span class="nav-number">1.</span> <span class="nav-text">DvaJS的使用技巧</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
