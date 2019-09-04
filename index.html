@@ -310,8 +310,7 @@
 
       
         
-          
-            <h4 id="DvaJS的使用技巧"><a href="#DvaJS的使用技巧" class="headerlink" title="DvaJS的使用技巧"></a>DvaJS的使用技巧</h4><ul>
+          <h4 id="DvaJS的使用技巧"><a href="#DvaJS的使用技巧" class="headerlink" title="DvaJS的使用技巧"></a>DvaJS的使用技巧</h4><ul>
 <li>接到需求之后推荐的做法不是立刻编码，而是先<strong>以上帝模式做整体设计</strong>。</li>
 </ul>
 <ol>
@@ -319,58 +318,13 @@
 <li>再设计 component</li>
 <li>最后连接 model 和 component</li>
 </ol>
-<ul>
-<li><strong>各步骤基本操作</strong></li>
-</ul>
-<ol>
-<li><p>新建Model，可理解为一个数据仓库</p>
-<ul>
-<li><p><code>namespace</code> 表示在全局 state 上的 key（要求唯一，可理解为数据仓库的名字）</p>
-</li>
-<li><p><code>state</code> 是初始值，在这里是空数组（仓库里存到数据）</p>
-<ul>
-<li>reducer 是一个函数，接受 state 和 action，返回老的或新的 state 。即：<code>(state, action) =&gt; state</code></li>
-</ul>
-</li>
-<li><p><code>reducers</code> 接收 action，同步更新 state</p>
-</li>
-<li><p><code>Effect</code>也是 Action 处理器，处理异步动作</p>
-<ul>
-<li><p>effect 函数内部的处理函数，比较常用的是 <code>call</code> 和 <code>put</code></p>
-<ul>
-<li><p>call：执行异步函数，支持 promise </p>
-</li>
-<li><p>put：触发 Action，类似于 dispatch</p>
-</li>
-<li><p>select： 用于从 state 里获取数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.todos);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>Action</code> 是用来描述 UI 层事件的一个<strong>对象</strong>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">type</span>: <span class="string">'click-submit-button'</span>, <span class="attr">payload</span>: <span class="keyword">this</span>.form.data &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>subscriptions</code> 是订阅，用于订阅一个数据源，然后根据需要 <code>dispatch</code> 相应的 <code>action</code></p>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="2">
-<li><p>在想使用的View里connect想要使用的Model</p>
-<ul>
-<li><p><code>connect</code>是一个函数，绑定 State 到 View。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 官方示例（有点过时）</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'dva'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// todos是要使用的model的namespace</span></span><br><span class="line"><span class="comment">// 前面的todos会变为该View的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">todos</span>: state.todos &#125;;</span><br><span class="line">&#125;</span><br><span class="line"> connect(mapStateToProps)(App);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>被 <code>connect</code> 的 <code>Component</code> 会自动在 <code>props</code> 中拥有 <code>dispatch</code> 方法。</p>
-<p><code>dispatch</code>用来调用<code>effect</code>，而<code>effect</code>用来更改<code>state</code></p>
-</li>
-</ul>
-</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/30/dva入门指北/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
