@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="IWTF">
 <meta property="og:description" content="闲话根据记忆曲线，#￥……&amp;amp;……@，反正不经常复习使用，忘记一个东西就很快，所有，在这写一个js知识列表，方便自己复习。 该列表和廖雪峰老师的教程目录一样，非常感谢廖雪峰老师提供这么好的教程。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-28T05:26:22.143Z">
+<meta property="og:updated_time" content="2019-10-04T00:50:28.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js“字典”">
 <meta name="twitter:description" content="闲话根据记忆曲线，#￥……&amp;amp;……@，反正不经常复习使用，忘记一个东西就很快，所有，在这写一个js知识列表，方便自己复习。 该列表和廖雪峰老师的教程目录一样，非常感谢廖雪峰老师提供这么好的教程。">
@@ -518,11 +518,19 @@
 </li>
 </ul>
 <h3 id="面向对象的编程"><a href="#面向对象的编程" class="headerlink" title="面向对象的编程"></a>面向对象的编程</h3><ul>
-<li><h4 id="class的使用及继承"><a href="#class的使用及继承" class="headerlink" title="class的使用及继承"></a>class的使用及继承</h4><p>  和C语言的类定义方法和继承方法相近</p>
-<p>  示例： </p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Student类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    hello() &#123;</span><br><span class="line">        alert(<span class="string">'Hello, '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PrimaryStudent子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrimaryStudent</span> <span class="keyword">extends</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, grade) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name); <span class="comment">// 记得用super调用父类的构造方法!</span></span><br><span class="line">        <span class="keyword">this</span>.grade = grade;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    myGrade() &#123;</span><br><span class="line">        alert(<span class="string">'I am at grade '</span> + <span class="keyword">this</span>.grade);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><h4 id="class的使用及继承"><a href="#class的使用及继承" class="headerlink" title="class的使用及继承"></a>class的使用及继承</h4><ul>
+<li><p>通过改变原型创建</p>
+<p>  JavaScript的原型链和Java的Class区别就在，它没有“Class”的概念，所有对象都是实例，所谓继承关系不过是把一个对象的原型指向另一个对象而已。</p>
+<p>  当我们用obj.xxx访问一个对象的属性时，JavaScript引擎先在当前对象上查找该属性，如果没有找到，就到其原型对象上找，如果还没有找到，就一直上溯到Object.prototype对象，最后，如果还没有找到，就只能返回undefined。</p>
+</li>
+<li><p>新的关键字class从ES6开始正式被引入到JavaScript中。class的目的就是让定义类更简单。</p>
+<p>和C语言的类定义方法和继承方法相近</p>
+<p>示例： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Student类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    hello() &#123;</span><br><span class="line">        alert(<span class="string">'Hello, '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PrimaryStudent子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrimaryStudent</span> <span class="keyword">extends</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, grade) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name); <span class="comment">// 记得用super调用父类的构造方法!</span></span><br><span class="line">        <span class="keyword">this</span>.grade = grade;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    myGrade() &#123;</span><br><span class="line">        alert(<span class="string">'I am at grade '</span> + <span class="keyword">this</span>.grade);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>  ps： 下面两部分内容是ES6前要实现对象模型的方法，当然现在使用class更加方便，但下两话题，对理解原型很有帮助。</p>
+<p>ps： 下面两部分内容是ES6前要实现对象模型的方法，当然现在使用class更加方便，但下两话题，对理解原型很有帮助。</p>
+</li>
+</ul>
 </li>
 <li><h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><ul>
 <li>JavaScript对每个创建的对象都会设置一个原型，指向它的原型对象。<ul>
@@ -801,7 +809,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
