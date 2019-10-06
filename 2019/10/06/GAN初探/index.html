@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="开发日志,">
+  <meta name="keywords" content="deep Learning,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="DvaJS的使用技巧 接到需求之后推荐的做法不是立刻编码，而是先以上帝模式做整体设计。   先设计 model 再设计 component 最后连接 model 和 component">
-<meta name="keywords" content="开发日志">
+<meta name="description" content="GAN入门GAN（Generation Adversarial NetWorks） 概念生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当">
+<meta name="keywords" content="deep Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dva入门指北">
-<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/30/dva入门指北/index.html">
+<meta property="og:title" content="GAN初探">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/06/GAN初探/index.html">
 <meta property="og:site_name" content="IWTF">
-<meta property="og:description" content="DvaJS的使用技巧 接到需求之后推荐的做法不是立刻编码，而是先以上帝模式做整体设计。   先设计 model 再设计 component 最后连接 model 和 component">
+<meta property="og:description" content="GAN入门GAN（Generation Adversarial NetWorks） 概念生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-31T05:39:16.089Z">
+<meta property="og:updated_time" content="2019-10-06T14:29:41.390Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dva入门指北">
-<meta name="twitter:description" content="DvaJS的使用技巧 接到需求之后推荐的做法不是立刻编码，而是先以上帝模式做整体设计。   先设计 model 再设计 component 最后连接 model 和 component">
+<meta name="twitter:title" content="GAN初探">
+<meta name="twitter:description" content="GAN入门GAN（Generation Adversarial NetWorks） 概念生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/30/dva入门指北/">
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/06/GAN初探/">
 
 
 
 
 
-  <title>dva入门指北 | IWTF</title>
+  <title>GAN初探 | IWTF</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/30/dva入门指北/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/06/GAN初探/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">dva入门指北</h1>
+          <h1 class="post-title" itemprop="name headline">GAN初探</h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-30T13:40:00+08:00">
-                2019-08-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T20:58:59+08:00">
+                2019-10-06
               </time>
             
 
@@ -311,66 +311,52 @@
       
 
       
-        <h4 id="DvaJS的使用技巧"><a href="#DvaJS的使用技巧" class="headerlink" title="DvaJS的使用技巧"></a>DvaJS的使用技巧</h4><ul>
-<li>接到需求之后推荐的做法不是立刻编码，而是先<strong>以上帝模式做整体设计</strong>。</li>
+        <h3 id="GAN入门"><a href="#GAN入门" class="headerlink" title="GAN入门"></a>GAN入门</h3><h4 id="GAN（Generation-Adversarial-NetWorks）"><a href="#GAN（Generation-Adversarial-NetWorks）" class="headerlink" title="GAN（Generation Adversarial NetWorks）"></a>GAN（Generation Adversarial NetWorks）</h4><ul>
+<li><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当好的输出。原始 GAN 理论中，并不要求 G 和 D 都是神经网络，只需要是能拟合相应生成和判别的函数即可。但实用中一般均使用深度神经网络作为 G 和 D 。一个优秀的GAN应用需要有良好的训练方法，否则可能由于神经网络模型的自由性而导致输出不理想。</p>
+</li>
+<li><h5 id="训练思想"><a href="#训练思想" class="headerlink" title="训练思想"></a>训练思想</h5><p>一般会将<code>生成网模型和</code>判别模型网络`组成一个大的神经网络（NN），在一次训练中会固定一个模型，去调节另一个模型。两个网络交替训练。</p>
+<ul>
+<li>对于<code>Generative Model</code>，我们期望其输出可以得分尽量的高，即尽可能接近<code>positive image</code></li>
+<li>对于<code>Discrimnative Model</code>，我们期望他能给<code>position image</code>尽可能高的分数，给<code>generative image</code>尽可能低的分数。</li>
 </ul>
-<ol>
-<li>先设计 model</li>
-<li>再设计 component</li>
-<li>最后连接 model 和 component</li>
+</li>
+<li><h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ul>
+<li>图像生成（如二次元头像生成）</li>
+<li>数据增强<code>Speech Enhancement</code>,去噪音之类的</li>
+</ul>
+</li>
+</ul>
+<h4 id="CGAN（Conditional-Generative-Adversarial-NetWorks）"><a href="#CGAN（Conditional-Generative-Adversarial-NetWorks）" class="headerlink" title="CGAN（Conditional Generative Adversarial NetWorks）"></a>CGAN（Conditional Generative Adversarial NetWorks）</h4><ul>
+<li><h5 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h5><p>条件生成式对抗网络（CGAN）是对原始GAN的一个扩展，生成器和判别器都增加额外信息 y为条件, y 可以使任意信息,例如类别信息,或者其他模态的数据。其<strong>核心在于</strong>将属性信息y融入生成器G和判别器D中，属性y可以是任何标签信息，例如图像的类别、人脸图像的面部表情等。</p>
+<ul>
+<li>在<strong>生成模型</strong>中,先验输入噪声 p(z) 和条件信息 y 联合组成了联合隐层表征。</li>
+<li>在<strong>判别模型</strong>中，也需要有两个输入，判断<strong>额外信息 y</strong>和<strong>image</strong>是否匹配；  <ul>
+<li>高分：描述与图片相符，图片为<code>positive image</code></li>
+<li>低分： <ol>
+<li>图片是<code>generative image</code>，描述与图片相符</li>
+<li>图片是<code>generative image</code>，描述与图片不符</li>
+<li>虽然图片是<code>positive image</code>，但描述与图片不符</li>
 </ol>
-<a id="more"></a>
-
-<ul>
-<li><strong>各步骤基本操作</strong></li>
-</ul>
-<ol>
-<li><p>新建Model，可理解为一个数据仓库</p>
-<ul>
-<li><p><code>namespace</code> 表示在全局 state 上的 key（要求唯一，可理解为数据仓库的名字）</p>
-</li>
-<li><p><code>state</code> 是初始值，在这里是空数组（仓库里存到数据）</p>
-<ul>
-<li>reducer 是一个函数，接受 state 和 action，返回老的或新的 state 。即：<code>(state, action) =&gt; state</code></li>
-</ul>
-</li>
-<li><p><code>reducers</code> 接收 action，同步更新 state</p>
-</li>
-<li><p><code>Effect</code>也是 Action 处理器，处理异步动作</p>
-<ul>
-<li><p>effect 函数内部的处理函数，比较常用的是 <code>call</code> 和 <code>put</code></p>
-<ul>
-<li><p>call：执行异步函数，支持 promise </p>
-</li>
-<li><p>put：触发 Action，类似于 dispatch</p>
-</li>
-<li><p>select： 用于从 state 里获取数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.todos);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><code>Action</code> 是用来描述 UI 层事件的一个<strong>对象</strong>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">type</span>: <span class="string">'click-submit-button'</span>, <span class="attr">payload</span>: <span class="keyword">this</span>.form.data &#125;</span><br></pre></td></tr></table></figure>
+<li><h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p><strong>Stack GAN</strong>，一种由小图，生成大图的GAN</p>
+<p><strong>Patch GAN</strong>，一个针对生成大图的<code>Discriminative Model</code>，并不以整张<code>image</code>作为<code>input</code>，而是每次检查<code>image</code>里的一小块</p>
 </li>
-<li><p><code>subscriptions</code> 是订阅，用于订阅一个数据源，然后根据需要 <code>dispatch</code> 相应的 <code>action</code></p>
-</li>
+<li><h5 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h5><ul>
+<li><code>Image to image</code></li>
+<li><code>Speech Enhancement</code></li>
+<li><code>Video Generation</code></li>
 </ul>
 </li>
-</ol>
-<ol start="2">
-<li><p>在想使用的View里connect想要使用的Model</p>
-<ul>
-<li><p><code>connect</code>是一个函数，绑定 State 到 View。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 官方示例（有点过时）</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'dva'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// todos是要使用的model的namespace</span></span><br><span class="line"><span class="comment">// 前面的todos会变为该View的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">todos</span>: state.todos &#125;;</span><br><span class="line">&#125;</span><br><span class="line"> connect(mapStateToProps)(App);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>被 <code>connect</code> 的 <code>Component</code> 会自动在 <code>props</code> 中拥有 <code>dispatch</code> 方法。</p>
-<p><code>dispatch</code>用来调用<code>effect</code>，而<code>effect</code>用来更改<code>state</code></p>
-</li>
 </ul>
-</li>
-</ol>
+<hr>
+<p>前面的课程内容涉及的都是监督学习（Supervised learning），但有些训练集没有label，根据其需求也不需要进行监督学习（如：画作风格的转变）</p>
+<h4 id="Cycle-GAN"><a href="#Cycle-GAN" class="headerlink" title="Cycle GAN"></a>Cycle GAN</h4><p>简而言之，该模型通过从域DA获取输入图像，该输入图像被传递到第一个生成器GeneratorA→B，其任务是将来自域DA的给定图像转换到目标域DB中的图像。然后这个新生成的图像被传递到另一个生成器GeneratorB→A，其任务是在原始域DA转换回图像CyclicA，这里可与自动编码器作对比。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/27145954" target="_blank" rel="noopener">参考资料</a></p>
+<h4 id="StarGAN"><a href="#StarGAN" class="headerlink" title="StarGAN"></a>StarGAN</h4><p>上述这些都是论文中提到的经过修改的GAN，这里就不再列出</p>
 
       
     </div>
@@ -388,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/开发日志/" rel="tag"># 开发日志</a>
+            <a href="/tags/deep-Learning/" rel="tag"># deep Learning</a>
           
         </div>
       
@@ -401,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/28/解决GitHub访问缓慢问题/" rel="next" title="解决GitHub访问缓慢问题">
-                <i class="fa fa-chevron-left"></i> 解决GitHub访问缓慢问题
+              <a href="/2019/10/06/Java学习资料/" rel="next" title="Java学习资料">
+                <i class="fa fa-chevron-left"></i> Java学习资料
               </a>
             
           </div>
@@ -410,10 +396,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/12/c-向量（vector）/" rel="prev" title="c++向量（vector）">
-                c++向量（vector） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -552,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#DvaJS的使用技巧"><span class="nav-number">1.</span> <span class="nav-text">DvaJS的使用技巧</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GAN入门"><span class="nav-number">1.</span> <span class="nav-text">GAN入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GAN（Generation-Adversarial-NetWorks）"><span class="nav-number">1.1.</span> <span class="nav-text">GAN（Generation Adversarial NetWorks）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#训练思想"><span class="nav-number">1.1.2.</span> <span class="nav-text">训练思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用"><span class="nav-number">1.1.3.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CGAN（Conditional-Generative-Adversarial-NetWorks）"><span class="nav-number">1.2.</span> <span class="nav-text">CGAN（Conditional Generative Adversarial NetWorks）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展"><span class="nav-number">1.2.2.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cycle-GAN"><span class="nav-number">1.3.</span> <span class="nav-text">Cycle GAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StarGAN"><span class="nav-number">1.4.</span> <span class="nav-text">StarGAN</span></a></li></ol></li></ol></div>
             
 
           </div>
