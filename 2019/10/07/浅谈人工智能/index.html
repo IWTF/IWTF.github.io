@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="阅读,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="作为当下最火得技术之一，人工智能被人们广泛知晓，受电影的熏陶和其简单的字面意思影响，应该很少有人去考虑其名字得确切定义。这里我简单介绍一下“人工智能”。">
+<meta name="keywords" content="阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈人工智能">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/07/浅谈人工智能/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="作为当下最火得技术之一，人工智能被人们广泛知晓，受电影的熏陶和其简单的字面意思影响，应该很少有人去考虑其名字得确切定义。这里我简单介绍一下“人工智能”。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-07T10:33:43.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈人工智能">
+<meta name="twitter:description" content="作为当下最火得技术之一，人工智能被人们广泛知晓，受电影的熏陶和其简单的字面意思影响，应该很少有人去考虑其名字得确切定义。这里我简单介绍一下“人工智能”。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/07/浅谈人工智能/">
+
+
+
+
+
+  <title>浅谈人工智能 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/07/浅谈人工智能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浅谈人工智能</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T18:29:17+08:00">
+                2019-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作为当下最火得技术之一，人工智能被人们广泛知晓，受电影的熏陶和其简单的字面意思影响，应该很少有人去考虑其名字得确切定义。这里我简单介绍一下“人工智能”。</p>
+<a id="more"></a>
+
+<h4 id="人工智能基本介绍"><a href="#人工智能基本介绍" class="headerlink" title="人工智能基本介绍"></a>人工智能基本介绍</h4><ul>
+<li><p>早期</p>
+<p>计算机之父阿兰·图灵在 1950 年的论文《计算机器与智能》中提出了“机器智能”以及著名的“图灵测试”：如果有超过 30%的测试者不能确定出被测试者是人还是机器，那么这台机器就通过了测试，<br>并被认为具有人类智能。</p>
+</li>
+<li><p>首次提出“人工智能”</p>
+<p>1956 年，在美国达特茅斯会议上，科学家麦卡锡首次提出“人工智能”：人工智能就是要让机器的行为看起来更像人所表现出的智能行为一样。在人工智能概念提出时，科学家主要确定了智能的判别标准和研究目标，而没有回答智能的具体内涵。</p>
+</li>
+<li><p>维基</p>
+<blockquote>
+<p>In computer science, artificial intelligence (AI), sometimes called machine intelligence, is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans. Leading AI textbooks define the field as the study of “intelligent agents”: any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals. Colloquially, the term “artificial intelligence” is often used to describe machines (or computers) that mimic “cognitive” functions that humans associate with the human mind, such as “learning” and “problem solving”.</p>
+</blockquote>
+<p>翻译：</p>
+<p>在计算机领域，人工智能，或叫机器智能，被定义为人创造的机器的表现得智能，与人类展现得自然得只会对应。人工智能于一般教材中的定义领域是“智能主体”（intelligent agent）的研究与设计：任何能感知环境并采取措施以最大程度达到其目标得设备。通俗的讲，“人工智能”这个属于经常被用来描述机器（或电脑）能模仿和人类思想相关得感知功能，如：学习和解决问题。</p>
+</li>
+</ul>
+<p>作为当下正蓬勃发展的新技术，其应用领域和影响不断扩大，人工智能这个概念也在不断演变。根据各方的定义，概括起来为：人工智能是利用人为制造来实现智能机器或者机器上的智能系统，模拟、延伸和扩展人类智能，感知环境，获取知识并使用知识获得最佳结果的理论、方法和技术。</p>
+<h4 id="人工智能环境下存在的安全问题"><a href="#人工智能环境下存在的安全问题" class="headerlink" title="人工智能环境下存在的安全问题"></a>人工智能环境下存在的安全问题</h4><p>随着信息社会中数据的膨胀，人工智能的数据样本趋于丰富，人类的一些规则明确、烦琐单一的脑力劳动直至分析、决策、规划等高端脑力劳动都可以逐步被人工智能所替代。在解放劳动力的同时，其信息采集、传输、处理各个要素环节都面临安全风险。</p>
+<ul>
+<li><p><strong>网络安全风险</strong>涉及网络设施和学习框架的漏洞、后门安全问题，以及人工智能技术恶意应用导致的系统网络安全风险。</p>
+</li>
+<li><p><strong>算法安全风险</strong>对应技术层中算法设计、决策相关的安全问题，涉及算法黑箱、算法模型缺陷等安全风险。</p>
+<p>目前大部分AI系统是在深度学习框架基础上实现, 深度学习框架的使用可以让应用开发人员无需关心神经元网络分层以及培训分类的实现细节, 更多关注应用本身的业务逻辑，黑盒框架可能会存在回门，白盒框架可能会被攻击者利用，通过样本进行逃逸攻击, 使原有识别模型失效, 如攻击自动驾驶汽车系统, 将停车标志识别为“通行”或其它标志, 可能导致交通事故, 而把支票上的数字识别出错则会直接带来经济损失。</p>
+</li>
+<li><p><strong>数据安全风险</strong>包括人工智能系统中的训练数据偏差、非授权篡改以及人工智能引发的隐私数据泄露等安全风险。</p>
+<p>人工智能技术本身算法的准确率高度依赖于海量用户数据的训练分析，尤其需要获取大量用户个人信息，以便提供个性化、定制化服务，这些都会导致用户个人信息泄露。</p>
+</li>
+<li><p><strong>信息安全风险</strong>主要包括人工智能技术应用于信息传播以及人工智能产品和应用输出的信息内容安全问题。目前已有黑客通过盗取移动App账号密码进而控制自动驾驶汽车的案例。</p>
+</li>
+</ul>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>一方面我国要加强核心技术的掌握，立足自主创新，加大技术引进吸收，突破人工智能关键基础技术。我国人工智能产业目前呈现“倒三角”结构，体现是“重应用、轻基础”，为人工智能发展带来诸多不确定因素。因此，需要从云计算、大数据和机器学习等关键通用技术研究入手，破解基础安全风险。</p>
+<p>另一方面，结合人工智能安全风险以及在网络空间安全领域中的应用，提出了以下六个方面：</p>
+<ul>
+<li><strong>法规政策</strong>方面，针对人工智能重点应用领域和突出的安全风险，建立健全相应的安全管理法律法规和管理政策。</li>
+<li><strong>标准规范</strong>方面，加强人工智能安全要求、安全评估评测等方面的国际、国内和行业标准的制定完善工作</li>
+<li><strong>技术手段</strong>方面，建设人工智能安全风险监测预警、态势感知、应急处置等安全管理的技术支撑能力。</li>
+<li><strong>安全评估</strong>方面，加快人工智能安全评估评测指标、方法、工具和平台的研发，构建第三方安全评估评测能力。</li>
+<li><strong>人才队伍</strong>方面，加大人工智能人才教育与培养，形成稳定的人才供给和合理的人才梯队，促进人工智能安全持续发展。</li>
+<li><strong>可控生态</strong>方面，加强人工智能产业生态中薄弱环节的研究与投入，提升产业生态的自我主导能力，保障人工智能安全可控发展</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/阅读/" rel="tag"># 阅读</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/07/一文读懂区块链/" rel="next" title="一文读懂区块链">
+                <i class="fa fa-chevron-left"></i> 一文读懂区块链
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#人工智能基本介绍"><span class="nav-number">1.</span> <span class="nav-text">人工智能基本介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#人工智能环境下存在的安全问题"><span class="nav-number">2.</span> <span class="nav-text">人工智能环境下存在的安全问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

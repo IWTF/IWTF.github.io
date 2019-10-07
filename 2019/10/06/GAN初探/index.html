@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="GAN入门GAN（Generation Adversarial NetWorks） 概念生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当">
+<meta name="description" content="近期看了李宏毅老师的GAN讲解，收获颇多，记录一些基本概念。">
 <meta name="keywords" content="deep Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GAN初探">
 <meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/06/GAN初探/index.html">
 <meta property="og:site_name" content="IWTF">
-<meta property="og:description" content="GAN入门GAN（Generation Adversarial NetWorks） 概念生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当">
+<meta property="og:description" content="近期看了李宏毅老师的GAN讲解，收获颇多，记录一些基本概念。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-06T14:29:41.390Z">
+<meta property="og:updated_time" content="2019-10-07T01:37:36.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GAN初探">
-<meta name="twitter:description" content="GAN入门GAN（Generation Adversarial NetWorks） 概念生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当">
+<meta name="twitter:description" content="近期看了李宏毅老师的GAN讲解，收获颇多，记录一些基本概念。">
 
 
 
@@ -311,10 +311,14 @@
       
 
       
-        <h3 id="GAN入门"><a href="#GAN入门" class="headerlink" title="GAN入门"></a>GAN入门</h3><h4 id="GAN（Generation-Adversarial-NetWorks）"><a href="#GAN（Generation-Adversarial-NetWorks）" class="headerlink" title="GAN（Generation Adversarial NetWorks）"></a>GAN（Generation Adversarial NetWorks）</h4><ul>
+        <p>近期看了李宏毅老师的GAN讲解，收获颇多，记录一些基本概念。</p>
+<a id="more"></a>
+
+
+<h4 id="GAN（Generation-Adversarial-NetWorks）"><a href="#GAN（Generation-Adversarial-NetWorks）" class="headerlink" title="GAN（Generation Adversarial NetWorks）"></a>GAN（Generation Adversarial NetWorks）</h4><ul>
 <li><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>生成式对抗网络（GAN, Generative Adversarial Networks ）是一种深度学习模型，是近年来复杂分布上无监督学习最具前景的方法之一。模型通过框架中（至少）两个模块：生成模型（Generative Model）和判别模型（Discriminative Model）的互相博弈学习产生相当好的输出。原始 GAN 理论中，并不要求 G 和 D 都是神经网络，只需要是能拟合相应生成和判别的函数即可。但实用中一般均使用深度神经网络作为 G 和 D 。一个优秀的GAN应用需要有良好的训练方法，否则可能由于神经网络模型的自由性而导致输出不理想。</p>
 </li>
-<li><h5 id="训练思想"><a href="#训练思想" class="headerlink" title="训练思想"></a>训练思想</h5><p>一般会将<code>生成网模型和</code>判别模型网络`组成一个大的神经网络（NN），在一次训练中会固定一个模型，去调节另一个模型。两个网络交替训练。</p>
+<li><h5 id="训练思想"><a href="#训练思想" class="headerlink" title="训练思想"></a>训练思想</h5><p>一般会将<code>生成网模型和</code>判别<code>模型网络</code>组成一个大的神经网络（NN），在一次训练中会固定一个模型，去调节另一个模型。两个网络交替训练。</p>
 <ul>
 <li>对于<code>Generative Model</code>，我们期望其输出可以得分尽量的高，即尽可能接近<code>positive image</code></li>
 <li>对于<code>Discrimnative Model</code>，我们期望他能给<code>position image</code>尽可能高的分数，给<code>generative image</code>尽可能低的分数。</li>
@@ -397,6 +401,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/10/07/一文读懂区块链/" rel="prev" title="一文读懂区块链">
+                一文读懂区块链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -472,7 +480,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -485,7 +493,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -534,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GAN入门"><span class="nav-number">1.</span> <span class="nav-text">GAN入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GAN（Generation-Adversarial-NetWorks）"><span class="nav-number">1.1.</span> <span class="nav-text">GAN（Generation Adversarial NetWorks）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#训练思想"><span class="nav-number">1.1.2.</span> <span class="nav-text">训练思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用"><span class="nav-number">1.1.3.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CGAN（Conditional-Generative-Adversarial-NetWorks）"><span class="nav-number">1.2.</span> <span class="nav-text">CGAN（Conditional Generative Adversarial NetWorks）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展"><span class="nav-number">1.2.2.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cycle-GAN"><span class="nav-number">1.3.</span> <span class="nav-text">Cycle GAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StarGAN"><span class="nav-number">1.4.</span> <span class="nav-text">StarGAN</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#GAN（Generation-Adversarial-NetWorks）"><span class="nav-number">1.</span> <span class="nav-text">GAN（Generation Adversarial NetWorks）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#训练思想"><span class="nav-number">1.2.</span> <span class="nav-text">训练思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用"><span class="nav-number">1.3.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CGAN（Conditional-Generative-Adversarial-NetWorks）"><span class="nav-number">2.</span> <span class="nav-text">CGAN（Conditional Generative Adversarial NetWorks）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念-1"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展"><span class="nav-number">2.2.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用-1"><span class="nav-number">2.3.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cycle-GAN"><span class="nav-number">3.</span> <span class="nav-text">Cycle GAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StarGAN"><span class="nav-number">4.</span> <span class="nav-text">StarGAN</span></a></li></ol></div>
             
 
           </div>

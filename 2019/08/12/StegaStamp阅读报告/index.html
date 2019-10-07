@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="阅读,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="论文题目“StegaStamp: Invisible Hyperlinks in Physical Photographs”，翻译一下就是《隐写邮票：自然照片中嵌入不可见超链接》，Stega有隐写术的意思。">
+<meta name="keywords" content="阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StegaStamp阅读报告">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/12/StegaStamp阅读报告/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="论文题目“StegaStamp: Invisible Hyperlinks in Physical Photographs”，翻译一下就是《隐写邮票：自然照片中嵌入不可见超链接》，Stega有隐写术的意思。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-07T10:42:20.360Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="StegaStamp阅读报告">
+<meta name="twitter:description" content="论文题目“StegaStamp: Invisible Hyperlinks in Physical Photographs”，翻译一下就是《隐写邮票：自然照片中嵌入不可见超链接》，Stega有隐写术的意思。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/12/StegaStamp阅读报告/">
+
+
+
+
+
+  <title>StegaStamp阅读报告 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/08/12/StegaStamp阅读报告/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">StegaStamp阅读报告</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-12T21:03:12+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>论文题目“StegaStamp: Invisible Hyperlinks in Physical Photographs”，翻译一下就是《隐写邮票：自然照片中嵌入不可见超链接》，Stega有隐写术的意思。</p>
+<a id="more"></a>
+
+<h4 id="文章的基本信息"><a href="#文章的基本信息" class="headerlink" title="文章的基本信息"></a>文章的基本信息</h4><ul>
+<li>标题： StegaStamp: Invisible Hyperlinks in Physical Photographs</li>
+<li>作者：Matthew Tancik∗ Ben Mildenhall∗ Ren Ng</li>
+<li>论文地址： <a href="https://arxiv.org/abs/1904.05343" target="_blank" rel="noopener">https://arxiv.org/abs/1904.05343</a></li>
+</ul>
+<h4 id="论文摘要"><a href="#论文摘要" class="headerlink" title="论文摘要"></a>论文摘要</h4><ul>
+<li><p><strong>原文</strong></p>
+<p>Imagine a world in which each photo, printed or digitally displayed, hides arbitrary digital data that can be accessed through an internet-connected imaging system. Another way to think about this is physical photographs that have unique QR codes invisibly embedded within them. This paper presents an architecture, algorithms, and a prototype implementation addressing this vision. Our key technical contribution is StegaStamp, the ﬁrst steganographic algorithm to enable robust encoding and decoding of arbitrary hyperlink bitstrings into photos in a manner that approaches perceptual invisibility. StegaStamp comprises a deep neural network that learns an encoding/decoding algorithm robust to image perturbations that approximate the space of distortions resulting from real printing and photography. Our system prototype demonstrates real-time decoding of hyperlinks for photos from in-the-wild video subject to real-world variation in print quality, lighting, shadows, perspective, occlusion and viewing distance. Our prototype system robustly retrieves 56 bit hyperlinks after error correction – sufﬁcient to embed a unique code within every photo on the internet.</p>
+</li>
+<li><p><strong>翻译</strong></p>
+<p>想象一下世界上每张照片，印刷品或数码照片隐藏任意数字数据，这些数据可以是通过互联网连接的成像系统进行了获取。另一种思考方式就是物理照片将无形的QR码隐藏在其中。本论文介绍了一种解决这一愿景的架构，算法和原型实现。我们的关键技术 第一个隐写术是StegaStamp 算法，它可以实现健壮的（鲁棒）编码和解码，将超链接位串转换为照片以一种接近感性隐形的方式。StegaStamp包括一个深度神经网络，学习一种强大的图像扰动的编码/解码算法，可近似得到真正的印刷和摄影造成的扭曲空间。我们的系统原型演示了实时解码来自野外视频的照片的超链接，可以实现打印质量，光照，阴影，透视，遮挡和观看距离的真实变化。我们的原型系统可以在出错后鲁棒地检索56位超链接进行更正——足以为互联网上的照每个片嵌入唯一代码。</p>
+</li>
+</ul>
+<h4 id="论文结论"><a href="#论文结论" class="headerlink" title="论文结论"></a>论文结论</h4><ul>
+<li><p><strong>原文</strong></p>
+<p>We have presented StegaStamp, an end-to-end deep learning framework for encoding 56 bit error corrected hyperlinks into arbitrary natural images. Our networks are trained through an image perturbation module that allows them to generalize to real world display-imaging pipelines. We demonstrate robust decoding performance on a variety of printer, screen, and camera combinations in an experimental setting. We also show that our method is stable enough to be deployed in-the-wild as a replacement for existing barcodes that is less intrusive and more aesthetically pleasing.</p>
+</li>
+<li><p><strong>译文</strong></p>
+<p>我们介绍了StegaStamp，这是一个端到端的深度学习框架，用于将56位纠错的超链接编码为任意自然图像。退化模型允许您推广到真实世界的显示成像管道。 我们在实验环境中证明了在各种打印机，屏幕和相机组合下解码的鲁棒性。 同时，我们也证明了我们的方法足够稳定，可以在各种外部环境下使用，以替代现有的条形码，这种条形码不那么具有侵入性，并更具美观性。</p>
+</li>
+</ul>
+<h4 id="拟解决的问题"><a href="#拟解决的问题" class="headerlink" title="拟解决的问题"></a>拟解决的问题</h4><p>传统的条形码和二维码，虽然可以提到传递信息的作用，但是外表比较丑。所有，笔者想是否可以把信息嵌入到图片中，使打印出来的图片感知度不被破坏，同时还可以通过拍照图片就可以提取到之前嵌入的信息。</p>
+<h4 id="提出的方法"><a href="#提出的方法" class="headerlink" title="提出的方法"></a>提出的方法</h4><p>作者提出了一个系统——StegaStamp，该系统的工作过程如下：</p>
+<ol>
+<li>为超链接分配一个唯一的字串</li>
+<li>使用StegaStamp的编码器将字串嵌入到图片中，同时保持嵌入后图片和嵌入前感官上的相同。</li>
+<li>嵌入后的图片被打印，展示在现实世界</li>
+<li>一个使用者为打印出的图片拍照</li>
+<li>StegaStamp的侦测器处理每张图片，检索其唯一的字串。</li>
+<li>译码器通过上述字串找到对应超链接，最后索引到嵌入的信息。</li>
+</ol>
+<p><strong>概括来说：</strong>图像与要嵌入的信息经过神经网络编码成新的照片，经过打印或者屏幕显示后再拍摄，把得到的图像经过检测算法得到校正后的图像区域，该图像经过解码算法得到嵌入图像里的信息。</p>
+<h4 id="遇到的技术难点"><a href="#遇到的技术难点" class="headerlink" title="遇到的技术难点"></a>遇到的技术难点</h4><ul>
+<li><p>经过打印等操作，再次拍照上传，各种环境因素对识别率的干扰</p>
+<ul>
+<li><strong>解决方法</strong>：在论文的第三部分着重进行了分析。在训练解码器的时候，模拟真实的图像质量退化模型对嵌入信息的图像做变换。包括图像透视变换、模糊化、颜色操作、加噪声、JPEG压缩。</li>
+</ul>
+</li>
+<li><p>信息嵌入后图片质量的保持，即对图片的视觉感知影响较小</p>
+<ul>
+<li><p><strong>解决方法</strong>： 该论文并没有提出解决方法，只提出：越长的信息越难以进行编码也解码</p>
+<p>提出100bit是同时保持较高<code>图片质量</code>和<code>信息传输</code>的折中长度。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="文章的解读"><a href="#文章的解读" class="headerlink" title="文章的解读"></a>文章的解读</h4><ul>
+<li><p><strong>摘要</strong></p>
+<p>为了降低现有条形码和二维码的侵入性，提高其美观性，做着提出了将信息嵌入任意图片的想法，并对该问题提出了架构，算法和原型实现。</p>
+</li>
+<li><p><strong>介绍</strong></p>
+<p>介绍了该想法的现实意义</p>
+<p>提出框架的基本流程</p>
+<p>介绍该架构的侧重点及实现过程中的技术难点</p>
+</li>
+<li><p><strong>相关工作</strong></p>
+<ul>
+<li><p><strong>隐写学</strong></p>
+<ul>
+<li>介绍隐写学的基本概念</li>
+<li>基于深度学习的解码/译码。提出自己的模型不同：基于 编码与解码之间的成像管道里对图片的损坏 的假设。</li>
+</ul>
+</li>
+<li><p><strong>条码</strong></p>
+<p>介绍了关于条码的一些知识</p>
+</li>
+<li><p><strong>鲁棒对抗性图片攻击</strong></p>
+<p>介绍了增强模型鲁棒性的方法，即：<code>Most relevant to our work are the demonstrations of adversarial examples in the physical world [3, 8, 11, 20, 21, 31, 32], where systems are made robust for imaging applications by modeling physically realistic perturbations (i.e., afﬁne image warping, additive noise, and JPEG compression).</code>, 通过模拟现实世界中的一些干扰，来增强模型的鲁棒性。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>训练模型的鲁棒性</strong></p>
+<p>在训练解码器的时候，模拟真实的图像质量退化模型对嵌入信息的图像做变换。包括图像透视变换、模糊化、颜色操作、加噪声、JPEG压缩。</p>
+</li>
+<li><p><strong>实施细节</strong></p>
+<ul>
+<li><p><strong>编码器</strong></p>
+<ul>
+<li>编码器经过训练，可以将信息嵌入图像中，同时最大限度地减少信息之间的感知差异在输入和编码图像之间。</li>
+<li>促进消息收敛： 使用U-Net风格的架构，该架构接收一个四通道400×400像素输入（来自输入图像的RGB通道加上消息的一个）并输出三通道RGB残留图像。该输入消息表现为100位二进制字符串，通过完全连接的层处理以形成50×50×3张量，然后上采样产生400×400×3张量。</li>
+<li>减少编码图像的失真：采用了L2失，LPIPS感知损失和<code>critic loss</code></li>
+</ul>
+</li>
+<li><p><strong>译码器</strong></p>
+<p>译码器的作用是从编码图片中恢复隐藏的信息。</p>
+</li>
+<li><p><strong>侦测器</strong></p>
+<p>因为现实使用中，在解码前需先确定嵌入区域。所以采用了语义分割网络BiSeNet [35]用于分割图像中被认为含有StegaStamps的区域。并使用从DIV2K [1]采样的高分辨率图像取样的随机转换StegaStamps嵌入的数据集。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>编码/解码过程</strong></p>
+<ul>
+<li><p><strong>Training Data</strong></p>
+<p>培训期间，我们使用来自的图像MIRFLICKR数据集与随机抽样的二进制消息相结合。 并且将图像重新采样为400×400。</p>
+</li>
+<li><p><strong>Critic</strong> </p>
+<p>我们使用价值模型来判断是将信息编码进图像，还是该信息回造成成像管道中的感知损失。为了训练价值模型，以<code>Wasserstein loss</code>为分类依据将输入图像和编码图像进行分类，该模型训练和编码/译码的训练交叉进行。</p>
+</li>
+<li><p><strong>Loss Weightin</strong></p>
+<p>总的训练损失公式：<br>$$<br>L = \lambda _ { R } L _ { R } + \lambda _ { P } L _ { P } + \lambda _ { C } L _ { C } + \lambda _ { M } L _ { M }<br>$$<br>并提出了在训练网络时，三个损失函数调整特别有用的建议。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>现实世界&amp;仿真评估</strong></p>
+<p>介绍了实验的仿真评估方法，通过18种设备组合，在各真实环境下进行各种情况的测试。</p>
+<ul>
+<li><p><strong>In-the-Wild Robustness</strong></p>
+<p>真实复杂环境中的一些测试结果分析</p>
+</li>
+<li><p><strong>Controlled Real World Experiments</strong></p>
+<p>从测试集（与训练集不相交）选择100张图片，进行编码测试。</p>
+<p>设置5组相同模型，使用相同输入，控制嵌入信息不同，进行测试。</p>
+<p>展示实验结果</p>
+</li>
+<li><p><strong>Ablation（消融）实验</strong></p>
+<p>通过设置四组实验（都有，无扰，只有像素扰动，只有空间扰动），验证了添加各类扰动对模型鲁棒性和结果精度的影响，并得出结合了像素和空间扰动，可以大幅度地实现最精确和准确的结果的结论。</p>
+</li>
+<li><p><strong>Practical Message Length</strong></p>
+<p>越长的信息越难以进行编码也解码，提出100bit是同时保持较高<code>图片质量</code>和<code>信息传输</code>的折中长度。</p>
+</li>
+<li><p><strong>局限性</strong></p>
+<ul>
+<li>编码器网络添加的残差有时在大量的图像低频区域中是可感知的。未来的工作可以改进我们的架构和损耗函数，以训练 产生更不易察觉得编码 的编码器/解码器。</li>
+<li>此外，我们发现现成的检测网络是我们在实际测试过程中解码性能的瓶颈。 使用编码器/解码器端到端优化的自定义检测架构可以提高检测性能。 </li>
+<li>当前框架还假设StegaStamps将是单个方形图像以用于检测。 我们想象将多个代码无缝嵌入到单个较大的图像（例如海报或广告牌）中可以提供更多的灵活性。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="可以理解的部分"><a href="#可以理解的部分" class="headerlink" title="可以理解的部分"></a>可以理解的部分</h4><p>论文所提架构的基本思想</p>
+<p>验证过程中的一些实验方法</p>
+<h4 id="不能完全理解的部分"><a href="#不能完全理解的部分" class="headerlink" title="不能完全理解的部分"></a>不能完全理解的部分</h4><ul>
+<li>论文翻译…一些专业名词不知道怎么翻译合适</li>
+<li>透视变换，Ablation实验，一些东西没听过，只能大概知道什么意思。</li>
+</ul>
+<h4 id="文章的优势"><a href="#文章的优势" class="headerlink" title="文章的优势"></a>文章的优势</h4><ul>
+<li>结构清晰，从问题提出，到解决方法提出，实验过程，结果展示</li>
+<li>论证充足，对各个情况进行了考虑，并提供了大量实验数据作为支持</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/阅读/" rel="tag"># 阅读</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/04/2019-8文章整理/" rel="next" title="2019-8文章整理">
+                <i class="fa fa-chevron-left"></i> 2019-8文章整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/18/图像编码/" rel="prev" title="图像编码">
+                图像编码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章的基本信息"><span class="nav-number">1.</span> <span class="nav-text">文章的基本信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#论文摘要"><span class="nav-number">2.</span> <span class="nav-text">论文摘要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#论文结论"><span class="nav-number">3.</span> <span class="nav-text">论文结论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拟解决的问题"><span class="nav-number">4.</span> <span class="nav-text">拟解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提出的方法"><span class="nav-number">5.</span> <span class="nav-text">提出的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到的技术难点"><span class="nav-number">6.</span> <span class="nav-text">遇到的技术难点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章的解读"><span class="nav-number">7.</span> <span class="nav-text">文章的解读</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可以理解的部分"><span class="nav-number">8.</span> <span class="nav-text">可以理解的部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不能完全理解的部分"><span class="nav-number">9.</span> <span class="nav-text">不能完全理解的部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章的优势"><span class="nav-number">10.</span> <span class="nav-text">文章的优势</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

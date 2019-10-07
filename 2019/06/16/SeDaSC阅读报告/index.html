@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="阅读,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="云存储是云的应用, 它便利组织，可使其自由的建立内部数据存储系统。但是, 云存储会引起安全问题。在群共享数据的情况下,这些数据既面临云特定的内部威胁, 也面临常规内部威胁。合法但恶意用户对组内共享安全信息的威胁一个重要的研究问题。SeDaSC这篇论文提出了云中安全数据共享(SeDaSC) 方法。">
+<meta name="keywords" content="阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SeDaSC阅读报告">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/06/16/SeDaSC阅读报告/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="云存储是云的应用, 它便利组织，可使其自由的建立内部数据存储系统。但是, 云存储会引起安全问题。在群共享数据的情况下,这些数据既面临云特定的内部威胁, 也面临常规内部威胁。合法但恶意用户对组内共享安全信息的威胁一个重要的研究问题。SeDaSC这篇论文提出了云中安全数据共享(SeDaSC) 方法。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-07T10:41:51.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SeDaSC阅读报告">
+<meta name="twitter:description" content="云存储是云的应用, 它便利组织，可使其自由的建立内部数据存储系统。但是, 云存储会引起安全问题。在群共享数据的情况下,这些数据既面临云特定的内部威胁, 也面临常规内部威胁。合法但恶意用户对组内共享安全信息的威胁一个重要的研究问题。SeDaSC这篇论文提出了云中安全数据共享(SeDaSC) 方法。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/06/16/SeDaSC阅读报告/">
+
+
+
+
+
+  <title>SeDaSC阅读报告 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/06/16/SeDaSC阅读报告/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SeDaSC阅读报告</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-16T20:42:03+08:00">
+                2019-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>云存储是云的应用, 它便利组织，可使其自由的建立内部数据存储系统。但是, 云存储会引起安全问题。在群共享数据的情况下,这些数据既面临云特定的内部威胁, 也面临常规内部威胁。合法但恶意用户对组内共享安全信息的威胁一个重要的研究问题。<code>SeDaSC</code>这篇论文提出了云中安全数据共享(SeDaSC) 方法。</p>
+<a id="more"></a>
+
+<h2 id="文章的基本信息"><a href="#文章的基本信息" class="headerlink" title="文章的基本信息"></a>文章的基本信息</h2><ul>
+<li><p>标题： <code>SeDaSC: Secure Data Sharing in Clouds</code></p>
+</li>
+<li><p>作者： </p>
+<p><code>Mazhar Ali, Student Member, IEEE, Revathi Dhamotharan, Eraj Khan, Samee U. Khan, Senior Member, IEEE,Athanasios V. Vasilakos, Senior Member, IEEE, Keqin Li, Fellow, IEEE, andAlbert Y. Zomaya, Fellow, IEEE</code></p>
+</li>
+<li><p>发表期刊： IEEE SYSTEMS JOURNAL, VOL. 11</p>
+</li>
+<li><p>发表时间： 2017年6月</p>
+</li>
+<li><p>下载链接： <a href="https://ieeexplore.ieee.org/document/7008450" target="_blank" rel="noopener">https://ieeexplore.ieee.org/document/7008450</a></p>
+</li>
+</ul>
+<h3 id="论文摘要"><a href="#论文摘要" class="headerlink" title="论文摘要"></a>论文摘要</h3><ul>
+<li><h4 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h4><p>Abstract—Cloud storage is an application of clouds that liberates organizations from establishing in-house data storage systems. However, cloud storage gives rise to security concerns. In case of groupshared data, the data face both cloud-specific and conventional insider threats. Secure data sharing among a group that counters insider threats of legitimate yet malicious users is an important  research issue. In this paper, we propose the Secure Data Sharing in Clouds (SeDaSC) methodology that provides: 1) data confidentiality and integrity; 2) access control; 3) data sharing (forwarding)  without using compute-intensive reencryption; 4) insider threat security; and 5) forward and backward access control. The SeDaSC methodology encrypts a file with a single encryption key. Two different key shares for each of the users are generated, with the user only getting one share. The possession of a single share of a key allows the SeDaSC methodology to counter the insider threats. The other key share is stored by a trusted third party, which is called the cryptographic server. The SeDaSC methodology is applicable to conventional and mobile cloud computing environments. We implement a working prototype of the SeDaSC methodology and evaluate its performance based on the time consumed during various operations. We formally verify the working of SeDaSC by using high-level Petri nets, the Satisfiability Modulo Theories Library, and a Z3 solver. The results proved to be encouraging and show that SeDaSC has the potential to be effectively used for secure data sharing in the cloud.</p>
+</li>
+<li><h4 id="译文"><a href="#译文" class="headerlink" title="译文"></a>译文</h4><p><strong>摘要</strong>-云存储是云的应用, 它便利组织，可使其自由的建立内部数据存储系统。但是, 云存储会引起安全问题。在群共享数据的情况下,这些数据既面临云特定的内部威胁, 也面临常规内部威胁。合法但恶意用户对组内共享安全信息的威胁一个重要的研究问题。本文提出了云中安全数据共享(<code>SeDaSC</code>) 方法, 该方法提供: 1) 数据的保密性和完整性;  2)访问控制;  3)不使用<strong>计算密集型重加密</strong>的数据共享(转发);  4)内部威胁安全;  5) 向前和<strong>向后访问控制</strong>。 <code>SeDaSC</code>方法通过一个密钥进行加密。为每个用户生成两个不同的共享密钥, 并只给用户分发其中一个密钥，这种机制使得 <code>SeDaSC</code>方法可以来应对内部威胁。另一个共享密钥由受信任的第三方存储, 该第三方称为加密服务器。<code>SeDaSC</code>方法适用于传统和移动云计算环境。我们实现了<code>SeDaSC</code>方法的工作原型,并根据各种操作中花费的时间对其性能进行评估。我们通过使用<code>high-level Petri nets</code>（高级Petri 网）、<code>the Sat-
+isfiability Modulo Theories Library</code>（可满足的模流理论库）和一个<code>Z3 solver</code>（Z3 解析器）正式验证了<br>SeDaSC 的工作。结果是令人鼓舞的, 其表明 SeDaSC有可能有效地用于云中的安全数据共享。</p>
+</li>
+</ul>
+<h3 id="论文结论"><a href="#论文结论" class="headerlink" title="论文结论"></a>论文结论</h3><ul>
+<li><h4 id="原文-1"><a href="#原文-1" class="headerlink" title="原文"></a>原文</h4><p>The SeDaSC methodology has been evaluated for the following three different cases.</p>
+<ol>
+<li><p>Key Generation: there is only one symmetric key generated for each file. However, the key shares are separately computed for every user in the group. The shares are computed at the time of file submission. We evaluated SeDaSC for time consumption in key generation. The time is computed for different numbers of users. We set the number of users to be 10, 20, 30, 40, 50, 60, 70, 80, 90 and 100.  In general, the time consumption for key generation increases with the increase in the number of users. Nevertheless, the time for key generation varies between 0.004 and 0.00697 s. The time for key generation is a slight overhead that is only generated once at the time of file submission in the group. A newly joining member will only consume the time for the generation of  key shares that would be nominal as is computed for only a single user.</p>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-T8JCT5gA-1570444666396)(C:\Users\hzw\Desktop\各科作业\信息安全概论\信息安全概论论文\QQ图片20190611191751.png)]</p>
+</li>
+<li><p>Encryption and Decryption: We evaluated the time consumption during the encryption and decryption of the file with varying file sizes. The file sizes used were 0.1, 0.5, 1, 10, 50,100, and 500 MB.  We have observed in Section III that the CS has to compute K before encryption and decryption. Therefore, the time to compute K is also compared with the total encryption and decryption times. The purpose is to observe the time overhead of the key computation over the total encryption and<br>decryption times. The results for encryption and decryption are highlighted in Figs. 8 and 9, </p>
+<p>​    Fig. 8  shows that, as expected, the time for encryption increases with the increase in the file size. However, the time for the computation of K almost remains constant with negligible change， this is because the time for the computation of K is independent of the file size. The comparative analysis shows that, with smaller file sizes, the percentage of the key computation time is high in comparison with the total encryption time. However, with the increase in the file size, the proportion of the key computation time in the total encryption time decreases rapidly.It is also noteworthy that the total key computation time ranges between 0.012 and 0.018 s.</p>
+<p>​    Fig. 9 illustrates the results for decryption. The results show the similar trend for decryption</p>
+</li>
+<li><p>File Upload/Download: We also evaluated the SeDaSC methodology on the basis of the total time consumed to upload/download a file to/from the cloud. in general, the time to upload the data increased with the increase in the file size. However, in some cases, the marginal increase in the file upload time was small that may be due to the network condition at various times.</p>
+</li>
+</ol>
+<p>We have compared the SeDaSC methodology with the schemes presented in [7], [9], and [11]. The comparison is based on the time consumption during key generation when the group is created and on the turnaround time for encryption and decryption. The comparison of key generation times is provided in Table IV. Table V shows the turnaround times for encryption and decryption. Both of these tables reveal that the SeDaSC methodology outperforms the other techniques due to the absence of heavy computations.</p>
+</li>
+<li><h4 id="译文-1"><a href="#译文-1" class="headerlink" title="译文"></a>译文</h4><p><code>SeDaSC</code>方法从以下三个不同的方面进行了评估： </p>
+<ol>
+<li><p>密钥的生成： 该方法为每个文件只生成一个对称密钥，但是，由于共享密钥对群中每个用户是单独计算的（在文件上传时）。 我们评估<code>SedaSC</code>在密钥生成上的花费，应该和用户数量有关。我们将用户数量设置为10-100个（10梯度）进行了实现）， 实验结果如图7，总的来说，生成密钥所花费的时间随着用户数量的增加而增加。然而, 时间密钥生成在0.004到0.009秒之间。的时间对于密钥生成是一个轻微的开销, 它只在组中提交文件时生成一次。一个新的加入成员所消耗的生成时间，实际只对该单用户产生了时间消耗。</p>
+</li>
+<li><p>加密和解密： 我们通过测试不同大小的文件来评估加密和解密过程的耗时，文件的大小分别使用了0.1, 0.5 ,1, 10, 50,100, and 500 MB。 我们从Section3 可知，加密服务器在加密和解密过程中需要每次计算密钥K， 所以我们把生成密钥K的时间也算在解密解密时间内。 这样也可以计算生成K时间占加/解密时间的比例。 实验结果如图8和图9所示：</p>
+<p>​    图8： 像预期的那样，加密时间随文件的增大而变长。但是，密钥K的生成时间随文件增大而产生的变化是极小的，这时因为密钥K的生成和文件大小是相互独立的。经过比较分析显示， 当文件越小时，密钥生成时间在总时间中的比重就越大，但是，随着随文件大小增长，其比例迅速下降。另外，值得注意的是，总的加密解密时间在0.012 and 0.018 s之间。</p>
+<p>​    图9： 解密实验结果和加密基本相同。</p>
+</li>
+<li><p>文件的上传和下载： 我们评估SeDaSC方法的总时间时，也考虑了在云端上传和下载文件所需的时间。钱哦嗯的来说，这个时间随文件Size增大而增长。 但是，在一些情况下，文件上传时间的小幅增加很小,<br>这可能会是由于不同时间的网络条件造成的。</p>
+</li>
+</ol>
+<p>我们已经对比了<code>SeDaSC</code>和[7] [9], [11]文献所提到的方案，对比基于密钥生成时的时间消耗和当组创建和加密和解密的周转时间两个方面。 密钥生成时间的对比在表IV中显示，表V展示了加密解密过程周转时间的对比。 两张表都表明了<code>SeDaSC</code> 方法的性能优于其他技术, 原因是缺乏大量的计算。</p>
+</li>
+</ul>
+<h2 id="选取这篇文章的主要原因"><a href="#选取这篇文章的主要原因" class="headerlink" title="选取这篇文章的主要原因"></a>选取这篇文章的主要原因</h2><ul>
+<li><p><strong>客观原因</strong></p>
+<ol>
+<li>鉴于还没有开始专业课的学习，对密码学算法研究理解有限，为了读论文有更好的效果，所以选择了信息安全方向的论文。</li>
+<li>虽然上过不少数学通识课程，但课堂所学只限于考试。且缺少对各领域数学知识的综合应用，所以在选择论文时，避开了引用大量未知数学定理证明算法的论文</li>
+<li>该论文主要是向大家介绍了一种新的云端数据安全模型，重点在于提出新的解决方法及证明其可行性和优越性。</li>
+</ol>
+</li>
+<li><p><strong>主观原因</strong></p>
+<ol>
+<li><p>老师上课时对我们介绍过经典的加密算法，自己也对这方面有浓厚的兴趣。</p>
+</li>
+<li><p>老师课上有提到了云端安全在以后的重要性，所以下去后，自己就想了解一些这方面的知识。</p>
+</li>
+<li><p><strong>云端安全的重要性</strong></p>
+<p>随着企业信息化的逐步深入，各类数据，特别是自动化采集设备（如传感数据、监控数据、网络安全数据、设备状态数据等）生成的数据采集能力逐步提高，数据类型和来源更加多样化。于此同时，面对海量的数据，储存和利用也成为亟待解决的问题。在这个大背景下，云 提供了弹性、灵活和按需的存储和计算服务 。预算较高的组织现在可以利用优质的计算和存储服务, 而无需在基础设施和 maintenance方面进行大量投资，所以，云称为当下的热点。</p>
+<p>凡事都具有两面性，云端在为机构提供方便自由的内部储存结构的同时，也暴漏出云端数据保密性和完整性偏低的各种问题，所以，一种可行的，高效的确保云端数据安全共享的方法亟待被提出。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="文章的解读"><a href="#文章的解读" class="headerlink" title="文章的解读"></a>文章的解读</h2><h4 id="关注的问题"><a href="#关注的问题" class="headerlink" title="关注的问题"></a>关注的问题</h4><p> 随着云端服务器的快速发展，虽然方便了一些机构数据的处理，但也带来了云端数据安全性的问题。</p>
+<p> 主要有以下问题：</p>
+<ol>
+<li><p>对数据和存储平台的控制丧失也导致云客户保持对数据(单个数据和通过公共云在一组用户之间共享的数据)     的访问控制降低。</p>
+</li>
+<li><p>数据的隐私和保密性也受到威胁</p>
+<ul>
+<li><p><strong>单一用户的数据保密问题</strong></p>
+<p>对于一组用户的情况，解决方法比较简单。我没只需要在数据储存到云端之前进行加密，就可以很好的保证云端数据的保密性。因为密钥的生成管理有用户端进行，不存在密钥泄露的问题。</p>
+</li>
+<li><p><strong>组内共享数据的保密问题</strong></p>
+<p>当数据要在组之间共享时, 加密服务需要足够灵活, 以处理不同的用户, 赋予其不同的操作权限； 并以有效的方式管理密钥,  以保护数据机密性。区别于双方通信和单个用户的数据处理，组间数据可能会面对内部威胁，现有的、离开的和新加入的组成员可能会被证明是内部威胁,  这会影响到数据机密性和隐私。</p>
+<ul>
+<li><p>显然，采用单一用户时的方法是不可行的，原因如下：</p>
+<ul>
+<li><p>每个组内个体具有相同的密钥，这使系统失去对不同用户访问控制</p>
+</li>
+<li><p><strong>forward access control</strong>（正向访问控制）【1】</p>
+<p>当有用户离开组时，需要变更密钥，否则退出小组的成员仍然可以通过以前的密钥访问未来的数据，丧失数据的安全性。但是若有频繁的人员加入离开，使密钥变更过于频繁，密钥利用率低。</p>
+</li>
+<li><p><strong>backward access control</strong>（向后访问控制）【2】</p>
+<p>当新用户加入时，如果不对密钥进行更新，会使新用户可以对他加入前组内的共享数据进行解密，导致数据机密性丧失</p>
+</li>
+<li><p>由于缺少权限控制，任何组内成员都可以是操作数据。若恶意内部人随意对数据进行解密，修改/泄漏，加密，上传。就会导致数据保密性，真实性丧失。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="提出的方法"><a href="#提出的方法" class="headerlink" title="提出的方法"></a>提出的方法</h4><p>针对上述问题，论文中给出了<code>SeDaSC</code>方法，下面是其内容和原理</p>
+<ul>
+<li><p><strong>SeDaSC方法包括的实体</strong></p>
+<ul>
+<li><p>云： 只负责数据的上传和下载，数据会在上传前加密</p>
+</li>
+<li><p>CS（加密服务器）：受信任的第三方， 负责密钥生成管理、加密、解密和访问控制</p>
+</li>
+<li><p>用户： 用户是存储云的客户端。适用于每个数据文件, 一个用户将是该文件的所有者, 而</p>
+<p>集团中的其他人将是数据使用者。文件的所有者决定其他组成员的访问权限。根据决定授予和撤销访问权限的所有者。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>SeDaSC方法的原理</strong></p>
+<ul>
+<li><p><strong>分享数据：</strong> 作为受信任的第三方加密服务器，CS主要负责加密，解密，管理密钥，和访问控制。当文件拥有者上传数据时，CS会对每一份数据都随机生成对称密钥K，并对数据进行加密。然后，针对组内的每个用户，CS会将密钥分成两部分（单一部分不能单独重新生成密钥）。紧接着，原始密钥K会立刻通过安全覆盖【3】进行删除。生成的这些密钥对的一部分K1会被传输到组中的相应用户，而另一部分K2由CS中的与数据文件相关的ALC（访问控制列表）维护。用户部分密钥生成机制如下图：</p>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-jl5Xcs9I-1570444666397)(C:\Users\hzw\Desktop\各科作业\信息安全概论\信息安全概论论文\QQ图片20190611192223.png)]</p>
+</li>
+<li><p><strong>保存数据：</strong> ACL是通过数据所有者提交的参数生成的，加密的数据随后会被上传到云端进行储存。</p>
+</li>
+<li><p><strong>访问数据时：</strong>希望访问数据的用户向CS发送下载请求。CS在对请求用户进行身份验证后,从用户处接收密钥的一部分,然后从云中下载数据文件。通过对用户的部分密钥K1和CS中保存的该用户的密钥K2进行操作重新生成密钥K。数据被解密并发送回用户。</p>
+</li>
+<li><p><strong>对于新加入的成员</strong>,  添加请求会包含该用户能操作的文件ID及权限。对每个文件为单独其生成K1,K2,  将生成密钥的两个部分,并将用户添加到 ACL中。</p>
+</li>
+<li><p><strong>对于离开的成员</strong>, 记录将从 ACL中删除。离开的成员不能自行解密数据,因为她只拥有密钥的一部分。同样,在组成员身份发生更改的情况下,不需要频繁的解密和重新加密。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决了什么问题"><a href="#解决了什么问题" class="headerlink" title="解决了什么问题"></a>解决了什么问题</h4><ol>
+<li>使用部分密钥，每个用户都不能绕开CS对云端数据进行修改，确保了数据不受内部恶意人士的攻击</li>
+<li>SeDaSC方法可以通过对用户表的更改，来确定人员的变更，保护了数据不受 向前/向后访问控制 而产生的影响</li>
+<li>控制了用户对数据的不同操作权限，限制了用户的读写权限，且用户数据的下载上传都要经过CS，保证了用户对数据的变更可以被跟踪。</li>
+<li>用户端不使用计算密集型再加密（因为计算密集型操作是由 CS 执行）， 减少了时间开销，减小了密钥管理的复杂度，拟可用于移动云计算。</li>
+<li>解决了云端数据安全性问题</li>
+<li>使用了<code>high-level Petri nets (HLPNs),theSatisﬁabilityModuloTheoryLibrary(SMTLib), and a Z3 solver</code>进行了正式的建模，验证了其正确性和可行性</li>
+</ol>
+<h4 id="牵涉的技术要点"><a href="#牵涉的技术要点" class="headerlink" title="牵涉的技术要点"></a>牵涉的技术要点</h4><ol>
+<li><p><code>SeDaSC</code>设计</p>
+<ul>
+<li>从新领域面对的新问题出发，开拓性的提出了云端数据安全的新方案。 该新方案不仅解决了云端数据安全性的问题。同时解决了云端访问控制的缺失的问题，内部恶意人员等问题。并通过试验等，验证了其可行性。为云端数据安全提出了新的，高效的，易实现的解决方案。</li>
+<li>该设计运用巧妙的密钥生成管理机制，有效的避开了大量密钥管理的难题，并且避免了计算密集的再加密，具有较高的性能和可行性</li>
+</ul>
+</li>
+<li><p>密钥安全性保证</p>
+<p>密钥的安全性 反映 了该方案安全性的优劣，下面是该方法密钥安全性的基础</p>
+<ul>
+<li>密钥生成为CS（加密服务器）随机生成，人为干扰较少。</li>
+<li>密钥生成使用AES-256进行加密，且被分成两部分，由单独一部分密钥重建K难度大，被破解概率小</li>
+<li>密钥生成使用后立即被删除，并进行安全覆盖。不储存在任何地方，也不经过信道进行传输，密钥被攻击获取可能性小。</li>
+</ul>
+</li>
+</ol>
+<h4 id="文章的优势"><a href="#文章的优势" class="headerlink" title="文章的优势"></a>文章的优势</h4><ol>
+<li><p>文章脉络条例清晰。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">从问题入手  --&gt;  分析问题  --&gt;  提出自己的思路  --&gt;  分析该领域他人研究  --&gt;  自己方法</span><br><span class="line"></span><br><span class="line">思路详解  --&gt;  基础知识补充  --&gt;  对比分析自己方法的优劣  --&gt;  试验结果展示  -&gt;  总结</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对复杂模型的具体化，利用列数据和图标形式，使所要说明的事物具体化。</p>
+</li>
+<li><p>使用高级Petri  nets(HLPNs)、the Satisﬁability Modulo Theory Library(SMTLib), and a Z3 solver. 对 <code>SeDaSC</code> 方法进行正式建模和验证。</p>
+</li>
+</ol>
+<h4 id="主要的缺点"><a href="#主要的缺点" class="headerlink" title="主要的缺点"></a>主要的缺点</h4><p>主要停留在理论层次的分析，试验环境及过程没有进行详细说明</p>
+<h4 id="可以理解的部分"><a href="#可以理解的部分" class="headerlink" title="可以理解的部分"></a>可以理解的部分</h4><ul>
+<li><input checked disabled type="checkbox"> <code>SeDaSC</code>方法的文件上传</li>
+<li><input checked disabled type="checkbox"> <code>SeDaSC</code>方法的文件下载</li>
+<li><input checked disabled type="checkbox"> <code>SeDaSC</code>方法的文件更新</li>
+<li><input checked disabled type="checkbox"> <code>SeDaSC</code>方法的新用户组包含</li>
+<li><input checked disabled type="checkbox"> <code>SeDaSC</code>方法的离开用户的删除</li>
+<li><input checked disabled type="checkbox"> 加密算法，数据保密性的原理</li>
+<li><input checked disabled type="checkbox"> 密钥生成，加/解密，上传/下载个过程时间消耗的分析</li>
+</ul>
+<h4 id="不能完全理解的部分"><a href="#不能完全理解的部分" class="headerlink" title="不能完全理解的部分"></a>不能完全理解的部分</h4><p>​    无</p>
+<h4 id="不能理解且怀疑正确性的部分"><a href="#不能理解且怀疑正确性的部分" class="headerlink" title="不能理解且怀疑正确性的部分"></a>不能理解且怀疑正确性的部分</h4><ul>
+<li>对于算法的可行性<ul>
+<li>文中提到： <code>The SeDaSC methodology maintains a single cryptographic key for each of the data ﬁles.</code> ，对于每一个文件（每一组数据）都会生成随机密钥，那么当数据组数足够大时，是否会为CS和用户的密钥管理带来问题，就如非对称加密证数认证，当证数数量极大时，对第三认证机构会有很大负担。</li>
+</ul>
+</li>
+</ul>
+<h4 id="文章的改进空间"><a href="#文章的改进空间" class="headerlink" title="文章的改进空间"></a>文章的改进空间</h4><ul>
+<li><code>SeDaSC</code>方法的新用户组包含问题阐释不够清晰<ul>
+<li>对于新用户的加入，他需要拥有原始密钥K， 对其生成的部分密钥K1, 以及存入CS中的K2， 而论文中曾提到，原始密钥K在每次生成使用后都会被删除，CS不会保留密钥K的信息。所有这里<strong>为新用户生成用户密钥K1时所需要的原始密钥K的来源</strong>并没有说清楚。 </li>
+<li>我个人觉得，新的用户由文件拥有者向CS发起request进行添加，这里请求参数要额外包含上拥有者自己的部分密钥（论文中请求参数并没有包含该项）。这时，CS会根据拥有者部分密钥生成原始密钥K，再由K生成新用户的用户密钥K1。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>名词解释：</strong></p>
+<p>【1】： 访问未来数据的离开用户</p>
+<p>【2】： 访问过去数据的新加如用户</p>
+<p>【3】： 安全覆盖是一个概念, 其中内存中的位不断翻转, 以确保,内存中每个字节不会被记住和恢复</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/阅读/" rel="tag"># 阅读</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/01/小程序海报采坑/" rel="next" title="小程序海报采坑">
+                <i class="fa fa-chevron-left"></i> 小程序海报采坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/11/python多进程/" rel="prev" title="python多进程">
+                python多进程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文章的基本信息"><span class="nav-number">1.</span> <span class="nav-text">文章的基本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#论文摘要"><span class="nav-number">1.1.</span> <span class="nav-text">论文摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文"><span class="nav-number">1.1.1.</span> <span class="nav-text">原文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#译文"><span class="nav-number">1.1.2.</span> <span class="nav-text">译文</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#论文结论"><span class="nav-number">1.2.</span> <span class="nav-text">论文结论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原文-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">原文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#译文-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">译文</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选取这篇文章的主要原因"><span class="nav-number">2.</span> <span class="nav-text">选取这篇文章的主要原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章的解读"><span class="nav-number">3.</span> <span class="nav-text">文章的解读</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关注的问题"><span class="nav-number">3.0.1.</span> <span class="nav-text">关注的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提出的方法"><span class="nav-number">3.0.2.</span> <span class="nav-text">提出的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决了什么问题"><span class="nav-number">3.0.3.</span> <span class="nav-text">解决了什么问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#牵涉的技术要点"><span class="nav-number">3.0.4.</span> <span class="nav-text">牵涉的技术要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章的优势"><span class="nav-number">3.0.5.</span> <span class="nav-text">文章的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主要的缺点"><span class="nav-number">3.0.6.</span> <span class="nav-text">主要的缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可以理解的部分"><span class="nav-number">3.0.7.</span> <span class="nav-text">可以理解的部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不能完全理解的部分"><span class="nav-number">3.0.8.</span> <span class="nav-text">不能完全理解的部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不能理解且怀疑正确性的部分"><span class="nav-number">3.0.9.</span> <span class="nav-text">不能理解且怀疑正确性的部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章的改进空间"><span class="nav-number">3.0.10.</span> <span class="nav-text">文章的改进空间</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
