@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="IWTF">
 <meta property="og:description" content="作为程序员的宝库，GitHub的认识和使用毋庸置疑。 而作为一个强大，出色的版本管理工具，git可以使我们更好的使用GitHub。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007Y69rkgy1g805whravxj30sb08ltaj.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2018/12/09/git基本使用/2018-12-09-git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/QQ%E5%9B%BE%E7%89%8720190312091658.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2018/12/09/git基本使用/2018-12-09-git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/QQ%E5%9B%BE%E7%89%8720190312092900.jpg">
-<meta property="og:updated_time" content="2019-06-07T00:20:14.275Z">
+<meta property="og:updated_time" content="2019-10-16T09:19:43.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git基本使用">
 <meta name="twitter:description" content="作为程序员的宝库，GitHub的认识和使用毋庸置疑。 而作为一个强大，出色的版本管理工具，git可以使我们更好的使用GitHub。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2018/12/09/git基本使用/2018-12-09-git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/QQ%E5%9B%BE%E7%89%8720190312091658.jpg">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/007Y69rkgy1g805whravxj30sb08ltaj.jpg">
 
 
 
@@ -318,6 +318,9 @@
 <p>而作为一个强大，出色的版本管理工具，git可以使我们更好的使用GitHub。</p>
 <a id="more"></a>
 
+<h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><p><img src="http://ww1.sinaimg.cn/large/007Y69rkgy1g805whravxj30sb08ltaj.jpg" alt="1571217540880.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Workspace：工作区</span><br><span class="line">Index / Stage：暂存区</span><br><span class="line">Repository：仓库区（或本地仓库）</span><br><span class="line">Remote：远程仓库</span><br></pre></td></tr></table></figure>
+
 <h5 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h5><ul>
 <li>git init, 建立一个空的本地仓库</li>
 <li>git clone，可以克隆别人的项目到本地<blockquote>
@@ -374,7 +377,7 @@
 <h5 id="分支合并过程中的冲突"><a href="#分支合并过程中的冲突" class="headerlink" title="分支合并过程中的冲突"></a>分支合并过程中的冲突</h5><p>当两个分支都对一个文档进行了修改，并产生冲突时，不能进行快速合并</p>
 <p>解决方法：</p>
 <p>1.打开冲突文件，文件内会有类似内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">goback master....</span><br><span class="line">=======</span><br><span class="line">create new branch feature1..</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create new branch feature1..</span><br></pre></td></tr></table></figure>
 
 <p>2.’=====’ 上下分别表示不同的分支内容，这时需要我们手动修改，保留我们想要的部分。<br>3.修改完成后，保存退出。<br>4.查看状态，会提示这个文件被修改，之后执行下面代码提交即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &apos;a&apos;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
@@ -402,12 +405,14 @@
 <li><p>当然，再写的过程中有了好的idea，可以直接向上游仓库提交</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add README.md</span><br><span class="line">git commit -m &apos;xxx&apos;</span><br><span class="line">git push origin</span><br></pre></td></tr></table></figure>
 
-<p>我们之前经常用<code>git add .</code>表示添加所有更改，不用点，而用文件路径，表示只添加某个文件的更改<br><img src="2018-12-09-git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/QQ%E5%9B%BE%E7%89%8720190312092900.jpg" alt></p>
+<p>我们之前经常用<figure class="highlight plain"><figcaption><span>add .```表示添加所有更改，不用点，而用文件路径，表示只添加某个文件的更改</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    ![](2018-12-09-git基本使用/QQ图片20190312092900.jpg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##### git rebase</span><br><span class="line">* 应用场景一： 合并多次提交记录（commit）</span><br><span class="line">&gt; 有时候，我们可能会产生了多次commit，且可能多数无用，这样会为以后回滚代码带来不便</span><br><span class="line">1. 我们来合并最近2次的提交记录</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
 </ul>
-
+<p>git rebase -i HEAD~2</p>
+<pre><code>
+</code></pre>
       
     </div>
     
@@ -588,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建仓库"><span class="nav-number">1.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看Repo状态"><span class="nav-number">2.</span> <span class="nav-text">查看Repo状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作Statge状态"><span class="nav-number">3.</span> <span class="nav-text">操作Statge状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作commit状态"><span class="nav-number">4.</span> <span class="nav-text">操作commit状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上传到服务器"><span class="nav-number">5.</span> <span class="nav-text">上传到服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退"><span class="nav-number">6.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支管理"><span class="nav-number">7.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支合并过程中的冲突"><span class="nav-number">8.</span> <span class="nav-text">分支合并过程中的冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加另一个远程仓库"><span class="nav-number">9.</span> <span class="nav-text">添加另一个远程仓库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建仓库"><span class="nav-number">2.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看Repo状态"><span class="nav-number">3.</span> <span class="nav-text">查看Repo状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作Statge状态"><span class="nav-number">4.</span> <span class="nav-text">操作Statge状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作commit状态"><span class="nav-number">5.</span> <span class="nav-text">操作commit状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上传到服务器"><span class="nav-number">6.</span> <span class="nav-text">上传到服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退"><span class="nav-number">7.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支管理"><span class="nav-number">8.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支合并过程中的冲突"><span class="nav-number">9.</span> <span class="nav-text">分支合并过程中的冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加另一个远程仓库"><span class="nav-number">10.</span> <span class="nav-text">添加另一个远程仓库</span></a></li></ol></div>
             
 
           </div>
