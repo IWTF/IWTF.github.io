@@ -239,6 +239,417 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/06/图像加密之Logistic混沌置乱加密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/06/图像加密之Logistic混沌置乱加密/" itemprop="url">图像加密之Logistic混沌置乱加密</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-06T21:21:37+08:00">
+                2019-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这里再根据Logistic混沌进行另一种置乱：位置置乱。</p>
+<p><strong>位置置乱</strong>，顾名思义就是把图像中某一像素点的位置，移动到另一目的点。我们知道这个目的点当然是越随机越好。这个过程，所有像素的灰度值都没有改变，只是进行了位置的置乱，所以其直方图不会发生改变。</p>
+<ul>
+<li><p><strong>生成混沌序列</strong></p>
+<p>Logistic迭代了<code>M*N</code>次，得到<code>M*N</code>个(0,1)之间的浮点数序列（记做序列A），将序列A中的每个元素乘以<code>M*N</code>，也就是说将A扩展到了(0,M<em>N)的浮点数了，然后我们对其取整数得到(0,M</em>N)之间的整数序列B。</p>
+</li>
+<li><p>用这个序列来<strong>产生随机坐标</strong>（也就是目的点）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">列坐标：y=B(i)/N;</span><br><span class="line">行坐标：x=B(i)%N;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>待加密图像中的第一个点的灰度值搬移到第一个随机坐标中的，一次类推，当所有灰度都经过移动之后，置乱结束，便完成了一次置乱加密。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：</p>
+<p>按道理说这(0,M<em>N)个值肯定是没有重复的，但是由于*</em>计算机精度和类型转化<strong>，所以肯定存在重复的值，也就是随机坐标点存在重复的！！！这肯定是不行的，那么怎么避免呢？我们一般这样来处理：</strong>在迭代过程中，每迭代一次，产生一个随机坐标点，判断这个坐标点有没有被占用，若没有则打一个占用标志，若已被占用，则放弃该点继续迭代，直到找到没有没占用的坐标点，如此下去，直到找到<strong>*<em>M\</em>N个不重复的坐标点。</strong></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/06/图像加密之Logistic混沌序列加密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/06/图像加密之Logistic混沌序列加密/" itemprop="url">图像加密之Logistic混沌序列加密</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-06T21:21:27+08:00">
+                2019-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p><strong>Logistic函数</strong>是源于一个人口统计的动力学系统，其系统方程形式如下：</p>
+<p><code>X(k+1) = u \* X(k) \* [1 - X(k)],（k=0,1,…,n）</code></p>
+</li>
+<li><p><strong>混沌的解释</strong></p>
+<p>顾名思义就是一种无序的、不可预测的、混乱的、摸不到头、摸不到尾的状态。</p>
+<p>混沌最大的特性就是对<strong>初始值敏感</strong>。通俗的说，就是蝴蝶效应，在某某某地方，一个蝴蝶轻轻煽动一下翅膀就会产生很大的飓风。</p>
+</li>
+<li><p>为什么这个方程可以称作混沌呢？它什么时候是一个混沌系统呢？这个也是有条件的：</p>
+<ul>
+<li><code>0  &lt; X(0) &lt; 1</code></li>
+<li><code>3.5699456...  &lt;  u &lt;=4</code></li>
+</ul>
+</li>
+<li><p><strong>混沌序列的生成</strong></p>
+<p>当迭代n次后，我们就得到了X(1)、X(2)、…，X(n)这么n个值。那么这就是一个混沌序列，是一维的暂且称作序列A，也就是我们想要得到的序列，在MATLAB中，可以看出X(i)（i=1,2,…,n）的取值是在(0,1)之间的——这是一个很好地特性，就像图像灰度值是在(0,255)之间一样。那么我们把这个一维序列归一化到(0,255)之间得到序列B。</p>
+</li>
+<li><p><strong>加密过程</strong></p>
+<p>对于一幅<code>M*N</code>大小的图像（暂且称为Picture），我们需要产生一个同样大小的矩阵来对其进行加密。如此说来，只需要迭代M*N次得到序列A，再转成序列B，此时序列B是一维的，将其转化成<code>MXN</code>的二维矩阵（暂且称为Fuck）。因此，用Fuck与Picutre进行异或，便可得到一幅新的图像，称作Rod，如此便完成了一次图像加密，加密后的图像为Rod。</p>
+<p><code>Rod=Picture⊕Fuck（⊕表示异或）</code></p>
+</li>
+<li><p><strong>加密算法分析</strong></p>
+<p>这样我们手中的<strong>密钥</strong>是：u，X(0)；</p>
+<p>此种加密方式称作序列加密，可以看出这种加密方式改变了下像素的灰度（直方图变了），没有改变位置。</p>
+</li>
+<li><p><strong>解密</strong>同样道理：<code>Picture = Rod⊕Fuck</code></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/06/2019-11文章整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/06/2019-11文章整理/" itemprop="url">2019-11文章整理</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-06T19:51:47+08:00">
+                2019-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <details>
+<summary>图像加密</summary>
+
+<p><a href="https://blog.csdn.net/hujingshuang/article/details/45717807" target="_blank" rel="noopener">图像处理之Logistic混沌序列加密</a></p>
+<p><a href="https://blog.csdn.net/hujingshuang/article/details/45718069" target="_blank" rel="noopener">图像处理之Logistic混沌序列加密</a></p>
+<p><a href="https://blog.csdn.net/hujingshuang/article/details/45718257" target="_blank" rel="noopener">图像处理之约瑟夫置乱加密</a></p>
+<p><a href="https://blog.csdn.net/kevin_123c/article/details/51612165" target="_blank" rel="noopener">图像加密及性能评估</a></p>
+</details>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/11/任务栏应用图标显示白色解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1097,381 +1508,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/10/04/2019-10文章整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="IWTF">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/33515162.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IWTF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/04/2019-10文章整理/" itemprop="url">2019-10文章整理</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T09:32:36+08:00">
-                2019-10-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          太懒，不想总结，记录一些看过的文章
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/04/2019-10文章整理/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/09/25/2019-9文章整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="IWTF">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/33515162.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IWTF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/25/2019-9文章整理/" itemprop="url">2019-9文章整理</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T08:07:30+08:00">
-                2019-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          有点少，先不开放了🙃
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/25/2019-9文章整理/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/09/13/csp记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="IWTF">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/33515162.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IWTF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/13/csp记录/" itemprop="url">csp记录</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-13T07:57:17+08:00">
-                2019-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>做了一些csp基础题，记录了结题过程中自己没有考虑的地方以及一些技巧。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/13/csp记录/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1524,7 +1560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Logistic函数是源于一个人口统计的动力学系统，其系统方程形式如下： X(k+1) = u \* X(k) \* [1 - X(k)],（k=0,1,…,n）  混沌的解释 顾名思义就是一种无序的、不可预测的、混乱的、摸不到头、摸不到尾的状态。 混沌最大的特性就是对初始值敏感。通俗的说，就是蝴蝶效应，在某某某地方，一个蝴蝶轻轻煽动一下翅膀就会产生很大的飓风。  为什么这个方程可以称作混沌呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像加密之Logistic混沌序列加密">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/06/图像加密之Logistic混沌序列加密/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="Logistic函数是源于一个人口统计的动力学系统，其系统方程形式如下： X(k+1) = u \* X(k) \* [1 - X(k)],（k=0,1,…,n）  混沌的解释 顾名思义就是一种无序的、不可预测的、混乱的、摸不到头、摸不到尾的状态。 混沌最大的特性就是对初始值敏感。通俗的说，就是蝴蝶效应，在某某某地方，一个蝴蝶轻轻煽动一下翅膀就会产生很大的飓风。  为什么这个方程可以称作混沌呢？">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-06T13:24:32.402Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图像加密之Logistic混沌序列加密">
+<meta name="twitter:description" content="Logistic函数是源于一个人口统计的动力学系统，其系统方程形式如下： X(k+1) = u \* X(k) \* [1 - X(k)],（k=0,1,…,n）  混沌的解释 顾名思义就是一种无序的、不可预测的、混乱的、摸不到头、摸不到尾的状态。 混沌最大的特性就是对初始值敏感。通俗的说，就是蝴蝶效应，在某某某地方，一个蝴蝶轻轻煽动一下翅膀就会产生很大的飓风。  为什么这个方程可以称作混沌呢？">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/06/图像加密之Logistic混沌序列加密/">
+
+
+
+
+
+  <title>图像加密之Logistic混沌序列加密 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/06/图像加密之Logistic混沌序列加密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图像加密之Logistic混沌序列加密</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-06T21:21:27+08:00">
+                2019-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p><strong>Logistic函数</strong>是源于一个人口统计的动力学系统，其系统方程形式如下：</p>
+<p><code>X(k+1) = u \* X(k) \* [1 - X(k)],（k=0,1,…,n）</code></p>
+</li>
+<li><p><strong>混沌的解释</strong></p>
+<p>顾名思义就是一种无序的、不可预测的、混乱的、摸不到头、摸不到尾的状态。</p>
+<p>混沌最大的特性就是对<strong>初始值敏感</strong>。通俗的说，就是蝴蝶效应，在某某某地方，一个蝴蝶轻轻煽动一下翅膀就会产生很大的飓风。</p>
+</li>
+<li><p>为什么这个方程可以称作混沌呢？它什么时候是一个混沌系统呢？这个也是有条件的：</p>
+<ul>
+<li><code>0  &lt; X(0) &lt; 1</code></li>
+<li><code>3.5699456...  &lt;  u &lt;=4</code></li>
+</ul>
+</li>
+<li><p><strong>混沌序列的生成</strong></p>
+<p>当迭代n次后，我们就得到了X(1)、X(2)、…，X(n)这么n个值。那么这就是一个混沌序列，是一维的暂且称作序列A，也就是我们想要得到的序列，在MATLAB中，可以看出X(i)（i=1,2,…,n）的取值是在(0,1)之间的——这是一个很好地特性，就像图像灰度值是在(0,255)之间一样。那么我们把这个一维序列归一化到(0,255)之间得到序列B。</p>
+</li>
+<li><p><strong>加密过程</strong></p>
+<p>对于一幅<code>M*N</code>大小的图像（暂且称为Picture），我们需要产生一个同样大小的矩阵来对其进行加密。如此说来，只需要迭代M*N次得到序列A，再转成序列B，此时序列B是一维的，将其转化成<code>MXN</code>的二维矩阵（暂且称为Fuck）。因此，用Fuck与Picutre进行异或，便可得到一幅新的图像，称作Rod，如此便完成了一次图像加密，加密后的图像为Rod。</p>
+<p><code>Rod=Picture⊕Fuck（⊕表示异或）</code></p>
+</li>
+<li><p><strong>加密算法分析</strong></p>
+<p>这样我们手中的<strong>密钥</strong>是：u，X(0)；</p>
+<p>此种加密方式称作序列加密，可以看出这种加密方式改变了下像素的灰度（直方图变了），没有改变位置。</p>
+</li>
+<li><p><strong>解密</strong>同样道理：<code>Picture = Rod⊕Fuck</code></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/06/2019-11文章整理/" rel="next" title="2019-11文章整理">
+                <i class="fa fa-chevron-left"></i> 2019-11文章整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/06/图像加密之Logistic混沌置乱加密/" rel="prev" title="图像加密之Logistic混沌置乱加密">
+                图像加密之Logistic混沌置乱加密 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
