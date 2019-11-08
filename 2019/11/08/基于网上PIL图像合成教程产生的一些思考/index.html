@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="使用blend（混合）需要两张图片具有相同的格式 &amp;amp;&amp;amp; 相同的大小    有没有什么更好的方法来实现（限制条件更少）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于网上PIL图像合成教程产生的一些思考">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/08/基于网上PIL图像合成教程产生的一些思考/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="使用blend（混合）需要两张图片具有相同的格式 &amp;amp;&amp;amp; 相同的大小    有没有什么更好的方法来实现（限制条件更少）">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-08T12:36:48.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于网上PIL图像合成教程产生的一些思考">
+<meta name="twitter:description" content="使用blend（混合）需要两张图片具有相同的格式 &amp;amp;&amp;amp; 相同的大小    有没有什么更好的方法来实现（限制条件更少）">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/08/基于网上PIL图像合成教程产生的一些思考/">
+
+
+
+
+
+  <title>基于网上PIL图像合成教程产生的一些思考 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/11/08/基于网上PIL图像合成教程产生的一些思考/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于网上PIL图像合成教程产生的一些思考</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-08T20:33:04+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>使用blend（混合）需要两张图片具有<code>相同的格式</code> &amp;&amp; <code>相同的大小</code></p>
+<p>   有没有什么更好的方法来实现（限制条件更少）</p>
+<a id="more"></a>
+
+<h3 id="基于网上PIL图像合成教程产生的一些思考"><a href="#基于网上PIL图像合成教程产生的一些思考" class="headerlink" title="基于网上PIL图像合成教程产生的一些思考"></a>基于网上PIL图像合成教程产生的一些思考</h3><h4 id="网上常见的教程"><a href="#网上常见的教程" class="headerlink" title="网上常见的教程"></a>网上常见的教程</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">out = image1 * (<span class="number">1.0</span> - alpha) + image2 * alpha</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">img1 = Image.open(<span class="string">"./images/kebi1.jpg"</span>)</span><br><span class="line">img2 = Image.open(<span class="string">"./images/kebi2.jpg"</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"打印输入图片信息\n"</span>)</span><br><span class="line">print(<span class="string">"img1"</span>, img1.mode, img1.size)</span><br><span class="line">print(<span class="string">"img2"</span>, img2.mode, img2.size)</span><br><span class="line"></span><br><span class="line">newImg = Image.blend(img1, img2, <span class="number">0.4</span>)</span><br><span class="line">newImg.save(<span class="string">'./images/blendResult.jpg'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题</strong></p>
+<ol>
+<li><p>使用blend（混合）需要两张图片具有<code>相同的格式</code> &amp;&amp; <code>相同的大小</code></p>
+<p>有没有什么更好的方法来实现（限制条件更少）</p>
+</li>
+</ol>
+<p><strong>思路</strong></p>
+<p>通过加小图到一个背景透明的大图上即可；然后将大图合成即可</p>
+<h4 id="其他常用图片操作"><a href="#其他常用图片操作" class="headerlink" title="其他常用图片操作"></a>其他常用图片操作</h4><ul>
+<li><p><a href="https://blog.csdn.net/qq_22227123/article/details/83008744" target="_blank" rel="noopener">图片合成</a></p>
+</li>
+<li><p>改变图片透明度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">changeAlpha</span><span class="params">(im, alpha)</span>:</span></span><br><span class="line">    im = im.convert(<span class="string">"RGBA"</span>)</span><br><span class="line">    x, y = im.size</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(y):</span><br><span class="line">            color = im.getpixel((i, j))</span><br><span class="line">            color = color[:<span class="number">-1</span>] + (alpha, )</span><br><span class="line">            im.putpixel((i, j), color)</span><br><span class="line"></span><br><span class="line">    im.save(<span class="string">"out.PNG"</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="基础的Image-Moudule基本用法"><a href="#基础的Image-Moudule基本用法" class="headerlink" title="基础的Image Moudule基本用法"></a>基础的<code>Image Moudule</code>基本用法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.open(<span class="string">'./images/kebi1.jpg'</span>)</span><br><span class="line"><span class="comment"># Open, rotate, and display an image (using the default viewer)</span></span><br><span class="line"><span class="comment"># rotate()旋转一定角度</span></span><br><span class="line">im.rotate(<span class="number">45</span>).show()</span><br><span class="line"><span class="keyword">if</span> <span class="literal">False</span>:</span><br><span class="line">    <span class="comment"># 保存图片</span></span><br><span class="line">    im.rotate(<span class="number">45</span>).save(<span class="string">'./images/rotate.jpg'</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>Create thumbnails(缩略图）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">size = <span class="number">128</span>, <span class="number">128</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The following script creates nice 128x128 thumbnails of all JPEG images in the current directory.</span></span><br><span class="line"><span class="keyword">for</span> infile <span class="keyword">in</span> glob.glob(<span class="string">"*.jpg"</span>):</span><br><span class="line">    file, ext = os.path.splitext(infile)</span><br><span class="line">    im = Image.open(infile)</span><br><span class="line">    im.thumbnail(size)</span><br><span class="line">    im.save(file + <span class="string">"thumbnail"</span>, <span class="string">"JPEG"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>给图片加水印</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw,ImageFont</span><br><span class="line"><span class="comment"># convert()进行图像格式的转变</span></span><br><span class="line"><span class="comment"># PIL中有九种不同模式。分别为1，L，P，RGB，RGBA，CMYK，YCbCr，I，F。</span></span><br><span class="line">im = Image.open(<span class="string">"d:/pic/kebi1.jpg"</span>).convert(<span class="string">'RGBA'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个Image</span></span><br><span class="line">txt=Image.new(<span class="string">'RGBA'</span>, im.size, (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">fnt=ImageFont.truetype(<span class="string">"c:/Windows/fonts/Tahoma.ttf"</span>, <span class="number">20</span>)</span><br><span class="line">d=ImageDraw.Draw(txt)</span><br><span class="line">d.text((txt.size[<span class="number">0</span>]<span class="number">-80</span>,txt.size[<span class="number">1</span>]<span class="number">-30</span>), <span class="string">"IWTF"</span>,font=fnt, fill=(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片合成</span></span><br><span class="line"><span class="comment"># 要求： 1. 图像格式为RGBA</span></span><br><span class="line"><span class="comment">#       2. 两个图像要大小相同</span></span><br><span class="line">out=Image.alpha_composite(im, txt)</span><br><span class="line">out.show()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>对于PNG、BMP和JPG彩色图像格式之间的互相转换都可以通过Image模块的open()和save()函数来完成。</p>
+<p>对于彩色图像，不管其图像格式是PNG，还是BMP，或者JPG，在PIL中，使用Image模块的open()函数打开后，返回的图像对象的模式都是“RGB”。而对于灰度图像，不管其图像格式是PNG，还是BMP，或者JPG，打开后，其模式为“L”。</p>
+</blockquote>
+</li>
+<li><p>PIL.Image.composite(image1, image2, mask)</p>
+<p>类似于blend，alpha_composite。这里使用了mask遮罩</p>
+<ul>
+<li><strong>条件：</strong>大小一样，mask图片mode为1,L,RGBA</li>
+<li><strong>作用：</strong>Create composite image by blending images using a transparency mask.</li>
+</ul>
+</li>
+</ul>
+<p>【参考文献】</p>
+<p><a href="https://www.jianshu.com/p/e8d058767dfa" target="_blank" rel="noopener">python PIL 图像处理</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/06/图像加密之Logistic混沌置乱加密/" rel="next" title="图像加密之Logistic混沌置乱加密">
+                <i class="fa fa-chevron-left"></i> 图像加密之Logistic混沌置乱加密
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于网上PIL图像合成教程产生的一些思考"><span class="nav-number">1.</span> <span class="nav-text">基于网上PIL图像合成教程产生的一些思考</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网上常见的教程"><span class="nav-number">1.1.</span> <span class="nav-text">网上常见的教程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他常用图片操作"><span class="nav-number">1.2.</span> <span class="nav-text">其他常用图片操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基础的Image-Moudule基本用法"><span class="nav-number">1.3.</span> <span class="nav-text">基础的Image Moudule基本用法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
