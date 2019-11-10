@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Linux,">
 
 
 
@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="本篇文章简单记录Centos7下查看防火墙状态和网络状态命令.">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux下Centos7对外开放端口">
 <meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/07/13/Linux下Centos7对外开放端口/index.html">
 <meta property="og:site_name" content="IWTF">
 <meta property="og:description" content="本篇文章简单记录Centos7下查看防火墙状态和网络状态命令.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-28T07:09:02.016Z">
+<meta property="og:updated_time" content="2019-11-10T01:18:39.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下Centos7对外开放端口">
 <meta name="twitter:description" content="本篇文章简单记录Centos7下查看防火墙状态和网络状态命令.">
@@ -339,8 +340,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port=8081/tcp --permanent</span><br><span class="line"># 重载入添加的端口</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"># 查询指定端口是否开启成功</span><br><span class="line">firewall-cmd --query-port=8081/tcp</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>移除指定端口</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --remove-port=8081/tcp</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --remove-port=8081/tcp</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
+<hr>
+<h3 id="服务器拒绝了我们的连接请求"><a href="#服务器拒绝了我们的连接请求" class="headerlink" title="服务器拒绝了我们的连接请求"></a>服务器拒绝了我们的连接请求</h3><p>可能原因：</p>
+<ol>
+<li>检查端口是否打开</li>
+<li>重启tomcat服务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 1. 首先，进入tomcat下的bin目录</span><br><span class="line">cd /usr/local/tomcat/bin</span><br><span class="line"></span><br><span class="line"># 2. 关闭tomcat</span><br><span class="line">./shutdown.sh</span><br><span class="line"></span><br><span class="line"># 3. 查看tomcat是否以关闭</span><br><span class="line"># (PS:在确定tomcat关闭之后再启动tomcat，否则会报端口被占用异常。)</span><br><span class="line">ps -ef|grep java</span><br><span class="line"># 若无tomcat进程，则重新启动tomcat；否则，使用kill命令杀死tomcat进程</span><br><span class="line"></span><br><span class="line"># 4. 启动tomcat</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure></li>
+</ol>
 
       
     </div>
@@ -355,6 +364,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
       
 
       
@@ -516,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看对外开放的端口状态"><span class="nav-number">1.</span> <span class="nav-text">1. 查看对外开放的端口状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查看防火墙状态"><span class="nav-number">2.</span> <span class="nav-text">2. 查看防火墙状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-对外开放端口"><span class="nav-number">3.</span> <span class="nav-text">3. 对外开放端口</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看对外开放的端口状态"><span class="nav-number">1.</span> <span class="nav-text">1. 查看对外开放的端口状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查看防火墙状态"><span class="nav-number">2.</span> <span class="nav-text">2. 查看防火墙状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-对外开放端口"><span class="nav-number">3.</span> <span class="nav-text">3. 对外开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器拒绝了我们的连接请求"><span class="nav-number">4.</span> <span class="nav-text">服务器拒绝了我们的连接请求</span></a></li></ol></div>
             
 
           </div>
