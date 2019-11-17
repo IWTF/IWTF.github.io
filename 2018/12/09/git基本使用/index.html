@@ -89,7 +89,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007Y69rkgy1g805whravxj30sb08ltaj.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2018/12/09/git基本使用/2018-12-09-git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/QQ%E5%9B%BE%E7%89%8720190312091658.jpg">
-<meta property="og:updated_time" content="2019-10-16T09:19:43.546Z">
+<meta property="og:updated_time" content="2019-11-12T14:22:54.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git基本使用">
 <meta name="twitter:description" content="作为程序员的宝库，GitHub的认识和使用毋庸置疑。 而作为一个强大，出色的版本管理工具，git可以使我们更好的使用GitHub。">
@@ -352,6 +352,12 @@
 <li>git log ，输出提交日志，查看历史commit，进而选择回退到哪一个</li>
 <li>git reset (commit,log打印出的commit项) –hard，回退，且不保存这段时间内的代码修改</li>
 </ul>
+<h5 id="筛选协作者的-commit"><a href="#筛选协作者的-commit" class="headerlink" title="筛选协作者的 commit"></a>筛选协作者的 commit</h5><ul>
+<li><code>git log</code><br>输出所有的commit</li>
+<li><code>git shortlog</code><br>按提交者字母排序，列出所有commit的简述</li>
+<li><code>git shortlog -s -n</code><br>按commit多少排序，只列出姓名<br>用 <code>-s</code> 仅显示 commit 的数量;以及用 <code>-n</code> 来按数量排序</li>
+<li><code>git log --author=xxx</code><br>仅显示xxx所做出的commit</li>
+</ul>
 <h5 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h5><ul>
 <li><p>建立分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b firstBranch</span><br></pre></td></tr></table></figure>
@@ -452,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/23/小程序背景音乐功能实现/" rel="prev" title="小程序背景音乐功能实现">
-                小程序背景音乐功能实现 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/23/2018-12-22-学习记录/" rel="prev" title="宝贝回家日志">
+                宝贝回家日志 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -531,7 +537,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -593,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建仓库"><span class="nav-number">2.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看Repo状态"><span class="nav-number">3.</span> <span class="nav-text">查看Repo状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作Statge状态"><span class="nav-number">4.</span> <span class="nav-text">操作Statge状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作commit状态"><span class="nav-number">5.</span> <span class="nav-text">操作commit状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上传到服务器"><span class="nav-number">6.</span> <span class="nav-text">上传到服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退"><span class="nav-number">7.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支管理"><span class="nav-number">8.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支合并过程中的冲突"><span class="nav-number">9.</span> <span class="nav-text">分支合并过程中的冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加另一个远程仓库"><span class="nav-number">10.</span> <span class="nav-text">添加另一个远程仓库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建仓库"><span class="nav-number">2.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看Repo状态"><span class="nav-number">3.</span> <span class="nav-text">查看Repo状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作Statge状态"><span class="nav-number">4.</span> <span class="nav-text">操作Statge状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作commit状态"><span class="nav-number">5.</span> <span class="nav-text">操作commit状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上传到服务器"><span class="nav-number">6.</span> <span class="nav-text">上传到服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退"><span class="nav-number">7.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#筛选协作者的-commit"><span class="nav-number">8.</span> <span class="nav-text">筛选协作者的 commit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支管理"><span class="nav-number">9.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支合并过程中的冲突"><span class="nav-number">10.</span> <span class="nav-text">分支合并过程中的冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加另一个远程仓库"><span class="nav-number">11.</span> <span class="nav-text">添加另一个远程仓库</span></a></li></ol></div>
             
 
           </div>
