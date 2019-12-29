@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Web前端,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="适用于移动端和现代互联网的超高性能专业级动画插件 Tweenmax是GreenSock 动画平台的核心，配合其他插件 可动画CSS属性、滤镜效果、 颜色、 声音、 色彩、 帧、 饱和度、 对比度、 色调、 色系、 亮度、 贝塞尔">
+<meta name="keywords" content="Web前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TweenMax动画插件的使用">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/12/22/TweenMax动画插件的使用/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="适用于移动端和现代互联网的超高性能专业级动画插件 Tweenmax是GreenSock 动画平台的核心，配合其他插件 可动画CSS属性、滤镜效果、 颜色、 声音、 色彩、 帧、 饱和度、 对比度、 色调、 色系、 亮度、 贝塞尔">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-22T01:30:48.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TweenMax动画插件的使用">
+<meta name="twitter:description" content="适用于移动端和现代互联网的超高性能专业级动画插件 Tweenmax是GreenSock 动画平台的核心，配合其他插件 可动画CSS属性、滤镜效果、 颜色、 声音、 色彩、 帧、 饱和度、 对比度、 色调、 色系、 亮度、 贝塞尔">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/12/22/TweenMax动画插件的使用/">
+
+
+
+
+
+  <title>TweenMax动画插件的使用 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/12/22/TweenMax动画插件的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TweenMax动画插件的使用</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-22T09:16:19+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>适用于移动端和现代互联网的超高性能专业级动画插件</p>
+<p>Tweenmax是GreenSock 动画平台的核心，配合其他插件 可动画CSS属性、滤镜效果、 颜色、 声音、 色彩、 帧、 饱和度、 对比度、 色调、 色系、 亮度、 贝塞尔</p>
+<a id="more"></a>
+
+<h3 id="TweenMax动画库的使用"><a href="#TweenMax动画库的使用" class="headerlink" title="TweenMax动画库的使用"></a>TweenMax动画库的使用</h3><ul>
+<li><h4 id="动画结构"><a href="#动画结构" class="headerlink" title="动画结构"></a><strong>动画结构</strong></h4><blockquote>
+<p><strong>基础动画序列</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">是否必填</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">target</td>
+<td align="left">object</td>
+<td align="left">是</td>
+<td align="left">需要动画的对象</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">number</td>
+<td align="left">是</td>
+<td align="left">动画持续时间，一般是秒</td>
+</tr>
+<tr>
+<td align="left">vars</td>
+<td align="left">object</td>
+<td align="left">是</td>
+<td align="left">动画参数</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># TweenMax的构造函数</span><br><span class="line">TweenMax(target, duration, vars);</span><br><span class="line"></span><br><span class="line"># 定义动画的终态</span><br><span class="line">TweenMax.to(target, duration, vars);</span><br><span class="line"></span><br><span class="line"># 定义动画的开始状态</span><br><span class="line">TweenMax.from(target, duration, vars);</span><br><span class="line"></span><br><span class="line"># 通过设置动画起始点和结束点来初始化一个TweenMax</span><br><span class="line">TweenMax.fromTo(target, duration, fromVars, toVars)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>有间隔的动画序列</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">是否必填</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">targets</td>
+<td align="left">Array</td>
+<td align="left">是</td>
+<td align="left">要进行动画的对象，可以有多个，以数组形式传入</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">number</td>
+<td align="left">是</td>
+<td align="left">动画持续的秒数（或帧数，如果设置了useFrames:true）</td>
+</tr>
+<tr>
+<td align="left">vars</td>
+<td align="left">object</td>
+<td align="left">是</td>
+<td align="left">设置动画的一些属性及其他参数</td>
+</tr>
+<tr>
+<td align="left">stagger</td>
+<td align="left">Number</td>
+<td align="left">否</td>
+<td align="left">每个动画的起始间隔，默认是0</td>
+</tr>
+<tr>
+<td align="left">onCompleteAll</td>
+<td align="left">Function</td>
+<td align="left">否</td>
+<td align="left">当所有显示对象都完成动画后要调用的函数</td>
+</tr>
+<tr>
+<td align="left">onCompleteAllParams</td>
+<td align="left">Array</td>
+<td align="left">否</td>
+<td align="left">onCompleteAll函数的参数，以数组形式传入</td>
+</tr>
+<tr>
+<td align="left">onCompleteAllScope</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">onCompleteAll函数的作用域，this</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 这些函数作用如上，只是多了设置间隔stagger</span><br><span class="line">TweenMax.staggerTo(targets:<span class="built_in">Array</span>, <span class="attr">duration</span>:<span class="built_in">Number</span>, <span class="attr">vars</span>:<span class="built_in">Object</span>, <span class="attr">stagger</span>:<span class="built_in">Number</span>, <span class="attr">onCompleteAll</span>:<span class="built_in">Function</span>, <span class="attr">onCompleteAllParams</span>:<span class="built_in">Array</span>, <span class="attr">onCompleteAllScope</span>:* )</span><br><span class="line"></span><br><span class="line"># 设置动画的开始状态</span><br><span class="line">TweenMax.staggerFrom(targets, dutarion, vars, stagger, onCompleteAll, onCompleteAllParams, onCompleteAllScope)</span><br><span class="line"></span><br><span class="line"># 通过设置动画起始点和结束点来初始化一个TweenMax</span><br><span class="line">TweenMax.staggerFromTo(target, duration, fromVars, toVars, onCompleteAll, onCompleteAllParams, onCompleteAllScope)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<p><strong>cycle的使用</strong></p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 在stagger(错开)动画中设定属性组。虽然stagger限定了动画目标使用相同的属性</span><br><span class="line">#  1. cycle对象里面可以设置数组形式的vars，以方便对每一个元素进行样式设置</span><br><span class="line">#  2. 还可使用function关键词</span><br><span class="line"></span><br><span class="line">cycle: &#123;</span><br><span class="line">	backgroundColor: [&apos;red&apos;, &apos;yellow&apos;, &apos;blue&apos;],</span><br><span class="line">	y: function(index)&#123;</span><br><span class="line">		return index*50;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* The cycle property is available in:</span><br><span class="line"></span><br><span class="line">TweenMax.staggerFromTo()</span><br><span class="line">TweenMax.staggerFrom()</span><br><span class="line">TweenMax.staggerTo()</span><br><span class="line">TimelineLite.staggerFromTo()</span><br><span class="line">TimelineLite.staggerFrom()</span><br><span class="line">TimelineLite.staggerTo()</span><br><span class="line">TimelineMax.staggerFromTo()</span><br><span class="line">TimelineMax.staggerFrom()</span><br><span class="line">TimelineMax.staggerTo()</span><br><span class="line"></span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>TweenMax.delayedCall()</strong></p>
+</blockquote>
+<p>提供一种在设定的时间（或帧）后调用函数的简单方法。</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">是否必填</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">delay</td>
+<td align="left">Number</td>
+<td align="left">是</td>
+<td align="left">要延迟的秒数（或帧数，如果设置了useFrames:true）</td>
+</tr>
+<tr>
+<td align="left">callback</td>
+<td align="left">Function</td>
+<td align="left">是</td>
+<td align="left">要延迟执行的函数</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">Array</td>
+<td align="left">否</td>
+<td align="left">传递给onComplete函数的参数，以数组形式传入</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">*</td>
+<td align="left">否</td>
+<td align="left">函数的作用域，this的指向，默认为空</td>
+</tr>
+<tr>
+<td align="left">useFrames</td>
+<td align="left">Boolean</td>
+<td align="left">否</td>
+<td align="left">设定延迟的时间模式是基于秒数还是帧数 ，默认false：秒</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例</span></span><br><span class="line"><span class="keyword">var</span> myTween2=TweenMax.delayedCall(<span class="number">2</span>,myFunction,[<span class="string">"参数1"</span>,<span class="string">"参数2"</span>])</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">param1, param2</span>) </span>&#123;</span><br><span class="line">   alert(<span class="string">"延迟2秒输出"</span>+param1+<span class="string">'和'</span>+param2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>TweenMax.set()</strong></p>
+</blockquote>
+<p>立即设置目标的属性值而不产生过渡动画，相当于0的动画时间。返回TweenMax对象。</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">类型</th>
+<th align="left">是否必填</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">target</td>
+<td align="left">object</td>
+<td align="left">是</td>
+<td align="left">需要移动的对象</td>
+</tr>
+<tr>
+<td align="left">vars</td>
+<td align="left">object</td>
+<td align="left">是</td>
+<td align="left">动画参数</td>
+</tr>
+</tbody></table>
+</li>
+<li><h4 id="动画参数Vars"><a href="#动画参数Vars" class="headerlink" title="动画参数Vars"></a><strong>动画参数Vars</strong></h4><ul>
+<li><p><code>delay:Number</code> <strong>动画开始之前的延迟秒数（以帧为单位时则为帧数）</strong></p>
+</li>
+<li><p><code>ease: Ease (or Function or String)</code> <strong>过渡效果的速度曲线（缓动效果）。</strong></p>
+</li>
+<li><p><code>repeat: Number</code> <strong>动画在第一次完成后应重复的次数。</strong></p>
+</li>
+<li><p><code>repeatDelay: Number</code> <strong>每次重复之间的秒数（或帧）。</strong></p>
+</li>
+<li><p><code>yoyo: Boolean</code>  <strong>如果设置yoyo为true，那么重复的动画将往返进行。</strong></p>
+</li>
+<li><p><code>yoyoEase: Ease | Boolean</code>  定义动画返回时，缓动效果如何，默认false，返回时的缓动效果按照前进时的反转</p>
+</li>
+<li><p><code>paused: Boolean</code> <strong>如果设置为true，动画将在创建时立即暂停。默认false</strong></p>
+</li>
+<li><p><code>startAt: Object</code> 定义动画返回时，缓动效果如何，默认false，返回时的缓动效果按照前进时的反转。</p>
+</li>
+<li><p><code>immediateRender:Boolean</code> 立即渲染，默认false。</p>
+<blockquote>
+<p>一般来说，TweenMax的运动对象会在下一个渲染周期前(也就是下一帧)被渲染到场景中，除非你设置了delay。如果想强制立即渲染，可以把这个参数设为true。<br>另外from()方法的运动对象是立即渲染的（默认true）</p>
+</blockquote>
+</li>
+<li><p><code>overwrite: String (or int)</code> 用来控制同一个对象上有多个动画时的覆盖之类的情况。[有六种模式，可以参考文档]</p>
+</li>
+<li><p><code>useFrames: Boolean</code> <strong>当设置为true时，对这个TweenMax对象的时间计算方式基于帧而不是秒，一般帧速约为16.66ms（60帧/秒）</strong></p>
+<blockquote>
+<p>可通过<strong>TweenMax.ticker.fps(10);</strong>设置帧速。帧速不能超过60</p>
+</blockquote>
+</li>
+<li><p><code>lazy: Boolean</code> 延迟渲染。这意味着它将尝试延迟渲染（写入值）直到最后时间点。这可以提高性能，因为它避免了某些浏览器所做的读/写/读/写布局颠簸。</p>
+</li>
+<li><p><code>autoCSS: Boolean</code> 自动识别CSS属性，省略css:{}包装器。默认true。</p>
+<blockquote>
+<p>默认为true，即为方便的形式，所以不用注意这个参数</p>
+</blockquote>
+</li>
+<li><p><code>callbackScope: Object</code> 用于所有回调的范围（onStart，onUpdate，onComplete等）。范围是“this”在任何回调中引用的内容。</p>
+</li>
+</ul>
+</li>
+<li><h4 id="动画事件"><a href="#动画事件" class="headerlink" title="动画事件"></a><strong>动画事件</strong></h4><p>一些节点的触发事件，用到使可以查<a href="https://www.tweenmax.com.cn/api/tweenmax/onComplete" target="_blank" rel="noopener">官方文档</a></p>
+</li>
+<li><h4 id="动画播放组件"><a href="#动画播放组件" class="headerlink" title="动画播放组件"></a><strong>动画播放组件</strong></h4><ul>
+<li>播放、暂停、获取暂停状态、从头开始、恢复播放、控制动画反向播放、获取动画的反转状态、直接进入某一时间点动画、改变动画时间</li>
+</ul>
+<blockquote>
+<p>使用时，详细参数查阅文档</p>
+</blockquote>
+</li>
+<li><h4 id="动画属性调整"><a href="#动画属性调整" class="headerlink" title="动画属性调整"></a><strong>动画属性调整</strong></h4><p>改变动画的时间，延迟，重复等属性</p>
+</li>
+<li><p><strong>实例属性/实例方法</strong></p>
+</li>
+</ul>
+<p>最后，值得一提的是，除了下述列出的简单动画，他还包含了<strong>文字效果、3D变形等动画插件</strong><br>其官网提供了许多炫酷的<strong>基础示例</strong>和<strong>实际应用</strong>，是很好的练习示例。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web前端/" rel="tag"># Web前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/21/flutter小知识/" rel="next" title="flutter小知识">
+                <i class="fa fa-chevron-left"></i> flutter小知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TweenMax动画库的使用"><span class="nav-number">1.</span> <span class="nav-text">TweenMax动画库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动画结构"><span class="nav-number">1.1.</span> <span class="nav-text">动画结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画参数Vars"><span class="nav-number">1.2.</span> <span class="nav-text">动画参数Vars</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画事件"><span class="nav-number">1.3.</span> <span class="nav-text">动画事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画播放组件"><span class="nav-number">1.4.</span> <span class="nav-text">动画播放组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画属性调整"><span class="nav-number">1.5.</span> <span class="nav-text">动画属性调整</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

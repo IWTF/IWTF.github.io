@@ -89,7 +89,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007Y69rkgy1g805whravxj30sb08ltaj.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2018/12/09/git基本使用/2018-12-09-git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/QQ%E5%9B%BE%E7%89%8720190312091658.jpg">
-<meta property="og:updated_time" content="2019-11-12T14:22:54.135Z">
+<meta property="og:updated_time" content="2019-12-23T00:30:41.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git基本使用">
 <meta name="twitter:description" content="作为程序员的宝库，GitHub的认识和使用毋庸置疑。 而作为一个强大，出色的版本管理工具，git可以使我们更好的使用GitHub。">
@@ -390,15 +390,15 @@
 
 <h5 id="添加另一个远程仓库"><a href="#添加另一个远程仓库" class="headerlink" title="添加另一个远程仓库"></a>添加另一个远程仓库</h5><ul>
 <li><p>添加</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add myrepo 自己的GitHub仓库地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add myrepo 自己的GitHub仓库地址</span><br></pre></td></tr></table></figure>
 
-<p>  这里myrepo是新建远程仓库的名字，可任起</p>
+<p>这里myrepo是新建远程仓库的名字，可任起</p>
 </li>
 <li><p>验证是否成功</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
 
-<p>  成功时会输出:</p>
-<p>  <img src="2018-12-09-git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/QQ%E5%9B%BE%E7%89%8720190312091658.jpg" alt></p>
+<p>成功时会输出:</p>
+<p><img src="2018-12-09-git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/QQ%E5%9B%BE%E7%89%8720190312091658.jpg" alt="图片加载错误"></p>
 </li>
 <li><p>使用</p>
 <ul>
@@ -411,14 +411,23 @@
 <li><p>当然，再写的过程中有了好的idea，可以直接向上游仓库提交</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add README.md</span><br><span class="line">git commit -m &apos;xxx&apos;</span><br><span class="line">git push origin</span><br></pre></td></tr></table></figure>
 
-<p>我们之前经常用<figure class="highlight plain"><figcaption><span>add .```表示添加所有更改，不用点，而用文件路径，表示只添加某个文件的更改</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    ![](2018-12-09-git基本使用/QQ图片20190312092900.jpg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##### git rebase</span><br><span class="line">* 应用场景一： 合并多次提交记录（commit）</span><br><span class="line">&gt; 有时候，我们可能会产生了多次commit，且可能多数无用，这样会为以后回滚代码带来不便</span><br><span class="line">1. 我们来合并最近2次的提交记录</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
+<p>我们之前经常用<code>git add .</code>表示添加所有更改，不用点，而用文件路径，表示只添加某个文件的更改</p>
 </li>
 </ul>
-<p>git rebase -i HEAD~2</p>
-<pre><code>
-</code></pre>
+<h5 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h5><ul>
+<li>应用场景一： 合并多次提交记录（commit）<blockquote>
+<p>有时候，我们可能会产生了多次commit，且可能多数无用，这样会为以后回滚代码带来不便</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>我们来合并最近2次的提交记录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
       
     </div>
     
@@ -537,7 +546,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -599,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建仓库"><span class="nav-number">2.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看Repo状态"><span class="nav-number">3.</span> <span class="nav-text">查看Repo状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作Statge状态"><span class="nav-number">4.</span> <span class="nav-text">操作Statge状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作commit状态"><span class="nav-number">5.</span> <span class="nav-text">操作commit状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上传到服务器"><span class="nav-number">6.</span> <span class="nav-text">上传到服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退"><span class="nav-number">7.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#筛选协作者的-commit"><span class="nav-number">8.</span> <span class="nav-text">筛选协作者的 commit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支管理"><span class="nav-number">9.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支合并过程中的冲突"><span class="nav-number">10.</span> <span class="nav-text">分支合并过程中的冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加另一个远程仓库"><span class="nav-number">11.</span> <span class="nav-text">添加另一个远程仓库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建仓库"><span class="nav-number">2.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看Repo状态"><span class="nav-number">3.</span> <span class="nav-text">查看Repo状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作Statge状态"><span class="nav-number">4.</span> <span class="nav-text">操作Statge状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作commit状态"><span class="nav-number">5.</span> <span class="nav-text">操作commit状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上传到服务器"><span class="nav-number">6.</span> <span class="nav-text">上传到服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本回退"><span class="nav-number">7.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#筛选协作者的-commit"><span class="nav-number">8.</span> <span class="nav-text">筛选协作者的 commit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支管理"><span class="nav-number">9.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支合并过程中的冲突"><span class="nav-number">10.</span> <span class="nav-text">分支合并过程中的冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加另一个远程仓库"><span class="nav-number">11.</span> <span class="nav-text">添加另一个远程仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#git-rebase"><span class="nav-number">12.</span> <span class="nav-text">git rebase</span></a></li></ol></div>
             
 
           </div>
