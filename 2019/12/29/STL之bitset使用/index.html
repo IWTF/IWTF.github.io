@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="文章整理,">
+  <meta name="keywords" content="C++,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="有点少，先不开放了🙃">
-<meta name="keywords" content="文章整理">
+<meta name="description" content="bitset存储二进制数位。它的一个元素一般只占1 bit，相当于一个char元素所占空间的八分之一。">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019-9文章整理">
-<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/09/25/2019-9文章整理/index.html">
+<meta property="og:title" content="STL之bitset使用">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/12/29/STL之bitset使用/index.html">
 <meta property="og:site_name" content="IWTF">
-<meta property="og:description" content="有点少，先不开放了🙃">
+<meta property="og:description" content="bitset存储二进制数位。它的一个元素一般只占1 bit，相当于一个char元素所占空间的八分之一。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-04T09:16:11.248Z">
+<meta property="og:updated_time" content="2019-12-30T23:32:29.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-9文章整理">
-<meta name="twitter:description" content="有点少，先不开放了🙃">
+<meta name="twitter:title" content="STL之bitset使用">
+<meta name="twitter:description" content="bitset存储二进制数位。它的一个元素一般只占1 bit，相当于一个char元素所占空间的八分之一。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/09/25/2019-9文章整理/">
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/12/29/STL之bitset使用/">
 
 
 
 
 
-  <title>2019-9文章整理 | IWTF</title>
+  <title>STL之bitset使用 | IWTF</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/09/25/2019-9文章整理/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/12/29/STL之bitset使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">2019-9文章整理</h1>
+          <h1 class="post-title" itemprop="name headline">STL之bitset使用</h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T08:07:30+08:00">
-                2019-09-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-29T21:51:49+08:00">
+                2019-12-29
               </time>
             
 
@@ -311,19 +311,99 @@
       
 
       
-        <div id="hbe-security">
-  <div class="hbe-input-container">
-  <input type="password" class="hbe-form-control" id="pass" placeholder="有点少，先不开放了🙃">
-    <label for="pass">有点少，先不开放了🙃</label>
-    <div class="bottom-line"></div>
-  </div>
-</div>
-<div id="decryptionError" style="display: none;">Incorrect Password!</div>
-<div id="noContentError" style="display: none;">No content to display!</div>
-<div id="encrypt-blog" style="display:none">
-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
-</div>
-<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+        <p><code>bitset</code>存储二进制数位。它的一个元素一般只占1 bit，相当于一个char元素所占空间的八分之一。</p>
+<a id="more"></a>
+
+<p>基本操作包括：</p>
+<ul>
+<li><p>初始化赋值</p>
+<ul>
+<li><p>直接通过数字赋值 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bitset</span>&lt;8&gt; a = <span class="number">0x5</span>;</span><br><span class="line"><span class="built_in">bitset</span>&lt;8&gt; b= <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用string对象初始化<code>bitset</code>对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str = strval(<span class="string">"1100"</span>);</span><br><span class="line"><span class="built_in">bitset</span>&lt;8&gt; a(str);</span><br><span class="line"><span class="built_in">bitset</span>&lt;8&gt; b(str, <span class="number">2</span>, <span class="number">1</span>);  <span class="comment">// 从str[2]开始，长度为1，初始化b</span></span><br><span class="line"><span class="built_in">bitset</span>&lt;8&gt; b(str, <span class="number">2</span>);     <span class="comment">// 从str[2]开始，到字符串结束</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类型相同的bitset可以直接赋值</p>
+</li>
+</ul>
+</li>
+<li><p>对<code>bitset</code>对象操作</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>b.any()</td>
+<td>b中是否存在置为1的二进制位？</td>
+</tr>
+<tr>
+<td>b.none()</td>
+<td>b中不存在置为1的二进制位吗？</td>
+</tr>
+<tr>
+<td>b.count()</td>
+<td>b中置为1的二进制位的个数</td>
+</tr>
+<tr>
+<td>b.size()</td>
+<td>b中二进制位的个数</td>
+</tr>
+<tr>
+<td>b[pos]</td>
+<td>访问b中在pos处的二进制位</td>
+</tr>
+<tr>
+<td>b.test(pos)</td>
+<td>b中在pos处的二进制位是否为1？</td>
+</tr>
+<tr>
+<td>b.set()</td>
+<td>把b中所有二进制位都置为1</td>
+</tr>
+<tr>
+<td>b.set(pos)</td>
+<td>把b中在pos处的二进制位置为1</td>
+</tr>
+<tr>
+<td>b.reset()</td>
+<td>把b中所有二进制位都置为0</td>
+</tr>
+<tr>
+<td>b.reset(pos)</td>
+<td>把b中在pos处的二进制位置为0</td>
+</tr>
+<tr>
+<td>b.flip()</td>
+<td>把b中所有二进制位逐位取反</td>
+</tr>
+<tr>
+<td>b.flip(pos)</td>
+<td>把b中在pos处的二进制位取反</td>
+</tr>
+<tr>
+<td>b.to_ulong()</td>
+<td>用b中同样的二进制位返回一个unsigned long值</td>
+</tr>
+<tr>
+<td>b.to_string()</td>
+<td>把b中的位集转换为string的结果</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>访问<code>bitset</code>对象中的位</p>
+<p>可以通过下标来实现对<code>bitset</code>某位的访问</p>
+</li>
+</ul>
+<blockquote>
+<p>bitset可以通过数字，字符串进行赋初值</p>
+<p>但bitset不能直接赋值给int</p>
+<p>bitset的1位可以赋值给int</p>
+</blockquote>
+
       
     </div>
     
@@ -340,7 +420,7 @@ U2FsdGVkX1+RvL2Fs4H2u4hC5o7jo+ZONCc07HR4c57uogN2ZkccgnECwwaj8SmzTLO2DbqYmjYpyHyJ
       
         <div class="post-tags">
           
-            <a href="/tags/文章整理/" rel="tag"># 文章整理</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
         </div>
       
@@ -353,8 +433,8 @@ U2FsdGVkX1+RvL2Fs4H2u4hC5o7jo+ZONCc07HR4c57uogN2ZkccgnECwwaj8SmzTLO2DbqYmjYpyHyJ
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/13/csp记录/" rel="next" title="csp记录">
-                <i class="fa fa-chevron-left"></i> csp记录
+              <a href="/2019/12/22/TweenMax动画插件的使用/" rel="next" title="TweenMax动画插件的使用">
+                <i class="fa fa-chevron-left"></i> TweenMax动画插件的使用
               </a>
             
           </div>
@@ -362,10 +442,6 @@ U2FsdGVkX1+RvL2Fs4H2u4hC5o7jo+ZONCc07HR4c57uogN2ZkccgnECwwaj8SmzTLO2DbqYmjYpyHyJ
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/04/2019-10文章整理/" rel="prev" title="2019-10文章整理">
-                2019-10文章整理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
