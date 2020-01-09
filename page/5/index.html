@@ -239,6 +239,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/06/17/在小程序中使用npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/17/在小程序中使用npm/" itemprop="url">在小程序中使用npm</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-17T09:30:22+08:00">
+                2019-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="在小程序中使用npm"><a href="#在小程序中使用npm" class="headerlink" title="在小程序中使用npm"></a>在小程序中使用<code>npm</code></h2><p>微信小程序在 2.2.1 版本后增加了对npm包加载的支持，是的小程序支持使用npm安装第三方包</p>
+<ol>
+<li><h4 id="在小程序中加载-npm-包"><a href="#在小程序中加载-npm-包" class="headerlink" title="在小程序中加载 npm 包"></a>在小程序中加载 <code>npm</code> 包</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先</span></span><br><span class="line">npm init -y</span><br><span class="line"><span class="comment">// 然后再下载所需的包</span></span><br><span class="line">npm install miniprogram-datepicker --production</span><br></pre></td></tr></table></figure>
+
+<p>node_modules可以 在小程序根目录下，也可以存在于小程序根目录下的各个子目录中。但是不可以 在小程序根目录外。<strong>使用–production选项</strong>，可以减少安装一些业务无关的 <code>npm</code> 包，从而减少整个小程序包的大小。</p>
+</li>
+<li><h4 id="构建-npm-包"><a href="#构建-npm-包" class="headerlink" title="构建 npm 包"></a>构建 <code>npm</code> 包</h4><p>在微信小程序开发工具的「工具」菜单下点击「构建 <code>npm</code>」命令，进行 npm 包的构建，此构建可以将 <code>npm</code> 包构建成在小程序中可加载使用的包。</p>
+<p><code>node_modules</code> 目录不会参与编译、上传和打包中，所以小程序<strong>想要使用 <code>npm</code> 包必须走一遍“构建 <code>npm</code>”的过程</strong>，在最外层的 node_modules 的同级目录下会生成一个 <code>miniprogram_npm</code> 目录，里面会存放构建打包后的 <code>npm</code> 包，也就是小程序真正使用的 <code>npm</code> 包。</p>
+<p>构建打包分为两种：</p>
+<ul>
+<li>小程序 <code>npm</code> 包会直接拷贝构建文件生成目录下的所有文件到 <code>miniprogram_npm</code> 中；其他 <code>npm</code> 包则会从入口 <code>js</code> 文件开始走一遍依赖分析和打包过程（类似 <code>webpack</code>）。</li>
+<li>寻找 <code>npm</code> 包的过程和 <code>npm</code> 的实现类似，从依赖 <code>npm</code> 包的文件所在目录开始逐层往外找，直到找到可用的 <code>npm</code> 包或是小程序根目录为止。</li>
+</ul>
+<p>构建完成后还需要<strong>确认项目已勾选</strong>了「使用 <code>npm</code> 模块」。</p>
+</li>
+<li><h4 id="使用-npm-包"><a href="#使用-npm-包" class="headerlink" title="使用 npm 包"></a>使用 <code>npm</code> 包</h4><ul>
+<li><p><code>js</code> 中引入 <code>npm</code> 包：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> package = <span class="built_in">require</span>(<span class="string">'packageName'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>npm</code> 包中的自定义组件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"usingComponents"</span>: &#123;</span><br><span class="line">      <span class="string">"datepicker"</span>: <span class="string">"miniprogram-datepicker"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>转载</strong> <a href="https://segmentfault.com/a/1190000016706395" target="_blank" rel="noopener">在小程序开发中使用 npm</a></p>
+<p><a href="[https://blog.pangao.vip/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E7%9A%84%E4%BA%91%E5%BC%80%E5%8F%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8npm%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96/](https://blog.pangao.vip/微信小程序中的云开发如何使用npm安装依赖/)">微信小程序中的云开发如何使用npm安装依赖</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/06/16/SeDaSC阅读报告/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1364,131 +1512,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/03/05/噫吁嚱/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="IWTF">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/33515162.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IWTF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/噫吁嚱/" itemprop="url">噫吁嚱</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T19:21:09+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Welcome to my blog, enter password to read.
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/噫吁嚱/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1541,7 +1564,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1607,7 +1630,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
