@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Web前端,小程序,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="小程序分享海报的一些技巧  文字错乱 多次测试后发现，wx.canvasToTempFilePath()这个方法不只需要在ctx.draw回调中执行，还需要setTimeout一定时间才能保证保存的图片是自己程序预期的样子。  （PS： 若已调用setTimeout仍有此问题，则说明设置时间太短了，当然，是针对出问题的手机…）    rpx和px单位互转 px转rpx  1const px = r">
-<meta name="keywords" content="Web前端,小程序">
+<meta name="description" content="这是一篇空白文章">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小程序海报采坑">
-<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/06/01/小程序海报采坑/index.html">
+<meta property="og:title" content="2020-1-30日志">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/01/30/2020-1-30日志/index.html">
 <meta property="og:site_name" content="IWTF">
-<meta property="og:description" content="小程序分享海报的一些技巧  文字错乱 多次测试后发现，wx.canvasToTempFilePath()这个方法不只需要在ctx.draw回调中执行，还需要setTimeout一定时间才能保证保存的图片是自己程序预期的样子。  （PS： 若已调用setTimeout仍有此问题，则说明设置时间太短了，当然，是针对出问题的手机…）    rpx和px单位互转 px转rpx  1const px = r">
+<meta property="og:description" content="这是一篇空白文章">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-07T10:44:07.594Z">
+<meta property="og:updated_time" content="2020-01-30T12:16:34.391Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小程序海报采坑">
-<meta name="twitter:description" content="小程序分享海报的一些技巧  文字错乱 多次测试后发现，wx.canvasToTempFilePath()这个方法不只需要在ctx.draw回调中执行，还需要setTimeout一定时间才能保证保存的图片是自己程序预期的样子。  （PS： 若已调用setTimeout仍有此问题，则说明设置时间太短了，当然，是针对出问题的手机…）    rpx和px单位互转 px转rpx  1const px = r">
+<meta name="twitter:title" content="2020-1-30日志">
+<meta name="twitter:description" content="这是一篇空白文章">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/06/01/小程序海报采坑/">
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/01/30/2020-1-30日志/">
 
 
 
 
 
-  <title>小程序海报采坑 | IWTF</title>
+  <title>2020-1-30日志 | IWTF</title>
   
 
 
@@ -243,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2019/06/01/小程序海报采坑/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/01/30/2020-1-30日志/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -260,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">小程序海报采坑</h1>
+          <h1 class="post-title" itemprop="name headline">2020-1-30日志</h1>
         
 
         <div class="post-meta">
@@ -273,8 +272,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-01T20:39:36+08:00">
-                2019-06-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-30T10:24:25+08:00">
+                2020-01-30
               </time>
             
 
@@ -311,22 +310,19 @@
       
 
       
-        <p><a href="https://iwtf.github.io/2019/03/04/%E5%B0%8F%E7%A8%8B%E5%BA%8Fcanvas%E2%80%94%E2%80%94%E6%B5%B7%E6%8A%A5/" target="_blank" rel="noopener">小程序分享海报的一些技巧</a></p>
-<ol>
-<li><h4 id="文字错乱"><a href="#文字错乱" class="headerlink" title="文字错乱"></a>文字错乱</h4><p> 多次测试后发现，wx.canvasToTempFilePath()这个方法不只需要在ctx.draw回调中执行，还需要setTimeout一定时间才能保证保存的图片是自己程序预期的样子。</p>
-<p> （PS： 若已调用setTimeout仍有此问题，则说明设置时间太短了，当然，是针对出问题的手机…）</p>
-</li>
-</ol>
-<ol start="2">
-<li><h4 id="rpx和px单位互转"><a href="#rpx和px单位互转" class="headerlink" title="rpx和px单位互转"></a><code>rpx</code>和<code>px</code>单位互转</h4><p> <strong>px转rpx</strong></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const px = rpx / 750 * wx.getSystemInfoSync().windowWidth;</span><br></pre></td></tr></table></figure>
-
-<p> <strong>rpx转px</strong></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const rpx = px * 750 / wx.getSystemInfoSync().windowWidth;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
+        <div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="Please enter the password to read the blog.">
+    <label for="pass">Please enter the password to read the blog.</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
     
@@ -341,14 +337,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Web前端/" rel="tag"># Web前端</a>
-          
-            <a href="/tags/小程序/" rel="tag"># 小程序</a>
-          
-        </div>
-      
 
       
       
@@ -358,8 +346,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/17/鱼书开发日志/" rel="next" title="鱼书开发日志">
-                <i class="fa fa-chevron-left"></i> 鱼书开发日志
+              <a href="/2020/01/23/2020-1-23日志/" rel="next" title="2020-1-23日志">
+                <i class="fa fa-chevron-left"></i> 2020-1-23日志
               </a>
             
           </div>
@@ -367,10 +355,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/16/SeDaSC阅读报告/" rel="prev" title="SeDaSC阅读报告">
-                SeDaSC阅读报告 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -420,17 +404,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -499,22 +474,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文字错乱"><span class="nav-number">1.</span> <span class="nav-text">文字错乱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rpx和px单位互转"><span class="nav-number">2.</span> <span class="nav-text">rpx和px单位互转</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
