@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="string转char*12char *cs = new char[strlen(str.c_str)+1]; // 此处一定用strlen，之间用str.size()会出错strcpy(cs, str.c_str());  char*转string123456char cs[10] = &quot;abcdef&quot;;// 赋值转换string str1 = cs;// 构造转换string str2(cs)">
+<meta name="description" content="string虽然用起来非常方便，但是有些封装的函数只支持char*，所以，今天在这里记录一下string和char*之间的转换">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="string和字符数组间的转换">
 <meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/04/string和字符数组间的转换/index.html">
 <meta property="og:site_name" content="IWTF">
-<meta property="og:description" content="string转char*12char *cs = new char[strlen(str.c_str)+1]; // 此处一定用strlen，之间用str.size()会出错strcpy(cs, str.c_str());  char*转string123456char cs[10] = &quot;abcdef&quot;;// 赋值转换string str1 = cs;// 构造转换string str2(cs)">
+<meta property="og:description" content="string虽然用起来非常方便，但是有些封装的函数只支持char*，所以，今天在这里记录一下string和char*之间的转换">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-04T09:17:39.766Z">
+<meta property="og:updated_time" content="2020-03-05T03:09:30.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="string和字符数组间的转换">
-<meta name="twitter:description" content="string转char*12char *cs = new char[strlen(str.c_str)+1]; // 此处一定用strlen，之间用str.size()会出错strcpy(cs, str.c_str());  char*转string123456char cs[10] = &quot;abcdef&quot;;// 赋值转换string str1 = cs;// 构造转换string str2(cs)">
+<meta name="twitter:description" content="string虽然用起来非常方便，但是有些封装的函数只支持char*，所以，今天在这里记录一下string和char*之间的转换">
 
 
 
@@ -311,7 +311,10 @@
       
 
       
-        <h4 id="string转char"><a href="#string转char" class="headerlink" title="string转char*"></a>string转<code>char*</code></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *cs = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(str.c_str)+<span class="number">1</span>]; <span class="comment">// 此处一定用strlen，之间用str.size()会出错</span></span><br><span class="line"><span class="built_in">strcpy</span>(cs, str.c_str());</span><br></pre></td></tr></table></figure>
+        <p><code>string</code>虽然用起来非常方便，但是有些封装的函数只支持<code>char*</code>，所以，今天在这里记录一下<code>string</code>和<code>char*</code>之间的转换</p>
+<a id="more"></a>
+
+<h4 id="string转char"><a href="#string转char" class="headerlink" title="string转char*"></a>string转<code>char*</code></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *cs = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(str.c_str)+<span class="number">1</span>]; <span class="comment">// 此处一定用strlen，之间用str.size()会出错</span></span><br><span class="line"><span class="built_in">strcpy</span>(cs, str.c_str());</span><br></pre></td></tr></table></figure>
 
 <h4 id="char-转string"><a href="#char-转string" class="headerlink" title="char*转string"></a><code>char*</code>转string</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> cs[<span class="number">10</span>] = <span class="string">"abcdef"</span>;</span><br><span class="line"><span class="comment">// 赋值转换</span></span><br><span class="line"><span class="built_in">string</span> str1 = cs;</span><br><span class="line"><span class="comment">// 构造转换</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">str2</span><span class="params">(cs)</span></span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">str3</span><span class="params">(cs, cs+<span class="built_in">strlen</span>(cs))</span></span>;</span><br></pre></td></tr></table></figure>
 
