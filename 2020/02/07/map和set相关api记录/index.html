@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="set和map属于关联容器。其他多属于顺序容器。关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。">
+<meta name="description" content="set和map属于关联容器。其他多属于顺序容器。关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。 在不用到set/map的排序时，建议使用unordered_set/unordered_map（C++11），其速度要比set/map快的多">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="map和set相关api记录">
 <meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/02/07/map和set相关api记录/index.html">
 <meta property="og:site_name" content="IWTF">
-<meta property="og:description" content="set和map属于关联容器。其他多属于顺序容器。关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。">
+<meta property="og:description" content="set和map属于关联容器。其他多属于顺序容器。关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。 在不用到set/map的排序时，建议使用unordered_set/unordered_map（C++11），其速度要比set/map快的多">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-18T08:56:46.095Z">
+<meta property="og:updated_time" content="2020-03-17T07:58:41.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="map和set相关api记录">
-<meta name="twitter:description" content="set和map属于关联容器。其他多属于顺序容器。关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。">
+<meta name="twitter:description" content="set和map属于关联容器。其他多属于顺序容器。关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。 在不用到set/map的排序时，建议使用unordered_set/unordered_map（C++11），其速度要比set/map快的多">
 
 
 
@@ -312,6 +312,7 @@
 
       
         <p>set和map属于关联容器。其他多属于顺序容器。关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。</p>
+<p><strong>在不用到set/map的排序时，建议使用unordered_set/unordered_map（C++11），其速度要比set/map快的多</strong></p>
 <a id="more"></a>
 
 <h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>下面是对<a href="https://www.cnblogs.com/fnlingnzb-learner/p/5833051.html" target="_blank" rel="noopener">文章</a>中介绍map用法的一些照搬</p>
@@ -363,7 +364,7 @@
 <p>这里要讲的是一点比较高深的用法了,排序问题，STL中默认是采用小于号来排序的，以上代码在排序上是不存在任何问题的，因为上面的关键字是int 型，它本身支持小于号运算，在一些特殊情况，比如关键字是一个结构体，涉及到排序就会出现问题，因为它没有小于号操作，insert等函数在编译的时候过 不去，下面给出两个方法解决这个问题。</p>
 </li>
 </ul>
-<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><p><strong>set</strong>是一个容量动态变化的容器（<strong>使用了红黑树</strong>）【只能通过遍历访问子元素，不能通过索引】，且系统会为其储存元素按递增排序；</p>
+<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><p><strong>set</strong>是一个容量动态变化的容器（<strong>使用了红黑树</strong>）【只能通过遍历访问子元素，不能通过索引，但可以使用find】，且系统会为其储存元素按递增排序；</p>
 <ul>
 <li>如果存入自定义结构，可以重写<code>&lt;、&gt;</code>操作符</li>
 <li>常见操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">begin();            // 返回指向第一个元素的迭代器</span><br><span class="line">end();              // 返回指向最后一个元素的迭代器</span><br><span class="line">clear();            // 清除所有元素</span><br><span class="line">count();            // 返回某个值元素的个数</span><br><span class="line">empty();            // 如果集合为空，返回true</span><br><span class="line">equal_range();      // 返回集合中与给定值相等的上下限的两个迭代器</span><br><span class="line">erase()				// 删除集合中的元素</span><br><span class="line">find() 				// 返回一个指向被查找到元素的迭代器</span><br><span class="line">get_allocator()		// 返回集合的分配器</span><br><span class="line">insert()			// 在集合中插入元素</span><br><span class="line">// set中进行插入的insert函数。其实这个函数是有返回值的，只不过我们不常用。它的返回值是一个pair，first成员就是指向新插入的元素在set中位置的迭代器，second成员是一个bool表示这次插入操作是否成功。</span><br><span class="line">lower_bound()		// 返回指向大于（或等于）某值的第一个元素的迭代器</span><br><span class="line">key_comp()			// 返回一个用于元素间值比较的函数</span><br><span class="line">max_size() 			// 返回集合能容纳的元素的最大限值</span><br><span class="line">rbegin()			// 返回指向集合中最后一个元素的反向迭代器</span><br><span class="line">rend() 				// 返回指向集合中第一个元素的反向迭代器</span><br><span class="line">size()				// 集合中元素的数目</span><br><span class="line">swap()				// 交换两个集合变量</span><br><span class="line">upper_bound()		// 返回大于某个值元素的迭代器</span><br><span class="line">value_comp()		// 返回一个用于比较元素间的值的函数</span><br></pre></td></tr></table></figure></li>

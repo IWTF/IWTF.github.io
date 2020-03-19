@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="IWTF">
 <meta property="og:description" content="string虽然用起来非常方便，但是有些封装的函数只支持char*，所以，今天在这里记录一下string和char*之间的转换">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-05T03:09:30.564Z">
+<meta property="og:updated_time" content="2020-03-17T09:41:20.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="string和字符数组间的转换">
 <meta name="twitter:description" content="string虽然用起来非常方便，但是有些封装的函数只支持char*，所以，今天在这里记录一下string和char*之间的转换">
@@ -320,6 +320,9 @@
 
 <h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p><strong>封装的对string类型进行split的函数</strong> </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; split2(<span class="keyword">const</span> <span class="built_in">string</span> &amp;str, <span class="keyword">const</span> <span class="built_in">string</span> &amp;pattern)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">char</span> * strc = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(str.c_str())+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(strc, str.c_str());   <span class="comment">//string转换成C-string</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">    <span class="keyword">char</span>* temp = strtok(strc, pattern.c_str());</span><br><span class="line">    <span class="keyword">while</span>(temp != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        res.push_back(<span class="built_in">string</span>(temp));</span><br><span class="line">        temp = strtok(<span class="literal">NULL</span>, pattern.c_str());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span>[] strc;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现split得另一种方法，两种方法复杂度相同</strong><br>暂且可以认为这种方法稍稍好一丢丢（虽然每依据，看到程序运行时间）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; split2(<span class="keyword">const</span> <span class="built_in">string</span> &amp;str, <span class="keyword">const</span> <span class="built_in">string</span> &amp;pattern) &#123;</span><br><span class="line">  <span class="keyword">int</span> beg = <span class="number">0</span>, pos, len=pattern.size();</span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; ret;</span><br><span class="line">  <span class="keyword">while</span> ((pos = str.find(pattern, beg)) != <span class="built_in">string</span>::npos) &#123;</span><br><span class="line">    <span class="built_in">string</span> temp = str.substr(beg, (pos-beg));</span><br><span class="line">    ret.push_back(temp);</span><br><span class="line">    beg = pos + len;</span><br><span class="line">  &#125;</span><br><span class="line">  ret.push_back(str.substr(beg));</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -359,8 +362,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/08/在线PS使用记录/" rel="prev" title="在线PS使用记录">
-                在线PS使用记录 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/19/算法课总结/" rel="prev" title="算法课总结">
+                算法课总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
