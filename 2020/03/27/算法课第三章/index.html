@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="记录">
+<meta name="description" content="基本数据结构：链表，图，树">
 <meta name="keywords" content="课程总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法课第六章">
-<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/26/算法课分治/index.html">
+<meta property="og:title" content="算法课第三章">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/27/算法课第三章/index.html">
 <meta property="og:site_name" content="IWTF">
-<meta property="og:description" content="记录">
+<meta property="og:description" content="基本数据结构：链表，图，树">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-27T10:30:05.051Z">
+<meta property="og:updated_time" content="2020-03-27T10:29:59.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法课第六章">
-<meta name="twitter:description" content="记录">
+<meta name="twitter:title" content="算法课第三章">
+<meta name="twitter:description" content="基本数据结构：链表，图，树">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/26/算法课分治/">
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/27/算法课第三章/">
 
 
 
 
 
-  <title>算法课第六章 | IWTF</title>
+  <title>算法课第三章 | IWTF</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/26/算法课分治/">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/27/算法课第三章/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="IWTF">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法课第六章</h1>
+          <h1 class="post-title" itemprop="name headline">算法课第三章</h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-26T22:37:38+08:00">
-                2020-03-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-27T18:27:45+08:00">
+                2020-03-27
               </time>
             
 
@@ -311,35 +311,68 @@
       
 
       
-        <p>记录</p>
+        <p>基本数据结构：链表，图，树</p>
 <a id="more"></a>
 
-<h3 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h3><p><strong>分治算法的优缺：</strong></p>
-<p>考虑的细节比循环迭代要少，写起来简单，理解起来也容易，通常是一些递归算法</p>
-<p>但当有大量返回值时，会增加系统开销</p>
-<p><strong>分治范式：</strong>1. 划分； 2. 治理； 3. 组合</p>
-<p><strong>递归算法和迭代算法的转换</strong> 自己找资料掌握</p>
-<h4 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h4><h5 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h5><p>递归方法实现，循环方法实现</p>
-<h5 id="二分搜索的扩展"><a href="#二分搜索的扩展" class="headerlink" title="二分搜索的扩展"></a>二分搜索的扩展</h5><p><strong>扩展一</strong>：如果有序数组中有重复元素，1. 要寻找第一个等于k的；2. 也可以寻找第一个大于k的；3. 或者等于k的范围；</p>
-<p>类似思路的问题：木棒切割问题</p>
-<p><strong>扩展二</strong>：一些数学问题的求解</p>
-<p>例一： 通过<code>f(x)=x^2</code>在[1,2]范围内的二分求解 <code>根号2</code> 的值</p>
-<p>例二：装水问题</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = le<span class="number">-5</span>; <span class="comment">// 这里精度设置为10^-5，可以根据题目要求来</span></span><br></pre></td></tr></table></figure>
-
-<p>扩展三**：寻找旋转数组中的最大值，要求：时间复杂度为log(n)</p>
-<blockquote>
-<p>对于一个升序的数组A[1…n]，对其变换，为[Ak+1, Ak+2, …, An, A1, A2…Ak]，这样一个数组被称为原数组A的一个k旋转</p>
-</blockquote>
-<h5 id="合并排序"><a href="#合并排序" class="headerlink" title="合并排序"></a>合并排序</h5><h5 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h5><h5 id="寻找第k小元素"><a href="#寻找第k小元素" class="headerlink" title="寻找第k小元素"></a>寻找第k小元素</h5><h3 id="一些概念的区别"><a href="#一些概念的区别" class="headerlink" title="一些概念的区别"></a>一些概念的区别</h3><p><strong>动态规划</strong></p>
-<p>一个问题必须拥有重叠子问题和最优子问题，才能使用动态规划去解决</p>
-<p><strong>分治和动态规划</strong></p>
-<p>相同点：分治和动态规划都是将问题分解为子问题，然后合并子问题得到原问题的解</p>
-<p>不同点：分治法分解出的子问题是不重叠的；而动态规划解决的问题拥有重叠子问题。另外，分治法解决的问题不一定是最优化问题，但动态规划解决的问题一定是最优化问题</p>
-<p><strong>贪心和动态规划</strong></p>
-<p>相同点：两者都要求原问题必须拥有最优子结构。</p>
-<p>不同点：</p>
-<p><strong>贪心</strong>采用的方法类似于动态规划中”自顶向下“的求解，但它不等待子问题求解完毕再选择使用哪一个求解，而是通过一种策略直接选择一个子问题进行求解。也就是说，他只是根据某策略在上一步基础上继续选择。<strong>动态规划</strong>会考虑所有的子问题，并选择继承能得到最有结果的那个，对暂时没有继承的子问题，由于重叠子问题的存在，后期可能会再次考虑他们，因此还有机会成为全局最优的一部分。</p>
+<h3 id="算法第三章"><a href="#算法第三章" class="headerlink" title="算法第三章"></a>算法第三章</h3><h4 id="链表"><a href="#链表" class="headerlink" title="#链表"></a>#链表</h4><p>链表由优先的元素（或节点）序列组成，节点包含：信息和到下一个节点的指针。基本操作有插入和删除。对链表的访问加一些限制，就能得到另外两种数据结构：堆栈和队列。</p>
+<h5 id="专有名词"><a href="#专有名词" class="headerlink" title="##专有名词"></a>##专有名词</h5><p>表头、节点、前驱节点</p>
+<h5 id="分类"><a href="#分类" class="headerlink" title="##分类"></a>##分类</h5><ul>
+<li>单向链表：记录下一个节点的地址</li>
+<li>循环链表：链表中最后一个元素记录了第一个元素的地址</li>
+<li>双向链表：每一个节点也指向他的前驱节点</li>
+</ul>
+<h4 id="堆栈和队列"><a href="#堆栈和队列" class="headerlink" title="#堆栈和队列"></a>#堆栈和队列</h4><p>堆栈是一种<strong>只允许在栈顶</strong>进行插入和删除运算的链表（也可以在数组中实现这些运算）</p>
+<h4 id="图"><a href="#图" class="headerlink" title="#图"></a>#图</h4><p>图<code>G=(V, E)</code>有一个顶点集合V和一个边集合E组成。图既可以是有向的，也可以是无向的。如果G是无向的，那么E中每一条边都是一个无序的定点对；如果G是有向的，那么边为有序的顶点对。</p>
+<p>无向图中<strong>顶点的度</strong>是和他邻接的顶点的个数；有向图中顶点的<strong>入度</strong>和<strong>出度</strong>分别是<code>连接到该顶点的边</code>和<code>从该顶点连接到其他顶的的边</code>的个数。</p>
+<h5 id="专有名词-1"><a href="#专有名词-1" class="headerlink" title="##专有名词"></a>##专有名词</h5><p>路径，路径是简单的（路径上所有顶点都不同）、回路，奇回路（奇数长度的回路）</p>
+<p>无回路图</p>
+<p><strong>连通图</strong>：每一个顶点到其他顶点都是可达的，一个图的连通分支是图的<strong>最大连通子图</strong></p>
+<p>有向图中，如果子图的每一对顶点都相互可达，则这个子图称为<strong>强连通分支</strong></p>
+<p><strong>完全图</strong>：一个图（无向/有向）的每一对顶点之间都恰有一条边</p>
+<ul>
+<li>另<code>G=(V, E)</code>是有n个顶点的完全无向图，那么<code>|E| =  n(n-1)/2</code></li>
+<li>另<code>G=(V, E)</code>是有n个顶点的完全有向图<code>(名词对不对a...)</code>，那么<code>|E| =  n(n-1)</code></li>
+</ul>
+<p><strong>二分图</strong>：如果无向图<code>G=(V, E)</code>中，V可以分为两个不相交的子集X和Y，是的E中每一天边的一端在X中，而另一端在Y中，则这个<strong>无向图称为二分图</strong>。</p>
+<p><strong>完全二分图</strong>：既是二分图，也是完全图。</p>
+<h5 id="图的表示"><a href="#图的表示" class="headerlink" title="##图的表示"></a>##图的表示</h5><ul>
+<li><p>布尔矩阵（邻接矩阵）：有边为1，无边为0</p>
+<p>邻接矩阵的性质：</p>
+<ul>
+<li>对无向图而言，邻接矩阵一定是对称的，主对角线一定为0；</li>
+<li>在无向图中，任一顶点i的度为第i列的所有非零元素；在有向图中，顶点i的出度为第i行非零个数，入读为第i列非零个数</li>
+</ul>
+</li>
+<li><p>邻接表：而且节省空间</p>
+</li>
+</ul>
+<h5 id="平面图"><a href="#平面图" class="headerlink" title="##平面图"></a>##平面图</h5><p>如果图<code>G=(V, E)</code>可以嵌入平面而没有任何边相互穿越，这个图就使平面图</p>
+<p><strong>平面图定点数，边数和区域数之间的关系</strong>：定点数n，边数m，区域数r</p>
+<p><code>n-m+r=2</code>   和   <code>m &lt;= 3n - 6</code></p>
+<h4 id="树"><a href="#树" class="headerlink" title="#树"></a>#树</h4><p>一个自由树是不包含回路的连通无向图。一个森林是顶点不相交的树的集合</p>
+<p><strong>根树</strong>：一颗带有特殊顶点r的树，顶点r为树的根</p>
+<p>父节点，子节点，兄弟节点</p>
+<p>叶子节点，内部顶点（除叶子节点外所有）</p>
+<p>祖先，真祖先，后代，真后代</p>
+<p>顶点v的深度是从根顶点到v的路径长度，根顶点深度为0，</p>
+<h5 id="树的遍历"><a href="#树的遍历" class="headerlink" title="##树的遍历"></a>##树的遍历</h5><p>对一棵树的顶点进行系统的遍历和排序，其中最重要的三种为：前序遍历、中序遍历、后序遍历</p>
+<h5 id="二叉树"><a href="#二叉树" class="headerlink" title="##二叉树"></a>##二叉树</h5><p><strong>满二叉树</strong>：二叉树中每个内部节点都正好有两个儿子</p>
+<p><strong>完全二叉树</strong>：是满二叉树，而且所有叶子节点有同样的深度</p>
+<p><strong>几乎完全二叉树</strong>：除了最右边位置上的一个或几个叶子可能缺少外，他是丰满的</p>
+<h5 id="二叉树的一些定量特征"><a href="#二叉树的一些定量特征" class="headerlink" title="##二叉树的一些定量特征"></a>##二叉树的一些定量特征</h5><ul>
+<li><p>第j层顶点最多为：<code>2^j</code></p>
+</li>
+<li><p>高度为<code>k</code>的完全二叉树顶点数：<code>2^(k+1) - 1</code></p>
+<p>高度为<code>k</code>（根到也得边数），则有<code>0-k</code>层，供<code>k+1</code>层</p>
+</li>
+<li><p>任何有n个顶点得二叉树，高度至少为<code>log(n)</code>向下取整，最多为n-1</p>
+</li>
+<li><p>有n个顶点得完全或几乎完全二叉树高度为<code>log(n)</code>向下取整</p>
+</li>
+<li><p>在完全二叉树中，叶子数等于内部节点数加1</p>
+</li>
+</ul>
+<h5 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="##二叉搜索树"></a>##二叉搜索树</h5><p>非常重要得一种数据结构，搜索复杂度达到<code>long(n)</code></p>
 
       
     </div>
@@ -370,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/25/queue和priority—-queue/" rel="next" title="栈和队列">
-                <i class="fa fa-chevron-left"></i> 栈和队列
+              <a href="/2020/03/26/算法课分治/" rel="next" title="算法课第六章">
+                <i class="fa fa-chevron-left"></i> 算法课第六章
               </a>
             
           </div>
@@ -379,10 +412,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/27/算法课第三章/" rel="prev" title="算法课第三章">
-                算法课第三章 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -521,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分治"><span class="nav-number">1.</span> <span class="nav-text">分治</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二分法"><span class="nav-number">1.1.</span> <span class="nav-text">二分法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二分搜索"><span class="nav-number">1.1.1.</span> <span class="nav-text">二分搜索</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二分搜索的扩展"><span class="nav-number">1.1.2.</span> <span class="nav-text">二分搜索的扩展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并排序"><span class="nav-number">1.1.3.</span> <span class="nav-text">合并排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速幂"><span class="nav-number">1.1.4.</span> <span class="nav-text">快速幂</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻找第k小元素"><span class="nav-number">1.1.5.</span> <span class="nav-text">寻找第k小元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些概念的区别"><span class="nav-number">2.</span> <span class="nav-text">一些概念的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法第三章"><span class="nav-number">1.</span> <span class="nav-text">算法第三章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链表"><span class="nav-number">1.1.</span> <span class="nav-text">#链表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#专有名词"><span class="nav-number">1.1.1.</span> <span class="nav-text">##专有名词</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类"><span class="nav-number">1.1.2.</span> <span class="nav-text">##分类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆栈和队列"><span class="nav-number">1.2.</span> <span class="nav-text">#堆栈和队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图"><span class="nav-number">1.3.</span> <span class="nav-text">#图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#专有名词-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">##专有名词</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图的表示"><span class="nav-number">1.3.2.</span> <span class="nav-text">##图的表示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#平面图"><span class="nav-number">1.3.3.</span> <span class="nav-text">##平面图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#树"><span class="nav-number">1.4.</span> <span class="nav-text">#树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#树的遍历"><span class="nav-number">1.4.1.</span> <span class="nav-text">##树的遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二叉树"><span class="nav-number">1.4.2.</span> <span class="nav-text">##二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二叉树的一些定量特征"><span class="nav-number">1.4.3.</span> <span class="nav-text">##二叉树的一些定量特征</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二叉搜索树"><span class="nav-number">1.4.4.</span> <span class="nav-text">##二叉搜索树</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
