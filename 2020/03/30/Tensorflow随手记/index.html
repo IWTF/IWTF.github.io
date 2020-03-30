@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="deep Learning,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2333, 还是一如既往的对什么都有兴趣，趁着这学期不忙，了解一些机器学习知识，跑几个小demo">
+<meta name="keywords" content="deep Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tensorflow随手记">
+<meta property="og:url" content="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/30/Tensorflow随手记/index.html">
+<meta property="og:site_name" content="IWTF">
+<meta property="og:description" content="2333, 还是一如既往的对什么都有兴趣，趁着这学期不忙，了解一些机器学习知识，跑几个小demo">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0077I52Sly1gd9qu4ojv5j31vm10ygne.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0077I52Sly1gd9x4g9px8j318f0nm16z.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0077I52Sly1gd9xy1hk58j30o40dajzu.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0077I52Sly1gd9zoz16glj30nl0cewjv.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0077I52Sly1gd9zvpwrvfj30ml0cr415.jpg">
+<meta property="og:updated_time" content="2020-03-30T13:10:27.959Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tensorflow随手记">
+<meta name="twitter:description" content="2333, 还是一如既往的对什么都有兴趣，趁着这学期不忙，了解一些机器学习知识，跑几个小demo">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0077I52Sly1gd9qu4ojv5j31vm10ygne.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/30/Tensorflow随手记/">
+
+
+
+
+
+  <title>Tensorflow随手记 | IWTF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IWTF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raw.githubusercontent.com/IWTF/IWTF.github.io/master/2020/03/30/Tensorflow随手记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IWTF">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/33515162.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IWTF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Tensorflow随手记</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-30T21:04:20+08:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>2333, 还是一如既往的对什么都有兴趣，趁着这学期不忙，了解一些机器学习知识，跑几个小demo</p>
+<a id="more"></a>
+
+<p>在机器学习中，我们通常反复的实验，尝试不同的神经网络，修改层级数和神经元数量，已得到更优的模型。</p>
+<p>图像是由大量像素点构成，而机器学习的输入只能是向量，所以，一般我没会把图片转换为[n<em>n]的一个一维矩阵，这个过程叫做*</em>扁平化**</p>
+<p>在训练模型时，我们通常把数据集划分为不同的子集（训练集/测试集），原因是，当我们通过训练集训练模型后，我们希望通过模型没有见过的数据来看看模型的效果如何</p>
+<p>通过测试数据集，我们可以使用网络从未见过的数据测试网络。这样我们便能检测模型的泛化程度，即泛化到训练期间未见过的数据的效果，而不是仅仅记住训练样本。</p>
+<p>机器学习模型只有两种，一种是分类模型，一种是回归模型；区别在于我们是想得到一个数字，还是一组概率分布</p>
+<h5 id="密集层的概念"><a href="#密集层的概念" class="headerlink" title="密集层的概念"></a>密集层的概念</h5><p>这是一种神经网络层级，他是完全连接的层级，所以Keras中称为密集层。这种连接灵活性很好，能够构建更庞大的网络，但是，有时候你可能一开始并不太了解到底应该如何设计网络，所以就设定一切都相互连接，这就是密集层。</p>
+<p>当要解决的问题非线性时，我们可以通常在密集层添加一些数学函数，一遍可以达到更好的训练效果。如下面介绍的ReLU</p>
+<h5 id="修正线性单元-ReLU"><a href="#修正线性单元-ReLU" class="headerlink" title="修正线性单元 (ReLU)"></a>修正线性单元 (ReLU)</h5><p>ReLU 是修正线性单元的简称，他是一种激活函数，能够使模型解决非线性问题。并且是如下所示的数学函数：</p>
+<p><img src="http://ww1.sinaimg.cn/large/0077I52Sly1gd9qu4ojv5j31vm10ygne.jpg" alt="img"></p>
+<p>如果输入是负数或 0，ReLU 函数的输出将是 0，如果输入是正数，那么输出将等于输入。</p>
+<h4 id="卷积神经网络CNN"><a href="#卷积神经网络CNN" class="headerlink" title="卷积神经网络CNN"></a>卷积神经网络CNN</h4><p>卷积神经网络。即至少有一个卷积层的网络。典型的 CNN 还包括其他类型的层级，例如池化层和密集层</p>
+<p><strong>卷积层的原理是</strong>：创建另一个数字网格，叫做核或滤波器，然后利用核扫描图像，卷积层会将核应用到输入图像的各个区域（对于边缘像素，有多种解决方法，常见的一种为零填充）最终得到一个新的卷积图像。</p>
+<p><strong>卷积</strong>：是指向图像应用滤波器（核）的过程。</p>
+<p><strong>池化</strong>：通过总结区域减小输入图像大小的过程，新图像的大小取决于网格大小和步长；池化层有多种类型，常见的有平均池化、最大池化等</p>
+<p><strong>下采样</strong>：缩小图像，他的主要目的有两个：</p>
+<ol>
+<li>使得图像符合显示区域的大小</li>
+<li>生成对应图像的缩略图</li>
+</ol>
+<h4 id="CNN处理猫狗图片"><a href="#CNN处理猫狗图片" class="headerlink" title="CNN处理猫狗图片"></a>CNN处理猫狗图片</h4><p><strong>两个挑战</strong>：</p>
+<ol>
+<li>图片的尺寸不是固定的</li>
+<li>图片是彩色的</li>
+</ol>
+<h5 id="挑战一：不同的图片尺寸"><a href="#挑战一：不同的图片尺寸" class="headerlink" title="挑战一：不同的图片尺寸"></a><strong>挑战一：不同的图片尺寸</strong></h5><p>众所周知，神经网络要求输入尺寸是固定的，图片必须是固定大小的，如果才有之前衣服数据集的方法，将图像扁平化为一维数组，对于不同尺寸的图片，得到的数组大小是不一样的</p>
+<p>解决方法是：始终将所有图片调整为相同尺寸(Resizing)</p>
+<h5 id="挑战二：如何处理彩色图像"><a href="#挑战二：如何处理彩色图像" class="headerlink" title="挑战二：如何处理彩色图像"></a><strong>挑战二：如何处理彩色图像</strong></h5><p>计算机将灰度图像解析为二维数组，这个二维数组包含灰度图像对应的像素值，二维数组的宽高是由图像的尺寸决定的。</p>
+<p>同理，计算机会将彩色图像解析为三维数组，三维数组的宽高是由图像的宽高决定的，深度由颜色通道数量决定。大多数彩色图像可以表示成三个颜色通道，分别是红绿蓝，这种图像被称为RGB图像。</p>
+<p>在RGB图像中，每个颜色通道都有他自己的二维数组表示，由于有三个颜色通道，所以最终由三个二维数组，所以，对于RGB图像来说，他的深度等于红绿蓝通道对应的三个二维数组的堆叠层数</p>
+<p><img src="http://ww1.sinaimg.cn/large/0077I52Sly1gd9x4g9px8j318f0nm16z.jpg" alt="QQ截图20200328203243.png"></p>
+<p>在调用函数时，三个参数，(x, y, d)，之前模型中，因为是灰度图像，d设为了1</p>
+<h5 id="对彩色图像执行卷积运算"><a href="#对彩色图像执行卷积运算" class="headerlink" title="对彩色图像执行卷积运算"></a><strong>对彩色图像执行卷积运算</strong></h5><p>可以思考回顾一下灰阶图像的卷积操作</p>
+<p>与灰阶图像的卷积操作类似，首先要选择特定尺寸的过滤器（3阶的），而且核的深度要与彩色图像的颜色通道数量一致，之后的卷积运算和灰阶图像一样（零填充，矩阵乘法），计算出每个颜色通道的卷积结果后，我没需要把他们相加起来，而且通过会再多加一个偏差值（通常为1），核对图像每个区域进行扫描后，就得到了卷积图像（二维数组）。</p>
+<p>但是，对于彩色图像，通常会采用多个三维过滤器（当然也可以更多），这样就会得到三个卷积结果，我们可以将卷积结果看做三维数组，深度对应于过滤器数量</p>
+<p><img src="http://ww1.sinaimg.cn/large/0077I52Sly1gd9xy1hk58j30o40dajzu.jpg" alt="QQ截图20200328205659.png"></p>
+<p>在代码中，我们通过设置filters来指定Conv2D层生成多少个输出结果，还可以通过kernel_size来指定三维过滤器的大小</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.layers.Conv2D(filters, kernel_size, ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，再训练CNN时，我们将更新三维核中的值，从而最小化损失函数</p>
+</blockquote>
+<h5 id="对彩色图像执行最大池化运算"><a href="#对彩色图像执行最大池化运算" class="headerlink" title="对彩色图像执行最大池化运算"></a>对彩色图像执行最大池化运算</h5><p>最大池化和灰度图像的处理一样，只是处理后，得到的数据宽高会变小，深度不变</p>
+<h5 id="过拟合问题"><a href="#过拟合问题" class="headerlink" title="过拟合问题"></a><strong>过拟合问题</strong></h5><p>训练次数过多时，会使网络开始过拟合或记住训练数据。有<strong>三种方法可以避免过拟合</strong></p>
+<ol>
+<li><p><strong>早停法</strong>：验证集防止过拟合</p>
+<p><strong>判断过拟合的方法</strong></p>
+<p>查看训练损失和验证损失与周期的函数图，经过几个周期后，验证损失开始上升，而训练损失不断下降，并且再结束训练后，验证损失非常高，而训练损失非常低，这就表明升级网络过拟合训练数据，因为他无法很好的泛化到验证集上</p>
+<p><strong>启发</strong>：如果有多个潜在的模型结构可供选择，这种流程将会很有帮助。例如：如果你要决定再网络神经中添加多少个层级，你可以创建具有不同结构的各种模型，然后实验验证集比较他们，验证损失最低的结构将是最佳模型</p>
+<p><strong>疑问</strong>：为什么有了测试集，还需要设置验证集？直接使用测试集验证模型不行吗？</p>
+<p>问题是，虽然再训练过程中，不适应验证集调试权重和偏差，但最终调试出的模型会同时再验证集和训练集上表现很好，所以神经网络最终将偏向于验证集，我们需要一个单独的测试集，实际检验模型泛化到从未见过的数据的效果</p>
+</li>
+<li><p><strong>通过数据增强和丢弃，来避免过拟合</strong></p>
+<p>在训练CNN识别图像中的特定对象时，我们希望无论这些对象的大小和位置如何，CNN都能检测这些对象。对于各种可能的情况（如狗在左侧，中间，或者只有狗身体的一部分等），如果能有一个足够大的各种情况都有且量大的数据集，那么就可以训练出很好的模型，而且不会产生严重的过拟合。</p>
+<p>但是，大多数时候，训练集并不包含很多不同的样本，在这种情况下，CNN有可能会过拟合，无法很好的泛化到之前没见过的数据上。对于这个问题，我们可以使用<strong>图像增强技巧</strong>来避免。</p>
+<p><strong>图像增强</strong>：是指通过对原始训练集应用各种随即图像转换，创造新的训练图像</p>
+<p><img src="http://ww1.sinaimg.cn/large/0077I52Sly1gd9zoz16glj30nl0cewjv.jpg" alt="QQ截图20200328220133.png"></p>
+</li>
+<li><p><strong>丢弃是帮助避免过拟合的另一个技巧</strong></p>
+<p>我们知道，在训练过程中，神经网络通过调整权重和偏差来最小化 损失函数</p>
+<p><img src="http://ww1.sinaimg.cn/large/0077I52Sly1gd9zvpwrvfj30ml0cr415.jpg" alt="QQ截图20200328220746.png"></p>
+<p>一种方法是，在不同的训练周期中，指定每个神经元被丢弃的概率，这样就能很好的避免过拟合，还可以使网络变得更有弹性。因为他无法依赖于解决问题能用到的所有神经元，最终，其他神经元将能够起到作用</p>
+</li>
+</ol>
+<h4 id="Fashion-MNIST"><a href="#Fashion-MNIST" class="headerlink" title="Fashion-MNIST"></a><code>Fashion-MNIST</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> d2lzh <span class="keyword">as</span> d2l</span><br><span class="line"><span class="keyword">from</span> mxnet.gluon <span class="keyword">import</span> data <span class="keyword">as</span> gdata</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们通过指定train为true来设置数据集是做为训练数据集还是测试集</span></span><br><span class="line">mnist_train = gdata.vision.FashionMNIST(train=<span class="literal">True</span>)</span><br><span class="line">mnist_test = gdata.vision.FashionMNIST(train=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出查看两数据集大小</span></span><br><span class="line">print(<span class="string">"train data: &#123;&#125;"</span>.format(len(mnist_train)))</span><br><span class="line">print(<span class="string">"test data : &#123;&#125;"</span>.format(len(mnist_train)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 样本：feature + label，即输入数据 和 预测结果</span></span><br><span class="line">feature, label = mnist_train[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 由于这里使用的是灰度图像，所有只有一个颜色通道. 每个像素是0-255的8位无符号整数</span></span><br><span class="line">In [<span class="number">5</span>]: feature.shape, feature.dtype</span><br><span class="line">Out[<span class="number">5</span>]: ((<span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>), numpy.uint8)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 图像的标签使用NumPy的标量表示，他的类型是32位整数(int32)</span></span><br><span class="line">In [<span class="number">6</span>]: label, type(label), label.dtype</span><br><span class="line">Out[<span class="number">6</span>]: (<span class="number">2</span>, numpy.int32, dtype(<span class="string">'int32'</span>)) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 对Fashion-MNIST而言，数据集中一共有10个类别，我们可以封装函数，将上面的label设置标签转为相应的文本标签</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_fashion_mnist_labels</span><span class="params">(labels)</span>:</span></span><br><span class="line">    text_labels = [<span class="string">'t-shirt'</span>, <span class="string">'trouser'</span>, <span class="string">'pullover'</span>, <span class="string">'dress'</span>, <span class="string">'coat'</span>,</span><br><span class="line">                   <span class="string">'sandal'</span>, <span class="string">'shirt'</span>, <span class="string">'sneaker'</span>, <span class="string">'bag'</span>, <span class="string">'ankle boot'</span>]</span><br><span class="line">    <span class="keyword">return</span> [text_labels[int(i)] <span class="keyword">for</span> i <span class="keyword">in</span> labels]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面定义一个画图函数，在一行内画出多张图像和对应标签的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_fashion_mnist</span><span class="params">(images, labels)</span>:</span></span><br><span class="line">    d2l.use_svg_display()</span><br><span class="line">    <span class="comment"># 这里的_表示我们忽略（不使用）的变量</span></span><br><span class="line">    _, figs = d2l.plt.subplots(<span class="number">1</span>, len(images), figsize=(<span class="number">12</span>, <span class="number">12</span>))</span><br><span class="line">    <span class="keyword">for</span> f, img, lbl <span class="keyword">in</span> zip(figs, images, labels):</span><br><span class="line">        f.imshow(img.reshape((<span class="number">28</span>, <span class="number">28</span>)).asnumpy())</span><br><span class="line">        f.set_title(lbl)</span><br><span class="line">        f.axes.get_xaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line">        f.axes.get_yaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 下面的操作是看一下训练集中前9个样本的图像内容和文本标签</span></span><br><span class="line">X, y = mnist_train[<span class="number">0</span>:<span class="number">9</span>]</span><br><span class="line">show_fashion_mnist(X, get_fashion_mnist_labels(y))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量处理数据</span></span><br><span class="line">batch_size = <span class="number">256</span></span><br><span class="line">transformer = gdata.vision.transforms.ToTensor()</span><br><span class="line"><span class="keyword">if</span> sys.platform.startswith(<span class="string">'win'</span>): <span class="comment"># windows还不支持多线程来加快数据读取</span></span><br><span class="line">    num_workers = <span class="number">0</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    num_workers = <span class="number">4</span></span><br><span class="line"></span><br><span class="line">train_iter = gdata.DataLoader(mnist_train.transform_first(transformer),</span><br><span class="line">                              batch_size, shuffle=<span class="literal">True</span>,</span><br><span class="line">                              num_workers=num_workers)</span><br><span class="line">test_iter = gdata.DataLoader(mnist_test.transform_first(transformer),</span><br><span class="line">                             batch_size, shuffle=<span class="literal">True</span>,</span><br><span class="line">                            num_workers=num_workers)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/deep-Learning/" rel="tag"># deep Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/27/算法课第三章/" rel="next" title="算法课第三章">
+                <i class="fa fa-chevron-left"></i> 算法课第三章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/33515162.png" alt="IWTF">
+            
+              <p class="site-author-name" itemprop="name">IWTF</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/IWTF" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/qq_40934679" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#密集层的概念"><span class="nav-number">1.</span> <span class="nav-text">密集层的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修正线性单元-ReLU"><span class="nav-number">2.</span> <span class="nav-text">修正线性单元 (ReLU)</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#卷积神经网络CNN"><span class="nav-number"></span> <span class="nav-text">卷积神经网络CNN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNN处理猫狗图片"><span class="nav-number"></span> <span class="nav-text">CNN处理猫狗图片</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#挑战一：不同的图片尺寸"><span class="nav-number">1.</span> <span class="nav-text">挑战一：不同的图片尺寸</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#挑战二：如何处理彩色图像"><span class="nav-number">2.</span> <span class="nav-text">挑战二：如何处理彩色图像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对彩色图像执行卷积运算"><span class="nav-number">3.</span> <span class="nav-text">对彩色图像执行卷积运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对彩色图像执行最大池化运算"><span class="nav-number">4.</span> <span class="nav-text">对彩色图像执行最大池化运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#过拟合问题"><span class="nav-number">5.</span> <span class="nav-text">过拟合问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fashion-MNIST"><span class="nav-number"></span> <span class="nav-text">Fashion-MNIST</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IWTF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
